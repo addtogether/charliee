@@ -18,6 +18,9 @@
   <link rel='shortcut icon' type='image/x-icon' href='assets/img/favicon.ico' />
   <!-- excel -->
   <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+  <!-- data tables -->
+  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
+  <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
 </head>
 
 <?php

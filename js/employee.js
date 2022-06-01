@@ -19,10 +19,10 @@ function deleteEmployee(id){
         xhr.send(formData); // sending form data to php
 }
 
-// const dataTable = new simpleDatatables.DataTable("#example", {
-// 	searchable: true,
-// 	fixedHeight: true,
-// })
+const dataTable = new simpleDatatables.DataTable("#example", {
+	searchable: true,
+	fixedHeight: true,
+})
 
 function ExportToExcel(type, fn, dl) {
     var elt = document.getElementById('outputTable');
