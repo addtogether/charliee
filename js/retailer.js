@@ -19,7 +19,7 @@ function deleteRetailer(id){
         xhr.send(formData); // sending form data to php
 }
 
-// const dataTable = new simpleDatatables.DataTable("#example", {
-// 	searchable: true,
-// 	fixedHeight: true,
-// })
+const dataTable = new simpleDatatables.DataTable("#example", {
+	searchable: true,
+	fixedHeight: true,
+})
