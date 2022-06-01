@@ -221,7 +221,7 @@
         while($row = mysqli_fetch_assoc($sql)){
           if($flag){
             $arrayKeys = array_keys($row);
-            for($i=0;$i<count($arrayKeys);$i++){
+            for($i=0;$i<count($arrayKeys)-6;$i++){
               echo '<td>'.$arrayKeys[$i].'</td>';
             }
             $flag = false;
@@ -229,7 +229,7 @@
           }
           echo '<tr>';
           $arrayValues = array_values($row);
-          for($i=0;$i<count($arrayValues);$i++){
+          for($i=0;$i<count($arrayValues)-6;$i++){
             echo '<td hidden>'.$arrayValues[$i].'</td>';
           }
           echo '</tr>';
