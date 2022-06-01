@@ -16,6 +16,8 @@ const mobileNumberField = document.getElementById("mobileNumber");
 // const workingDaysField = document.getElementById("workingDays");
 // const geoLocationField = document.getElementById("geoLocation");
 // const geoAddressField = document.getElementById("geoAddress");
+// const fssaiNoField = document.getElementById("fssaiNo");
+// const validityDateField = document.getElementById("validityDate");
 // const addtionalDetailsField = document.getElementById("addtionalDetails");
 // const AF1Field = document.getElementById("AF1");
 // const AF2Field = document.getElementById("AF2");
@@ -50,9 +52,9 @@ form.onsubmit = (e)=>{
                         mobileNumberFieldFeedback.innerHTML = "Mobile Number already exist";
                     }
                     else{
-                        // alert("Something went wrong!");
-                        console.log(data);
-                        alert(data);
+                        alert("Something went wrong!");
+                        // console.log(data);
+                        // alert(data);
                     }
                 }
             }

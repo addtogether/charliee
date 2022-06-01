@@ -40,6 +40,8 @@
         $typeOfOutlet = mysqli_real_escape_string($conn, $_POST['typeOfOutlet']);
         $classification = mysqli_real_escape_string($conn, $_POST['classification']);
         $retailerType = mysqli_real_escape_string($conn, $_POST['retailerType']);
+        $fssaiNo = mysqli_real_escape_string($conn, $_POST['fssaiNo']);
+        $validityDate = mysqli_real_escape_string($conn, $_POST['validityDate']);
         $status = mysqli_real_escape_string($conn, $_POST['status']);
         $additionalDetails = mysqli_real_escape_string($conn, $_POST['additionalDetails']);
         $AF1 = mysqli_real_escape_string($conn, $_POST['AF1']);
@@ -54,14 +56,15 @@
             $dateTime = date('Y-m-d H:i:s');
             $sql1 = mysqli_query($conn, "INSERT INTO retailerMaster (retailerCode, retailerName, contactPersonName, address, 
                                             location, pincode, city, state, country, geoLocation, geoAddress, mobileNumber, 
-                                            whatsappNumber, typeOfOutlet, classification, retailerType, gstNumber, workingDays, 
-                                            additionalDetails, AF1, AF2, AF3, AF4, AF5, status, createdIP, createdDate) 
+                                            whatsappNumber, typeOfOutlet, classification, retailerType, gstNumber, fssaiNo, 
+                                            validityDate, workingDays, additionalDetails, AF1, AF2, AF3, AF4, AF5, status, 
+                                            createdIP, createdDate) 
                                             VALUES ('{$retailerCode}', '{$retailerName}', '{$contactPersonName}', '{$address}', 
                                             '{$location}', '{$pincode}', '{$city}', '{$state}', '{$country}', '{$geoLocation}', 
                                             '{$geoAddress}', '{$mobileNumber}', '{$whatsappNumber}', '{$typeOfOutlet}', 
-                                            '{$classification}', '{$retailerType}' , '{$gstNumber}', '{$workingDays}', 
-                                            '{$additionalDetails}', '{$AF1}', '{$AF2}', '{$AF3}', '{$AF4}', '{$AF5}', '{$status}', 
-                                            '$ipaddress', '{$dateTime}')");
+                                            '{$classification}', '{$retailerType}' , '{$gstNumber}', '{$fssaiNo}', '{$validityDate}', 
+                                            '{$workingDays}', '{$additionalDetails}', '{$AF1}', '{$AF2}', '{$AF3}', '{$AF4}', 
+                                            '{$AF5}', '{$status}', '$ipaddress', '{$dateTime}')");
             if($sql1){
                 echo "success";
             }    

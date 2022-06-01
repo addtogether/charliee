@@ -46,6 +46,8 @@
         $geoAddress = mysqli_real_escape_string($conn, $_POST['geoAddress']);
         $typeOfOutlet = mysqli_real_escape_string($conn, $_POST['typeOfOutlet']);
         $classification = mysqli_real_escape_string($conn, $_POST['classification']);
+        $fssaiNo = mysqli_real_escape_string($conn, $_POST['fssaiNo']);
+        $validityDate = mysqli_real_escape_string($conn, $_POST['validityDate']);
         $retailerType = mysqli_real_escape_string($conn, $_POST['retailerType']);
         $status = mysqli_real_escape_string($conn, $_POST['status']);
         $additionalDetails = mysqli_real_escape_string($conn, $_POST['additionalDetails']);
@@ -66,10 +68,11 @@
                                             geoLocation = '{$geoLocation}', geoAddress = '{$geoAddress}', 
                                             mobileNumber = '{$mobileNumber}', whatsappNumber = '{$whatsappNumber}', 
                                             typeOfOutlet = '{$typeOfOutlet}', classification = '{$classification}', 
-                                            retailerType = '{$retailerType}', gstNumber = '{$gstNumber}', 
-                                            workingDays = '{$workingDays}', additionalDetails = '{$additionalDetails}', 
-                                            AF1 = '{$AF1}', AF2 = '{$AF2}', AF3 = '{$AF3}', AF4 = '{$AF4}', AF5 = '{$AF5}', 
-                                            status = '{$status}', modifiedIP = '$ipaddress', modifiedDate = '{$dateTime}' 
+                                            retailerType = '{$retailerType}', gstNumber = '{$gstNumber}', fssaiNo = '{$fssaiNo}', 
+                                            validityDate = '{$validityDate}', workingDays = '{$workingDays}', 
+                                            additionalDetails = '{$additionalDetails}', AF1 = '{$AF1}', AF2 = '{$AF2}', 
+                                            AF3 = '{$AF3}', AF4 = '{$AF4}', AF5 = '{$AF5}', status = '{$status}', 
+                                            modifiedIP = '$ipaddress', modifiedDate = '{$dateTime}' 
                                             WHERE id = '$editRetailerID'");
             if($sql1){
                 echo "success";

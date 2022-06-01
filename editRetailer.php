@@ -223,8 +223,24 @@
                             </div>
                         </div>
                       </div>
+                      <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                          <label for="fssaiNo">FSSAI Number</label>
+                          <input type="text" class="form-control" name="fssaiNo" id="fssaiNo" placeholder="FSSAI Number" value="<?php echo $row['fssaiNo'];?>" required>
+                          <div class="invalid-feedback">
+                            Please enter a FSSAI Number.
+                          </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="validityDate" class="col-form-label">Validty Date</label>
+                            <input class="form-control" type="date" name="validityDate"  id="validityDate" value=<?php echo $row['validityDate'];?> required>
+                            <div class="invalid-feedback">
+                              Please select a Valid Validty Date.
+                            </div>
+                        </div>
+                      </div>
                       <div class="form-group">
-                        <label for="addtionalDetails" class="col-form-label">Additional Details</label>
+                        <label for="additionalDetails" class="col-form-label">Additional Details</label>
                         <input class="form-control" type="text" name="additionalDetails" id="additionalDetails" value="<?php echo $row['additionalDetails'];?>">
                       </div>
                       <div class="form-group">
