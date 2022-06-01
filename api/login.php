@@ -40,9 +40,9 @@
         else{
             $sql = mysqli_query($conn,"SELECT * FROM employeeLogin WHERE username = '{$decoded['username']}'");
             if($sql){
+                $row = mysqli_fetch_assoc($sql);
+                $check = password_verify($decoded['password'], $row['password']);
                 if(mysqli_num_rows($sql) != 0 && $check){
-                    $row = mysqli_fetch_assoc($sql);
-                    $check = password_verify($decoded['password'], $row['password']);
                     if($row['status']=="ON"){
                         $sql = mysqli_query($conn, "INSERT INTO employeeLoginLog (username, loginDateTime, loginGeoLocation) VALUES ('{$decoded['username']}', CURRENT_TIMESTAMP, '{$decoded['geolocation']}')");
                         // echo("Error description: " . mysqli_error($conn));
