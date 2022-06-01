@@ -1,0 +1,17 @@
+login api: http://localhost/charliee/api/login.php
+login body: 
+{
+	"username": "9967313253",
+	"password": "9967313253",
+	"geolocation": "1",
+	"validation": false
+}
+
+
+logout api: http://localhost/charliee/api/logout.php
+logout body:
+{
+	"logID": "1",
+	"geolocation": "1"
+}
+
