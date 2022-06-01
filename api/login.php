@@ -53,7 +53,7 @@
                         $dateTime = date('Y-m-d H:i:s');
                         $sql = mysqli_query($conn, "INSERT INTO employeeLoginLog (username, loginDateTime, loginGeoLocation) 
                                                     VALUES ('{$decoded['username']}', '{$dateTime}', '{$decoded['geolocation']}')");
-                        echo("Error description: " . mysqli_error($conn));
+                        // echo("Error description: " . mysqli_error($conn));
                         $last_inserted = mysqli_insert_id($conn); // return last inserted id
                         $row['logID'] = strval($last_inserted);
                     }
