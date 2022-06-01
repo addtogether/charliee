@@ -27,7 +27,7 @@
     if(isset($decoded['validation'])){
         if($decoded['validation']){
             $sql = mysqli_query($conn,"SELECT * FROM employeeLogin WHERE username = '{$decoded['username']}'");
-            if($sql){
+            if(mysqli_num_rows($sql) != 0){
                 $row = mysqli_fetch_assoc($sql);
                 $check = password_verify($decoded['password'], $row['password']);
                 if(mysqli_num_rows($sql) != 0 && $check){
@@ -44,7 +44,8 @@
         }
         else{
             $sql = mysqli_query($conn,"SELECT * FROM employeeLogin WHERE username = '{$decoded['username']}'");
-            if($sql){
+            // echo strval($sql);
+            if(mysqli_num_rows($sql) != 0){
                 $row = mysqli_fetch_assoc($sql);
                 $check = password_verify($decoded['password'], $row['password']);
                 if(mysqli_num_rows($sql) != 0 && $check){
