@@ -27,16 +27,20 @@
     if(isset($decoded['validation'])){
         if($decoded['validation']){
             $sql = mysqli_query($conn,"SELECT * FROM employeeLogin WHERE username = '{$decoded['username']}'");
-            $check = password_verify($decoded['password'], $row['password']);
-            if(mysqli_num_rows($sql) != 0 && $check){
+            if($sql){
                 $row = mysqli_fetch_assoc($sql);
-                unset($row['password']);
-                echo json_encode($row);
+                $check = password_verify($decoded['password'], $row['password']);
+                if(mysqli_num_rows($sql) != 0 && $check){
+                    unset($row['password']);
+                    echo json_encode($row);
+                }
+                else{
+                    echo json_encode(["validation"=>false]);
+                }
             }
             else{
                 echo json_encode(["validation"=>false]);
             }
-    
         }
         else{
             $sql = mysqli_query($conn,"SELECT * FROM employeeLogin WHERE username = '{$decoded['username']}'");
@@ -44,9 +48,14 @@
                 $row = mysqli_fetch_assoc($sql);
                 $check = password_verify($decoded['password'], $row['password']);
                 if(mysqli_num_rows($sql) != 0 && $check){
+                    
                     if($row['status']=="ON"){
-                        $sql = mysqli_query($conn, "INSERT INTO employeeLoginLog (username, loginDateTime, loginGeoLocation) VALUES ('{$decoded['username']}', CURRENT_TIMESTAMP, '{$decoded['geolocation']}')");
-                        // echo("Error description: " . mysqli_error($conn));
+                        $dateTime = date('Y-m-d H:i:s');
+                        $sql = mysqli_query($conn, "INSERT INTO employeeLoginLog (username, loginDateTime, loginGeoLocation) 
+                                                    VALUES ('{$decoded['username']}', '{$dateTime}', '{$decoded['geolocation']}')");
+                        echo("Error description: " . mysqli_error($conn));
+                        $last_inserted = mysqli_insert_id($conn); // return last inserted id
+                        $row['logID'] = strval($last_inserted);
                     }
                     unset($row['password']);
                     echo json_encode($row);

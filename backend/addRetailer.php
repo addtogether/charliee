@@ -51,6 +51,7 @@
 
         $sql = mysqli_query($conn,"SELECT * FROM retailerMaster WHERE mobileNumber = '{$mobileNumber}'");
         if(mysqli_num_rows($sql) == 0){
+            $dateTime = date('Y-m-d H:i:s');
             $sql1 = mysqli_query($conn, "INSERT INTO retailerMaster (retailerCode, retailerName, contactPersonName, address, 
                                             location, pincode, city, state, country, geoLocation, geoAddress, mobileNumber, 
                                             whatsappNumber, typeOfOutlet, classification, retailerType, gstNumber, workingDays, 
@@ -60,7 +61,7 @@
                                             '{$geoAddress}', '{$mobileNumber}', '{$whatsappNumber}', '{$typeOfOutlet}', 
                                             '{$classification}', '{$retailerType}' , '{$gstNumber}', '{$workingDays}', 
                                             '{$additionalDetails}', '{$AF1}', '{$AF2}', '{$AF3}', '{$AF4}', '{$AF5}', '{$status}', 
-                                            '$ipaddress', CURRENT_TIMESTAMP)");
+                                            '$ipaddress', '{$dateTime}')");
             if($sql1){
                 echo "success";
             }    

@@ -58,6 +58,7 @@
 
         $sql = mysqli_query($conn,"SELECT * FROM retailerMaster WHERE mobileNumber = '{$mobileNumber}' AND NOT id = '$editRetailerID'");
         if(mysqli_num_rows($sql) == 0){
+            $dateTime = date('Y-m-d H:i:s');
             $sql1 = mysqli_query($conn, "UPDATE retailerMaster SET retailerCode = '{$retailerCode}', 
                                             retailerName = '{$retailerName}', contactPersonName = '{$contactPersonName}', 
                                             address = '{$address}',location = '{$location}', pincode = '{$pincode}', 
@@ -68,7 +69,7 @@
                                             retailerType = '{$retailerType}', gstNumber = '{$gstNumber}', 
                                             workingDays = '{$workingDays}', additionalDetails = '{$additionalDetails}', 
                                             AF1 = '{$AF1}', AF2 = '{$AF2}', AF3 = '{$AF3}', AF4 = '{$AF4}', AF5 = '{$AF5}', 
-                                            status = '{$status}', modifiedIP = '$ipaddress', modifiedDate = CURRENT_TIMESTAMP 
+                                            status = '{$status}', modifiedIP = '$ipaddress', modifiedDate = '{$dateTime}' 
                                             WHERE id = '$editRetailerID'");
             if($sql1){
                 echo "success";

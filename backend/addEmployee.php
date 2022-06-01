@@ -60,6 +60,7 @@
                     $newFileName = $mobileNumber."-employeePhoto.".$fileExt;
                     // $newFileName = str_replace(" ", "-", $newFileName);
                     if(move_uploaded_file($tmpName, "../photo/".$newFileName)){
+                        $dateTime = date('Y-m-d H:i:s');
                         $sql1 = mysqli_query($conn, "INSERT INTO employeeMaster (employeeCode, employeeName, employeePhoto, gender, dateOfBirth, 
                                                         address, location, pincode, city, state, country, mobileNumber, whatsappNumber, IMEI, 
                                                         designation, reportingManager, salary, dateOfJoining, additionalDetails, AF1, AF2, AF3, 
@@ -68,7 +69,7 @@
                                                         '{$address}', '{$location}', '{$pincode}', '{$city}', '{$state}', '{$country}', 
                                                         '{$mobileNumber}', '{$whatsappNumber}', '{$imei}', '{$designation}', {$reportingManager} , 
                                                         {$salary}, '{$dateOfJoining}', '{$addtionalDetails}', '{$AF1}', '{$AF2}', '{$AF3}', 
-                                                        '{$AF4}', '{$AF5}', '{$status}', '$ipaddress', CURRENT_TIMESTAMP)");
+                                                        '{$AF4}', '{$AF5}', '{$status}', '$ipaddress', '{$dateTime}')");
                         
                         $password = password_hash($mobileNumber, PASSWORD_DEFAULT);
                         $sql2 = mysqli_query($conn, "INSERT INTO employeeLogin (username, password, status) VALUES ('{$mobileNumber}', '{$password}',

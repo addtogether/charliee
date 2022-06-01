@@ -1,4 +1,5 @@
 <?php
+    date_default_timezone_set("Asia/Kolkata");
     $servername = "bfuzsgiszke6l2e7z5o9-mysql.services.clever-cloud.com";
     $username = "u7ttomsnlwm1gcxl";
     $password = "9Vd30iY4A0KjinAF8WSu";

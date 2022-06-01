@@ -69,6 +69,7 @@
                     // $newFileName = str_replace(" ", "-", $newFileName);
                     unlink("../photo/".$editEmployeePhoto);
                     if(move_uploaded_file($tmpName, "../photo/".$newFileName)){
+                        $dateTime = date('Y-m-d H:i:s');
                         $sql1 = mysqli_query($conn, "UPDATE employeeMaster SET employeeCode = '{$employeeCode}', 
                                                         employeeName = '{$employeeName}', employeePhoto = '{$newFileName}', 
                                                         gender = '{$gender}', dateOfBirth = '{$dateOfBirth}', address = '{$address}',
@@ -79,7 +80,7 @@
                                                         salary = {$salary}, dateOfJoining = '{$dateOfJoining}', 
                                                         additionalDetails = '{$addtionalDetails}', AF1 = '{$AF1}', AF2 = '{$AF2}', 
                                                         AF3 = '{$AF3}', AF4 = '{$AF4}', AF5 = '{$AF5}', status = '{$status}', 
-                                                        modifiedIP = '$ipaddress', modifiedDate = CURRENT_TIMESTAMP 
+                                                        modifiedIP = '$ipaddress', modifiedDate = '{$dateTime}' 
                                                         WHERE id = '$editEmployeeID'");
                         
                         $sql2 = mysqli_query($conn, "UPDATE employeeLogin SET status = '{$status}' WHERE id = '$editEmployeeID'");
@@ -100,6 +101,7 @@
                 }
             }
             else{
+                $dateTime = date('Y-m-d H:i:s');
                 $sql1 = mysqli_query($conn, "UPDATE employeeMaster SET employeeCode = '{$employeeCode}', 
                                                 employeeName = '{$employeeName}', gender = '{$gender}', 
                                                 dateOfBirth = '{$dateOfBirth}', address = '{$address}',location = '{$location}', 
@@ -109,7 +111,7 @@
                                                 salary = {$salary}, dateOfJoining = '{$dateOfJoining}', 
                                                 additionalDetails = '{$addtionalDetails}', AF1 = '{$AF1}', AF2 = '{$AF2}', 
                                                 AF3 = '{$AF3}', AF4 = '{$AF4}', AF5 = '{$AF5}', status = '{$status}', 
-                                                modifiedIP = '$ipaddress', modifiedDate = CURRENT_TIMESTAMP 
+                                                modifiedIP = '$ipaddress', modifiedDate = '{$dateTime}' 
                                                 WHERE id = '$editEmployeeID'");
 
                 $sql2 = mysqli_query($conn, "UPDATE employeeLogin SET status = '{$status}', username = '{$mobileNumber}' 

@@ -1,0 +1,4 @@
+logID
+geolocation
+
+response : true
