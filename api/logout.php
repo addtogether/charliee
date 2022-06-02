@@ -13,11 +13,11 @@
         $dateTime = date('Y-m-d H:i:s');
         $sql = mysqli_query($conn,"UPDATE employeeLoginLog SET logoutDateTime = '{$dateTime}', 
                                 logoutGeoLocation = '{$decoded['geolocation']}' WHERE id = '{$decoded['logID']}'");
-        if($sql){
+        if(mysqli_affected_rows($conn)!=0){
             echo json_encode(["updation"=>true]);
         }
         else{
-            echo json_encode(["updation"=>true]);
+            echo json_encode(["updation"=>false]);
         }
     }    
 
