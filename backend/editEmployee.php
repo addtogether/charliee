@@ -67,7 +67,10 @@
                 if($fileExt == "jpg" || $fileExt == "jpeg" || $fileExt == "png"){
                     $newFileName = $mobileNumber."-employeePhoto.".$fileExt;
                     // $newFileName = str_replace(" ", "-", $newFileName);
-                    unlink("../photo/".$editEmployeePhoto);
+                    if($_FILES['employeePhoto']['name'] != ""){
+                        unlink("../photo/".$editEmployeePhoto);
+                        // echo "inside this";
+                    }
                     if(move_uploaded_file($tmpName, "../photo/".$newFileName)){
                         $dateTime = date('Y-m-d H:i:s');
                         $sql1 = mysqli_query($conn, "UPDATE employeeMaster SET employeeCode = '{$employeeCode}', 
@@ -121,7 +124,7 @@
                 }    
                 else{
                     echo "error";
-                    echo("Error description: " . mysqli_error($conn));
+                    // echo("Error description: " . mysqli_error($conn));
                 }
             }
         }

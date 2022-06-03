@@ -56,9 +56,9 @@ form.onsubmit = (e)=>{
                         mobileNumberFieldFeedback.innerHTML = "Mobile Number already exist";
                     }
                     else{
-                        alert("Something went wrong!");
-                        // console.log(data);
+                        console.log(data);
                         // alert(data);
+                        alert("Something went wrong!");
                     }
                 }
             }

@@ -54,12 +54,12 @@
                     </div> -->
                     <div class="float-right">
                       <div class="card-header-action">
-                        <button onclick="ExportToExcel('xlsx')" type="button" class="btn btn-success mb-3"> <i data-feather="download"></i> Export</button>
+                        <button onclick="ExportToExcel('xlsx')" type="button" class="btn btn-primary mb-3"> <i data-feather="download"></i> Export</button>
                         <button  onclick="ExportToExcelTemplate('xlsx')" type="button" class="btn btn-primary mb-3 mid-button"> <i data-feather="download"></i>Download Template</button>
-                        <button  type="button" class="btn btn-primary mb-3 mid-button" data-toggle="collapse" data-target="#excelUpload"> <i data-feather="upload"></i> Import</button>
+                        <button  type="button" class="btn btn-success mb-3 mid-button" data-toggle="collapse" data-target="#excelUpload"> <i data-feather="upload"></i> Import</button>
                         <form>
                           <div class="collapse" id="excelUpload">
-                            <input type="file" class="form-control">
+                            <input type="file" id="excelImport" class="form-control">
                             <!-- <div class="input-group-append">
                               <button class="btn btn-primary"><i class="fas fa-search"></i></button>
                             </div> -->
@@ -99,12 +99,17 @@
                           $sql = mysqli_query($conn,"SELECT * FROM employeeMaster");
                           while($row = mysqli_fetch_assoc($sql)){
                               echo '<tr>
-                                    <td>'.$row['id'].'</td>
-                                    <td><img src="./photo/'.$row['employeePhoto'].'" width="50" height="50"></td>
-                                    <td>'.$row['employeeCode'].'</td>
-                                    <td>'.$row['employeeName'].'</td>
-                                    <td>'.$row['mobileNumber'].'</td>
-                                    <td><span class="status-p bg-primary">'.$row['status'].'</span></td>';
+                                    <td>'.$row['id'].'</td>';
+                                    if($row['employeePhoto']!=""){
+                                      echo '<td><img src="./photo/'.$row['employeePhoto'].'" width="50" height="50"></td>';
+                                    }
+                                    else{
+                                      echo '<td><img src="./photo/personCircle.svg" width="50" height="50"></td>';
+                                    }
+                                    echo '<td>'.$row['employeeCode'].'</td>
+                                          <td>'.$row['employeeName'].'</td>
+                                          <td>'.$row['mobileNumber'].'</td>
+                                          <td><span class="status-p bg-primary">'.$row['status'].'</span></td>';
 
                                     // if($row['status']==1){
                                     //     echo '<td><span class="label label-success" style="font-size:inherit;">APPROVED</span></td>';
