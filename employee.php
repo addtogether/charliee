@@ -24,10 +24,10 @@
 </head>
 
 <?php
-  require_once("./includes/connection.php");
-  include_once("navbar.php");
+require_once("./includes/connection.php");
+include_once("navbar.php");
 ?>
-
+  
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
@@ -111,73 +111,47 @@
                                           <td>'.$row['mobileNumber'].'</td>
                                           <td><span class="status-p bg-primary">'.$row['status'].'</span></td>';
 
-                                    // if($row['status']==1){
-                                    //     echo '<td><span class="label label-success" style="font-size:inherit;">APPROVED</span></td>';
-                                    // }
-                                    // else if($row['status']==2){
-                                    //     echo '<td><span class="label label-danger" style="font-size:inherit;">DISAPPROVED</span></td>';
-                                    // }
-                                    // else{
-                                    //     echo '<td>
-                                    //           <button class="btn btn-info btn-round btn-sm m-l-5" onclick="approve('.$row['id'].')">Approve</button>
-                                    //           <button class="btn btn-danger btn-round btn-sm m-l-5" onclick="disapprove('.$row['id'].')">Disapprove</button>
-                                    //           </td>';
-                                    // }
-                                    
+                                          // if($row['status']==1){
+                                          //     echo '<td><span class="label label-success" style="font-size:inherit;">APPROVED</span></td>';
+                                          // }
+                                          // else if($row['status']==2){
+                                          //     echo '<td><span class="label label-danger" style="font-size:inherit;">DISAPPROVED</span></td>';
+                                          // }
+                                          // else{
+                                          //     echo '<td>
+                                          //           <button class="btn btn-info btn-round btn-sm m-l-5" onclick="approve('.$row['id'].')">Approve</button>
+                                          //           <button class="btn btn-danger btn-round btn-sm m-l-5" onclick="disapprove('.$row['id'].')">Disapprove</button>
+                                          //           </td>';
+                                          // }
+
                                     echo '<td>
-                                            <a href="editEmployee.php?u='.$row['id'].'" style="color:#0080c0 ;" >
+                                            <a href="editEmployee.php?u=' . $row['id'] . '" style="color:#0080c0 ;" >
                                               <i data-feather="edit"></i>
                                             </a>
                                           </td>
                                           <td>
-                                              <i onclick="deleteEmployee('.$row['id'].')" style="color: red; cursor:pointer" data-feather="trash-2"></i>
+                                              <i onclick="deleteEmployee(' . $row['id'] . ')" style="color: red; cursor:pointer" data-feather="trash-2"></i>
                                           </td>
                                           </tr>';
-                          }   
+                          }
                         ?>
-                        </tbody>
-                      </table>
-                    </div>
-                    <div class="float-right">
-                      <nav>
-                        <ul class="pagination">
-                          <li class="page-item disabled">
-                            <a class="page-link" href="#" aria-label="Previous">
-                              <span aria-hidden="true">&laquo;</span>
-                              <span class="sr-only">Previous</span>
-                            </a>
-                          </li>
-                          <li class="page-item active">
-                            <a class="page-link" href="#">1</a>
-                          </li>
-                          <li class="page-item">
-                            <a class="page-link" href="#">2</a>
-                          </li>
-                          <li class="page-item">
-                            <a class="page-link" href="#">3</a>
-                          </li>
-                          <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                              <span aria-hidden="true">&raquo;</span>
-                              <span class="sr-only">Next</span>
-                            </a>
-                          </li>
-                        </ul>
-                      </nav>
-                    </div>
-                  </div>
-                </div>
+                  </tbody>
+                </table>
               </div>
+
             </div>
           </div>
-        </section>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- file modal -->
+  <!-- file modal -->
 
 
 
-        <!-- model for banning start  -->
-        <!-- <div id="myModal" class="modal">
+  <!-- model for banning start  -->
+  <!-- <div id="myModal" class="modal">
           <div class="card" id="sample-login" style="width: 30%; margin-left: 495px ;">
             <div class="float-right">
               <span class="close">&times;</span>
@@ -210,52 +184,52 @@
             </form>
           </div>
         </div> -->
-        <!-- model for banning ends  -->
+  <!-- model for banning ends  -->
 
 
-        <!-- settings-->
-        <?php
-          include_once("settings.php");
-        ?>
-      </div>
-    <div style="display:none;">
-      <?php
-        $sql = mysqli_query($conn,"SELECT * FROM employeeMaster");
-        echo '<table id="outputTable"><tr>';
-        $flag = true;
-        while($row = mysqli_fetch_assoc($sql)){
-          if($flag){
-            $arrayKeys = array_keys($row);
-            for($i=0;$i<count($arrayKeys)-6;$i++){
-              echo '<td>'.$arrayKeys[$i].'</td>';
-            }
-            $flag = false;
-            echo '</tr>';
-          }
-          echo '<tr>';
-          $arrayValues = array_values($row);
-          for($i=0;$i<count($arrayValues)-6;$i++){
-            echo '<td hidden>'.$arrayValues[$i].'</td>';
-          }
-          echo '</tr>';
-        }   
-      ?>
-    </div>
-    </div>
-  </div>
-  <!-- General JS Scripts -->
-  <script src="assets/js/app.min.js"></script>
-  <!-- JS Libraies -->
-  <script src="assets/bundles/jquery-selectric/jquery.selectric.min.js"></script>
-  <!-- Page Specific JS File -->
-  <script src="assets/js/page/posts.js"></script>
-  <!-- Template JS File -->
-  <script src="assets/js/scripts.js"></script>
-  <!-- Custom JS File -->
-  <script src="assets/js/custom.js"></script>
-  <!-- Dashboard Selector -->
-  <script src="./js/navbar.js"></script>
-  <script src="./js/employee.js"></script>
+  <!-- settings-->
+  <?php
+  include_once("settings.php");
+  ?>
+</div>
+<div style="display:none;">
+  <?php
+  $sql = mysqli_query($conn, "SELECT * FROM employeeMaster");
+  echo '<table id="outputTable"><tr>';
+  $flag = true;
+  while ($row = mysqli_fetch_assoc($sql)) {
+    if ($flag) {
+      $arrayKeys = array_keys($row);
+      for ($i = 0; $i < count($arrayKeys) - 6; $i++) {
+        echo '<td>' . $arrayKeys[$i] . '</td>';
+      }
+      $flag = false;
+      echo '</tr>';
+    }
+    echo '<tr>';
+    $arrayValues = array_values($row);
+    for ($i = 0; $i < count($arrayValues) - 6; $i++) {
+      echo '<td hidden>' . $arrayValues[$i] . '</td>';
+    }
+    echo '</tr>';
+  }
+  ?>
+</div>
+</div>
+</div>
+<!-- General JS Scripts -->
+<script src="assets/js/app.min.js"></script>
+<!-- JS Libraies -->
+<script src="assets/bundles/jquery-selectric/jquery.selectric.min.js"></script>
+<!-- Page Specific JS File -->
+<script src="assets/js/page/posts.js"></script>
+<!-- Template JS File -->
+<script src="assets/js/scripts.js"></script>
+<!-- Custom JS File -->
+<script src="assets/js/custom.js"></script>
+<!-- Dashboard Selector -->
+<script src="./js/navbar.js"></script>
+<script src="./js/employee.js"></script>
 </body>
 
 

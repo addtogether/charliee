@@ -6875,6 +6875,15 @@ body.layout-3 .main-footer {
     padding-left: 50px;
     font-weight: 400
 }
+.ag-pad{
+    padding-top: 0.7%;
+}
+.bg-correct{
+    background-color: #008040;
+}
+.bg-inc{
+    background-color: #ea5455;
+}
 
 .main-sidebar .sidebar-menu li ul.dropdown-menu li a:hover {
     color: #6777ef;
