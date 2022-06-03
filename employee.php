@@ -27,83 +27,104 @@
 require_once("./includes/connection.php");
 include_once("navbar.php");
 ?>
+  
+      <!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <div class="section-body ">
 
-<!-- Main Content -->
-<div class="main-content">
-  <section class="section">
-    <div class="section-body ">
-
-      <div class="row mt-4">
-        <div class="col-12">
-          <a href="addEmployee.php" class="create-new" href="">
-            <i data-feather="plus"></i>
-            Create new Employee
-          </a>
-          <div class="card">
-            <div class="card-header">
-              <h4>All Employees</h4>
-            </div>
-            <div class="card-body">
-              
-              <div class="float-right">
-                <div class="card-header-action">
-                  <button onclick="ExportToExcel('xlsx')" type="button" class="btn btn-success mb-3"> <i data-feather="download"></i> Export</button>
-                  <button onclick="ExportToExcelTemplate('xlsx')" type="button" class="btn btn-primary mb-3 mid-button"> <i data-feather="download"></i>Download Template</button>
-                  <button type="button" class="btn btn-primary mb-3 mid-button" data-toggle="collapse" data-target="#excelUpload"> <i data-feather="upload"></i> Import</button>
-                  <form>
-                    <div class="collapse" id="excelUpload">
-                      <input type="file" class="form-control">
-                      <!-- <div class="input-group-append">
+            <div class="row mt-4">
+              <div class="col-12">
+                <a href="addEmployee.php" class="create-new" href="">
+                  <i data-feather="plus"></i>
+                  Create new Employee
+              </a>
+                <div class="card">
+                  <div class="card-header">
+                    <h4>All Employees</h4>
+                  </div>
+                  <div class="card-body">
+                    <!-- <div class="float-left">
+                      <select class="form-control selectric">
+                        <option>Action For Selected</option>
+                        <option>Move to Draft</option>
+                        <option>Move to Pending</option>
+                        <option>Delete Permanently</option>
+                      </select>
+                    </div> -->
+                    <div class="float-right">
+                      <div class="card-header-action">
+                        <button onclick="ExportToExcel('xlsx')" type="button" class="btn btn-primary mb-3"> <i data-feather="download"></i> Export</button>
+                        <button  onclick="ExportToExcelTemplate('xlsx')" type="button" class="btn btn-primary mb-3 mid-button"> <i data-feather="download"></i>Download Template</button>
+                        <button  type="button" class="btn btn-success mb-3 mid-button" data-toggle="collapse" data-target="#excelUpload"> <i data-feather="upload"></i> Import</button>
+                        <form>
+                          <div class="collapse" id="excelUpload">
+                            <input type="file" id="excelImport" class="form-control">
+                            <!-- <div class="input-group-append">
                               <button class="btn btn-primary"><i class="fas fa-search"></i></button>
                             </div> -->
+                          </div>
+                        </form>
+                        <!-- <input class="form-control" id="formFileSm" type="file" /> -->
+                      </div>
                     </div>
-                  </form>
-                  <!-- <input class="form-control" id="formFileSm" type="file" /> -->
-                </div>
-              </div>
+                   
+                    <div class="float-left">
+                      <form>
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Search for user">
+                          <div class="input-group-append">
+                            <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="clearfix mb-3"></div>
+                    <div class="table-responsive user-table">
+                      <table id="example" class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>Employee Image</th>
+                            <th>Employee Code</th>
+                            <th>Employee Name</th>
+                            <th>Mobile Number</th>
+                            <th>Status</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                          $sql = mysqli_query($conn,"SELECT * FROM employeeMaster");
+                          while($row = mysqli_fetch_assoc($sql)){
+                              echo '<tr>
+                                    <td>'.$row['id'].'</td>';
+                                    if($row['employeePhoto']!=""){
+                                      echo '<td><img src="./photo/'.$row['employeePhoto'].'" width="50" height="50"></td>';
+                                    }
+                                    else{
+                                      echo '<td><img src="./photo/personCircle.svg" width="50" height="50"></td>';
+                                    }
+                                    echo '<td>'.$row['employeeCode'].'</td>
+                                          <td>'.$row['employeeName'].'</td>
+                                          <td>'.$row['mobileNumber'].'</td>
+                                          <td><span class="status-p bg-primary">'.$row['status'].'</span></td>';
 
+                                          // if($row['status']==1){
+                                          //     echo '<td><span class="label label-success" style="font-size:inherit;">APPROVED</span></td>';
+                                          // }
+                                          // else if($row['status']==2){
+                                          //     echo '<td><span class="label label-danger" style="font-size:inherit;">DISAPPROVED</span></td>';
+                                          // }
+                                          // else{
+                                          //     echo '<td>
+                                          //           <button class="btn btn-info btn-round btn-sm m-l-5" onclick="approve('.$row['id'].')">Approve</button>
+                                          //           <button class="btn btn-danger btn-round btn-sm m-l-5" onclick="disapprove('.$row['id'].')">Disapprove</button>
+                                          //           </td>';
+                                          // }
 
-              <div class="clearfix mb-3"></div>
-              <div class="table-responsive user-table">
-                <table id="example" class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Employee Image</th>
-                      <th>Employee Code</th>
-                      <th>Employee Name</th>
-                      <th>Mobile Number</th>
-                      <th>Status</th>
-                      <th>Edit</th>
-                      <th>Delete</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                    $sql = mysqli_query($conn, "SELECT * FROM employeeMaster");
-                    while ($row = mysqli_fetch_assoc($sql)) {
-                      echo '<tr>
-                                    <td>' . $row['id'] . '</td>
-                                    <td><img src="./photo/' . $row['employeePhoto'] . '" width="50" height="50"></td>
-                                    <td>' . $row['employeeCode'] . '</td>
-                                    <td>' . $row['employeeName'] . '</td>
-                                    <td>' . $row['mobileNumber'] . '</td>
-                                    <td><span class="status-p bg-primary">' . $row['status'] . '</span></td>';
-
-                      // if($row['status']==1){
-                      //     echo '<td><span class="label label-success" style="font-size:inherit;">APPROVED</span></td>';
-                      // }
-                      // else if($row['status']==2){
-                      //     echo '<td><span class="label label-danger" style="font-size:inherit;">DISAPPROVED</span></td>';
-                      // }
-                      // else{
-                      //     echo '<td>
-                      //           <button class="btn btn-info btn-round btn-sm m-l-5" onclick="approve('.$row['id'].')">Approve</button>
-                      //           <button class="btn btn-danger btn-round btn-sm m-l-5" onclick="disapprove('.$row['id'].')">Disapprove</button>
-                      //           </td>';
-                      // }
-
-                      echo '<td>
+                                    echo '<td>
                                             <a href="editEmployee.php?u=' . $row['id'] . '" style="color:#0080c0 ;" >
                                               <i data-feather="edit"></i>
                                             </a>
@@ -112,8 +133,8 @@ include_once("navbar.php");
                                               <i onclick="deleteEmployee(' . $row['id'] . ')" style="color: red; cursor:pointer" data-feather="trash-2"></i>
                                           </td>
                                           </tr>';
-                    }
-                    ?>
+                          }
+                        ?>
                   </tbody>
                 </table>
               </div>

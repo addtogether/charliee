@@ -15,3 +15,10 @@ logout body:
 	"geolocation": "1"
 }
 
+change password api: http://localhost/charliee/api/changePassword.php
+change password body:
+{
+	"id": "1",
+	"oldPassword": "9967313253",
+	"newPassword": "vishal"
+}
