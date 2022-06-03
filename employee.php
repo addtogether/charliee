@@ -69,7 +69,6 @@
                         </div>
                       </form>
                     </div> -->
-                    <div class="clearfix mb-3"></div>
                     <div class="table-responsive user-table">
                       <table id="example" class="table table-striped">
                         <thead>

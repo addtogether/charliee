@@ -38,7 +38,7 @@
                 <a href="addRetailer.php" class="create-new" href="">
                   <i data-feather="plus"></i>
                   Create new Retailer
-              </a>
+                </a>
                 <div class="card">
                   <div class="card-header">
                     <h4>All Retailer</h4>
@@ -70,7 +70,6 @@
                         </div>
                       </form>
                     </div> -->
-                    <div class="clearfix mb-3"></div>
                     <div class="table-responsive user-table">
                       <table id="example" class="table table-striped">
                         <thead>
@@ -106,117 +105,8 @@
                           }   
                         ?>
                         </tbody>
-                        <!-- <tr>
-                          <td>
-                            <span class="d-inline-block ml-1">1</span>                        
-                          </td>
-                          <td>
-                            <span>678
-                            </span>
-                          </td>
-                          <td>
-                            <span>Sarah
-                            </span>
-                          </td>
-                          <td>
-                            1234567890
-                          </td>
-                          <td><span class="status-p bg-primary">pending</span></td>
-                          <td>
-                            <a style="color:#0080c0 ;" >
-                              <i data-feather="edit"></i>
-                            </a>
-                          </td>
-                          <td>
-                            <a href="" style="color: red;" >
-                              <i data-feather="trash-2"></i>
-                            </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="d-inline-block ml-1">1</span>                        
-                          </td>
-                          <td>
-                            <span>678
-                            </span>
-                          </td>
-                          <td>
-                            <span>Sarah
-                            </span>
-                          </td>
-                          <td>
-                            1234567890
-                          </td>
-                          <td><span class="status-p bg-primary">pending</span></td>
-                          <td>
-                            <a style="color:#0080c0 ;" >
-                              <i data-feather="edit"></i>
-                            </a>
-                          </td>
-                          <td>
-                            <a href="" style="color: red;" >
-                              <i data-feather="trash-2"></i>
-                            </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="d-inline-block ml-1">1</span>                        
-                          </td>
-                          <td>
-                            <span>678
-                            </span>
-                          </td>
-                          <td>
-                            <span>Sarah
-                            </span>
-                          </td>
-                          <td>
-                            1234567890
-                          </td>
-                          <td><span class="status-p bg-primary">pending</span></td>
-                          <td>
-                            <a style="color:#0080c0 ;" >
-                              <i data-feather="edit"></i>
-                            </a>
-                          </td>
-                          <td>
-                            <a href="" style="color: red;" >
-                              <i data-feather="trash-2"></i>
-                            </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="d-inline-block ml-1">1</span>                        
-                          </td>
-                          <td>
-                            <span>678
-                            </span>
-                          </td>
-                          <td>
-                            <span>Sarah
-                            </span>
-                          </td>
-                          <td>
-                            1234567890
-                          </td>
-                          <td><span class="status-p bg-primary">pending</span></td>
-                          <td>
-                            <a style="color:#0080c0 ;" >
-                              <i data-feather="edit"></i>
-                            </a>
-                          </td>
-                          <td>
-                            <a href="" style="color: red;" >
-                              <i data-feather="trash-2"></i>
-                            </a>
-                          </td>
-                        </tr> -->
                       </table>
-                    </div>
-                    
+                    </div>  
                   </div>
                 </div>
               </div>
@@ -267,21 +157,19 @@
         ?>
       </div>
 
-    </div>
-  </div>
-  <!-- General JS Scripts -->
-  <script src="assets/js/app.min.js"></script>
-  <!-- JS Libraies -->
-  <script src="assets/bundles/jquery-selectric/jquery.selectric.min.js"></script>
-  <!-- Page Specific JS File -->
-  <script src="assets/js/page/posts.js"></script>
-  <!-- Template JS File -->
-  <script src="assets/js/scripts.js"></script>
-  <!-- Custom JS File -->
-  <script src="assets/js/custom.js"></script>
-  <!-- Dashboard Selector -->
-  <script src="./js/navbar.js"></script>
-  <script src="./js/retailer.js"></script>
+    <!-- General JS Scripts -->
+    <script src="assets/js/app.min.js"></script>
+    <!-- JS Libraies -->
+    <script src="assets/bundles/jquery-selectric/jquery.selectric.min.js"></script>
+    <!-- Page Specific JS File -->
+    <script src="assets/js/page/posts.js"></script>
+    <!-- Template JS File -->
+    <script src="assets/js/scripts.js"></script>
+    <!-- Custom JS File -->
+    <script src="assets/js/custom.js"></script>
+    <!-- Dashboard Selector -->
+    <script src="./js/navbar.js"></script>
+    <script src="./js/retailer.js"></script>
 </body>
 
 
