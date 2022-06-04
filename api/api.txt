@@ -22,3 +22,15 @@ change password body:
 	"oldPassword": "9967313253",
 	"newPassword": "vishal"
 }
+
+route api: http://localhost/charliee/api/route.php
+route body:
+{
+	"id": "6"
+}
+
+retailer api: http://localhost/charliee/api/retailer.php
+retailer body:
+{
+	"retailerID": "1"
+}
