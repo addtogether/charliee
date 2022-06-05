@@ -11,11 +11,11 @@
     if(isset($decoded['id'])){
         $day = date("l");
         $sql = mysqli_query($conn, "SELECT id, routeName, location, subLocation, frequency, weekDay, status FROM routeMaster 
-                                    WHERE assignToEmployee = '{$decoded['id']}' AND weekDay = '{$day}'");
+                                    WHERE assignToEmployee = '{$decoded['id']}' AND weekDay = '{$day}' AND status = 'ON'");
         if(mysqli_num_rows($sql) != 0){
             $row = mysqli_fetch_assoc($sql);
             $sql1 = mysqli_query($conn, "SELECT retailerID, priority, status FROM routeRetailerMapping 
-                                        WHERE routeID = '{$row['id']}'");
+                                        WHERE routeID = '{$row['id']}'  AND status = 'ON'");
             unset($row['id']);
             $output = [];
             array_push($output, $row); 
