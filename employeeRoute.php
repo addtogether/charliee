@@ -37,34 +37,44 @@
                   <form action="" class="needs-validation">
                     <div class="form-row">
                       <div class="col-md-4 mb-3 ag-pad" style="padding-top: 0.5%;">
-                        <label class="" for="route name">Route Name</label>
+                        <label for="routeName" class="col-form-label">Route Name</label>
                         <input type="text" class="form-control" name="routeName" id="routeName" placeholder="Enter Route" required>
                         <div class="invalid-feedback">
                           Please enter a Valid route name.
                         </div>
                       </div>
                       <div class="col-md-4 mb-3 ag-pad" style="padding-top: 0.5%;">
-                        <label class="" for="route name">Location</label>
-                        <input type="text" class="form-control" name="location" id="location" placeholder="Enter Location" required>
+                        <label for="location" class="col-form-label">Location</label>
+                        <select class="form-control" name="location" id="location" required>
+                          <option selected disabled value="">Select Location</option>
+                          <?php
+                            $sql = mysqli_query($conn, "SELECT DISTINCT city FROM retailerMaster");
+                            while($row = mysqli_fetch_assoc($sql)){
+                              echo '<option>'.$row["city"].'</option>';
+                            }
+                          ?>        
+                        </select>
                         <div class="invalid-feedback">
-                          Please enter a Valid route name.
+                          Please enter a Valid route Location.
                         </div>
                       </div>
                       <div class="col-md-4 mb-3 ag-pad" style="padding-top: 0.5%;">
-                        <label class="" for="route name">Sub Location</label>
-                        <input type="text" class="form-control" name="subLocation" id="subLocation" placeholder="Enter Sub Location" required>
+                        <label for="subLocation" class="col-form-label">Sub Location</label>
+                        <select class="form-control" name="subLocation" id="subLocation" required>
+                          <option selected disabled value="">Select Location First</option>       
+                        </select>
                         <div class="invalid-feedback">
-                          Please enter a Valid route name.
+                          Please enter a Valid route Sub Location.
                         </div>
                       </div>
                     </div>
                     <div class="form-row">
                       <div class="col-md-4 mb-3">
-                        <label class="col-form-label">Employee</label>
+                        <label for="assignToEmployee" class="col-form-label">Employee</label>
                         <select class="form-control" name="assignToEmployee" id="assignToEmployee" required>
                           <option selected disabled value="">Select Employee</option>
                           <?php
-                            $sql = mysqli_query($conn, "SELECT id,employeeName FROM employeeMaster");
+                            $sql = mysqli_query($conn, "SELECT id,employeeName FROM employeeMaster WHERE status = 'ON'");
                             while($row = mysqli_fetch_assoc($sql)){
                               echo '<option value='.$row["id"].'>'.$row["employeeName"].'</option>';
                             }
@@ -75,7 +85,7 @@
                         </div>
                       </div>
                       <div class="col-md-4 mb-3">
-                        <label class="col-form-label">Week Day</label>
+                        <label for="weekDay" class="col-form-label">Week Day</label>
                         <select class="form-control" name="weekDay" id="weekDay" required>
                           <option selected disabled value="">Select Week Day</option>
                           <option>Sunday</option>
@@ -91,7 +101,7 @@
                         </div>
                       </div>
                       <div class="col-md-4 mb-3">
-                        <label class="col-form-label">Frequency</label>
+                        <label for="frequency" class="col-form-label">Frequency</label>
                         <select class="form-control" name="frequency" id="frequency" required>
                           <option selected disabled value="">Select Frequency</option>
                           <option>Daily</option>
@@ -106,7 +116,7 @@
                     </div>
                     <div class="form-row">
                     <div class="col-md-4 mb-3">
-                        <label class="col-form-label">Status</label>
+                        <label for="routeStatus" class="col-form-label">Status</label>
                         <select class="form-control" name="routeStatus" id="status" required>
                           <option selected disabled value="">Select Status</option>
                           <option>ON</option>
@@ -135,22 +145,16 @@
                         </div>
                       </div>
                       <div class="col-md-4 mb-3">
-                        <label class="col-form-label">Retailer Name</label>
+                        <label for="retailerName" class="col-form-label">Retailer Name</label>
                         <select class="form-control" name="retailerName" id="retailerName" required>
-                          <option selected disabled value="">Select Retailer Name</option>
-                          <?php
-                            $sql = mysqli_query($conn, "SELECT id,retailerName FROM retailerMaster");
-                            while($row = mysqli_fetch_assoc($sql)){
-                              echo '<option value='.$row["id"].'>'.$row["retailerName"].'</option>';
-                            }
-                          ?>
+                        <option selected disabled value="">Select Sub Location First</option>       
                         </select>
                         <div class="invalid-feedback">
                           Please select a Valid Retailer Name.
                         </div>
                       </div>
                       <div class="col-md-4 mb-3">
-                        <label class="col-form-label">Status</label>
+                        <label for="retailerStatus" class="col-form-label">Status</label>
                         <select class="form-control" name="retailerStatus" id="retailerStatus" required>
                           <option selected disabled value="">Select Status</option>
                           <option>ON</option>

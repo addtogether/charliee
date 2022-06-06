@@ -5,6 +5,10 @@ const tbody = document.getElementById("routeList");
 const sequence = document.getElementById("sequence");
 const retailerName = document.getElementById("retailerName");
 const retailerStatus = document.getElementById("retailerStatus");
+const locationField = document.getElementById("location");
+const subLocationField = document.getElementById("subLocation");
+const retailerNameField = document.getElementById("retailerName");
+
 submitBtn = document.getElementById("submit");
 
 form.onsubmit = (e)=>{
@@ -46,7 +50,7 @@ form.onsubmit = (e)=>{
     }
 }
 
-
+//filling the retailer sequence table
 function addRow(){
     if(sequence.value==""){
         sequence.focus();
@@ -77,5 +81,44 @@ function addRow(){
     // console.log(JSON.stringify(json));
 }
 
+// subLocation dropdown
+locationField.onchange = () => {
+    //Ajax
+    let xhr = new XMLHttpRequest(); //creating XML object
+    xhr.open("POST", "backend/employeeRoute.php", true);
+    xhr.onload = ()=>{
+        if(xhr.readyState == XMLHttpRequest.DONE){
+            if(xhr.status == 200){
+                let data = xhr.response;
+                // console.log(data);
+                subLocationField.innerHTML = data;
+            }
+        }
+    }
+    // Sending data from Ajax to php
+    let formData = new FormData(); //creating new formData
+    formData.append("locationDropdown",locationField.value);
+    xhr.send(formData); // sending form data to php
+}
+
+// retailerName dropdown
+subLocationField.onchange = () => {
+    //Ajax
+    let xhr = new XMLHttpRequest(); //creating XML object
+    xhr.open("POST", "backend/employeeRoute.php", true);
+    xhr.onload = ()=>{
+        if(xhr.readyState == XMLHttpRequest.DONE){
+            if(xhr.status == 200){
+                let data = xhr.response;
+                // console.log(data);
+                retailerNameField.innerHTML = data;
+            }
+        }
+    }
+    // Sending data from Ajax to php
+    let formData = new FormData(); //creating new formData
+    formData.append("subLocationDropdown",subLocationField.value);
+    xhr.send(formData); // sending form data to php
+}
 
 

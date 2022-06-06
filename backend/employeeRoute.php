@@ -68,3 +68,25 @@
             // echo("Error description: " . mysqli_error($conn));
         }
     }
+
+    //sublocation dropdown
+    if(isset($_POST['locationDropdown'])){
+        $locationDropdown = mysqli_real_escape_string($conn, $_POST['locationDropdown']);
+        // echo $designationDropdown;
+        $sql2 = mysqli_query($conn, "SELECT DISTINCT location FROM retailerMaster WHERE city = '$locationDropdown'");
+        echo '<option selected disabled value="">Select Sub Location</option>';
+        while($row2 = mysqli_fetch_assoc($sql2)){
+            echo '<option>'.$row2["location"].'</option>';            
+        }
+    }
+
+    //retailerName dropdown
+    if(isset($_POST['subLocationDropdown'])){
+        $subLocationDropdown = mysqli_real_escape_string($conn, $_POST['subLocationDropdown']);
+        // echo $designationDropdown;
+        $sql3 = mysqli_query($conn, "SELECT id,retailerName FROM retailerMaster WHERE location = '$subLocationDropdown'");
+        echo '<option selected disabled value="">Select Retailer</option>';
+        while($row3 = mysqli_fetch_assoc($sql3)){
+            echo '<option value="'.$row3["id"].'">'.$row3["retailerName"].'</option>';           
+        }
+    }
