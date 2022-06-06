@@ -15,38 +15,42 @@ form.onsubmit = (e)=>{
     e.preventDefault(); //preventing form from submitting
 
     if (form.checkValidity()){
-        // console.log(true);
-        submitBtn.disabled = true;
-
-        //gettting table data
-        let data = [...table.rows].map(t => [...t.children].map(u => u.innerText));
-        json = data.reduce((json, value, key) => { json[key] = value; return json; }, {});
-
-        //Ajax
-        let xhr = new XMLHttpRequest(); //creating XML object
-        xhr.open("POST", "backend/employeeRoute.php", true);
-        xhr.onload = ()=>{
-            if(xhr.readyState == XMLHttpRequest.DONE){
-                if(xhr.status == 200){
-                    let data = xhr.response;
-                    if(data == "success"){
-                        alert("Route Created Succesfully!");
-                        window.location.replace("employeeRoute.php");
-                        // console.log(data);
-                    }
-                    else{
-                        alert("Something went wrong!");
-                        // console.log(data);
-                        // alert(data);
+        if(tbody.children[0].children.length == 1){
+            alert("Please add atleast 1 row to proceed");
+        }
+        else{
+            submitBtn.disabled = true;
+    
+            //gettting table data
+            let data = [...table.rows].map(t => [...t.children].map(u => u.innerText));
+            json = data.reduce((json, value, key) => { json[key] = value; return json; }, {});
+    
+            //Ajax
+            let xhr = new XMLHttpRequest(); //creating XML object
+            xhr.open("POST", "backend/employeeRoute.php", true);
+            xhr.onload = ()=>{
+                if(xhr.readyState == XMLHttpRequest.DONE){
+                    if(xhr.status == 200){
+                        let data = xhr.response;
+                        if(data == "success"){
+                            alert("Route Created Succesfully!");
+                            window.location.replace("employeeRoute.php");
+                            // console.log(data);
+                        }
+                        else{
+                            alert("Something went wrong!");
+                            // console.log(data);
+                            // alert(data);
+                        }
                     }
                 }
             }
+            // Sending data from Ajax to php
+            let formData = new FormData(form); //creating new formData
+            formData.append("routes",JSON.stringify(json));
+            xhr.send(formData); // sending form data to php
+            submitBtn.disabled = false;
         }
-        // Sending data from Ajax to php
-        let formData = new FormData(form); //creating new formData
-        formData.append("routes",JSON.stringify(json));
-        xhr.send(formData); // sending form data to php
-        submitBtn.disabled = false;
     }
 }
 
