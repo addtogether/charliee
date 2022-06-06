@@ -55,7 +55,7 @@
                           ?>        
                         </select>
                         <div class="invalid-feedback">
-                          Please enter a Valid route Location.
+                          Please select a Valid route Location.
                         </div>
                       </div>
                       <div class="col-md-4 mb-3 ag-pad" style="padding-top: 0.5%;">
@@ -64,7 +64,7 @@
                           <option selected disabled value="">Select Location First</option>       
                         </select>
                         <div class="invalid-feedback">
-                          Please enter a Valid route Sub Location.
+                          Please select a Valid route Sub Location.
                         </div>
                       </div>
                     </div>
