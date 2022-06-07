@@ -23,6 +23,6 @@
             echo json_encode($output);
         }
         else{
-            echo json_encode("{}");
+            echo json_encode("[]");
         }
     }
