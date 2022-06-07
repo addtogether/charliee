@@ -10,19 +10,19 @@
 
     if(isset($decoded['id'])){
         $day = date("l");
-        $sql = mysqli_query($conn, "SELECT id, routeName, location, subLocation, frequency, weekDay, status FROM routeMaster 
+        $sql = mysqli_query($conn, "SELECT id FROM routeMaster 
                                     WHERE assignToEmployee = '{$decoded['id']}' AND weekDay = '{$day}' AND status = 'ON'");
+        $output = [];
         if(mysqli_num_rows($sql) != 0){
             $row = mysqli_fetch_assoc($sql);
             $sql1 = mysqli_query($conn, "SELECT retailerID, priority FROM routeRetailerMapping 
                                         WHERE routeID = '{$row['id']}'  AND status = 'ON'");
-            $output = [];
             while($row1 = mysqli_fetch_assoc($sql1)){
                 array_push($output, $row1); 
             }
             echo json_encode($output);
         }
         else{
-            echo json_encode("[]");
+            echo json_encode($output);
         }
     }
