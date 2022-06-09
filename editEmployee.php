@@ -45,7 +45,14 @@
                             <!-- <input type="file" name="image" id="employeImage" accept="image/*" onchange="return fileValidation()" required/> -->
                             <input type="file" name="employeePhoto" id="employeePhoto" accept="image/*"/>
                           </div>
-                            <img id="employeePhotoPreview" src="./photo/<?php echo $row['employeePhoto'];?>" width="250" height="250">
+                            <?php
+                              if ($row['employeePhoto']==""){
+                                echo '<img id="employeePhotoPreview" src="./photo/personCircle.svg" width="250" height="250">';
+                              }
+                              else{
+                                echo '<img id="employeePhotoPreview" src="./photo/'.$row['employeePhoto'].'" width="250" height="250">';
+                              }
+                            ?>
                         </div>
                       </div>
                       <div class="form-row">

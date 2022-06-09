@@ -14,11 +14,8 @@
     <!-- Custom style CSS -->
     <link rel="stylesheet" href="assets/css/custom.css">
     <link rel='shortcut icon' type='image/x-icon' href='assets/img/favicon.ico' />
-    <!-- excel -->
-    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
     <!-- data tables -->
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
   </head>
 
   <?php
@@ -50,25 +47,11 @@
                         <form>
                           <div class="collapse" id="excelUpload">
                             <input type="file" id="excelImport" class="form-control">
-                            <!-- <div class="input-group-append">
-                              <button class="btn btn-primary"><i class="fas fa-search"></i></button>
-                            </div> -->
                           </div>
                         </form>
-                        <!-- <input class="form-control" id="formFileSm" type="file" /> -->
                       </div>
                     </div>
                    
-                    <!-- <div class="float-left">
-                      <form>
-                        <div class="input-group">
-                          <input type="text" class="form-control" placeholder="Search for user">
-                          <div class="input-group-append">
-                            <button class="btn btn-primary"><i class="fas fa-search"></i></button>
-                          </div>
-                        </div>
-                      </form>
-                    </div> -->
                     <div class="table-responsive user-table">
                       <table id="example" class="table table-striped">
                         <thead>
@@ -159,6 +142,10 @@
     <script src="assets/js/scripts.js"></script>
     <!-- Custom JS File -->
     <script src="assets/js/custom.js"></script>
+    <!-- excel -->
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    <!-- data tables -->
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
     <!-- Dashboard Selector -->
     <script src="./js/navbar.js"></script>
     <script src="./js/employee.js"></script>
