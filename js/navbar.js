@@ -5,7 +5,7 @@ dashboard = document.getElementById("menu-dashboard");
 employee = document.getElementById("menu-employee");
 retailer = document.getElementById("menu-retailer");
 route = document.getElementById("menu-route");
-route = document.getElementById("menu-routeShow");
+routeShow = document.getElementById("menu-routeShow");
 
 
 dashboard.classList.remove("active");
@@ -27,7 +27,7 @@ else if(filename=="retailer.php" || filename=="addRetailer.php"){
 else if(filename=="employeeRoute.php"){
     route.classList.add("active");
 }
-else if(filename=="employeeRoute.php"){
+else if(filename=="routeShow.php"){
     routeShow.classList.add("active");
 }
 
