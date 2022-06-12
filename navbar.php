@@ -1,4 +1,3 @@
-
 <body>
   <div class="loader"></div>
   <div id="app">
@@ -16,22 +15,20 @@
         </div>
         <ul class="navbar-nav navbar-right">
 
-          <li class="dropdown"><a href="#" data-toggle="dropdown"
-              class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image" src="assets/img/user.png"
-                class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block"></span></a>
+          <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image" src="assets/img/user.png" class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block"></span></a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
               <div class="dropdown-title">Hello Sarah Smith</div>
               <a href="profile.html" class="dropdown-item has-icon"> <i class="far
 										fa-user"></i> Profile
               </a> <a href="timeline.html" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
                 Activities
-              </a> <a href="#" class="dropdown-item has-icon"> <i class="fas fa-cog"></i>
+                <!-- </a> <a href="#" class="dropdown-item has-icon"> <i class="fas fa-cog"></i>
                 Settings
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="auth-login.html" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
-                Logout
-              </a>
+              </a> -->
+                <div class="dropdown-divider"></div>
+                <a href="auth-login.html" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
+                  Logout
+                </a>
             </div>
           </li>
         </ul>
@@ -40,8 +37,7 @@
       <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="index.php"> <img alt="image" src="assets/img/logo.png" class="header-logo" /> <span
-                class="logo-name">Charliee</span>
+            <a href="index.php"> <img alt="image" src="assets/img/logo.png" class="header-logo" /> <span class="logo-name">Charliee</span>
             </a>
           </div>
           <ul class="sidebar-menu">
@@ -49,7 +45,7 @@
             <li class="active" id="menu-dashboard">
               <a href="index.php" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
-            <li class="menu-header">Insights</li>
+            <li class="menu-header">Details</li>
             <!-- <li class="dropdown">
               <a href="#" class="menu-toggle nav-link has-dropdown">
                 <i class="fas fa-sticky-note"></i><span>Topic</span></a>
@@ -68,14 +64,21 @@
               <a href="retailer.php" class="nav-link"><i data-feather="shopping-cart"></i><span>Retailer's</span></a>
             </li>
 
-            <li class="menu-header">Route</li>
+            <li class="menu-header">Insight</li>
             <li class="" id="menu-route">
               <a href="employeeRoute.php" class="nav-link"><i data-feather="map"></i><span>Route</span></a>
             </li>
             <li class="" id="menu-routeShow">
-              <a href="routeShow.php" class="nav-link"><i data-feather="map"></i><span>Employee's Route List</span></a>
+              <a href="routeShow.php" class="nav-link"><i data-feather="globe"></i><span>Employee's Route List</span></a>
             </li>
 
+            <!--  -->
+            <li class="" id="menu-attendance">
+              <a href="attendance.php" class="nav-link"><i data-feather="calendar"></i><span>Employee's Attendance</span></a>
+            </li>
+            <li class="" id="menu-order">
+              <a href="order.php" class="nav-link"><i data-feather="file-text"></i><span>View Order</span></a>
+            </li>
           </ul>
         </aside>
       </div>

@@ -137,14 +137,8 @@
                       <hr>
                     </div>
                     <div class="form-row">
-                      <div class="col-md-4 mb-3">
-                        <label for="sequence" class="col-form-label">Sequence</label>
-                        <input class="form-control" type="number" name="sequence" id="sequence" required>
-                        <div class="invalid-feedback">
-                          Please enter a valid sequence.
-                        </div>
-                      </div>
-                      <div class="col-md-4 mb-3">
+                      
+                      <div class="col-md-6 mb-3">
                         <label for="retailerName" class="col-form-label">Retailer Name</label>
                         <select class="form-control" name="retailerName" id="retailerName" required>
                         <option selected disabled value="">Select Sub Location First</option>       
@@ -153,7 +147,7 @@
                           Please select a Valid Retailer Name.
                         </div>
                       </div>
-                      <div class="col-md-4 mb-3">
+                      <div class="col-md-6 mb-3">
                         <label for="retailerStatus" class="col-form-label">Status</label>
                         <select class="form-control" name="retailerStatus" id="retailerStatus" required>
                           <option selected disabled value="">Select Status</option>
@@ -185,17 +179,22 @@
                             <th>Status</th>
                         </thead>
                         <tbody id="routeList">
-                          <td colspan="3">No Elements</td>
-                          <!-- <tr>
-                            <td>3</td>
+                          <!-- <td colspan="3">No Elements</td> -->
+                          <tr draggable="true" ondragstart="start()"  ondragover="dragover()">
+                            <td>1</td>
                             <td>Vishal1</td>
                             <td><span class="status-p bg-correct">On</span></td>
                           </tr>
-                          <tr>
+                          <tr draggable="true" ondragstart="start()"  ondragover="dragover()">
                             <td>2</td>
                             <td>Vishal166</td>
                             <td><span class="status-p bg-inc">Off</span></td>
-                          </tr> -->
+                          </tr>
+                          <tr draggable="true" ondragstart="start()"  ondragover="dragover()">
+                            <td>3</td>
+                            <td>Visha3l166</td>
+                            <td><span class="status-p bg-inc">Off</span></td>
+                          </tr>
                         </tbody>
                       </table>
                     </div>

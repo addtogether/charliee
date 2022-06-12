@@ -4024,7 +4024,7 @@ table tr:hover .table-links {
 }
 
 .modal-header h5 {
-    font-size: 18px
+    font-size: 12px
 }
 
 .modal-footer {
@@ -6868,6 +6868,19 @@ body.layout-3 .main-footer {
     box-shadow: none;
     background-color: transparent
 }
+td {
+    text-align: center !important;
+  }
+th{
+    text-align: center;
+} 
+.verticalLine {
+    border-left: thin solid #000;
+    width: "1";
+    margin-left: 1%;
+    padding-left: 1.5%;
+    /* height: 12px; */
+  }
 
 .main-sidebar .sidebar-menu li ul.dropdown-menu li a {
     color: #60686f;
@@ -10982,6 +10995,9 @@ edit-ico{
     display: inline-block;
     text-transform: capitalize;
     vertical-align: middle;
+}
+.bg-pen{
+
 }
 .create-new{
     /* padding: 3%; */

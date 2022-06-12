@@ -6,6 +6,8 @@ employee = document.getElementById("menu-employee");
 retailer = document.getElementById("menu-retailer");
 route = document.getElementById("menu-route");
 routeShow = document.getElementById("menu-routeShow");
+attendance = document.getElementById("menu-attendance");
+order = document.getElementById("menu-order");
 
 
 dashboard.classList.remove("active");
@@ -13,6 +15,8 @@ employee.classList.remove("active");
 retailer.classList.remove("active");
 route.classList.remove("active");
 routeShow.classList.remove("active");
+attendance.classList.remove("active")
+order.classList.remove("active")
 
 
 if(filename=="index.php" || filename==""){
@@ -30,4 +34,13 @@ else if(filename=="employeeRoute.php"){
 else if(filename=="routeShow.php"){
     routeShow.classList.add("active");
 }
+else if(filename=="routeShow.php"){
+    routeShow.classList.add("active");
+}
 
+else if(filename== "attendance.php"){
+    attendance.classList.add("active")
+}
+else if(filename== "order.php" || filename == "orderDetails.php"){
+    order.classList.add("active")
+}
