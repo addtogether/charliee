@@ -31,13 +31,9 @@ else if(filename=="retailer.php" || filename=="addRetailer.php"){
 else if(filename=="employeeRoute.php"){
     route.classList.add("active");
 }
-else if(filename=="routeShow.php"){
+else if(filename=="routeShow.php" || filename=="editRoute.php"){
     routeShow.classList.add("active");
 }
-else if(filename=="routeShow.php"){
-    routeShow.classList.add("active");
-}
-
 else if(filename== "attendance.php"){
     attendance.classList.add("active")
 }

@@ -21,6 +21,8 @@
   <?php
     require_once("./includes/connection.php");
     include_once("navbar.php");
+    $sql = mysqli_query($conn, "SELECT * FROM routeMaster WHERE assignToEmployee = {$_GET['id']} AND weekDay = '{$_GET['d']}'");
+    $row = mysqli_fetch_assoc($sql);
   ?>
 
     <!-- Main Content -->
@@ -38,7 +40,8 @@
                     <div class="form-row">
                       <div class="col-md-4 mb-3 ag-pad" style="padding-top: 0.5%;">
                         <label for="routeName" class="col-form-label">Route Name</label>
-                        <input type="text" class="form-control" name="routeName" id="routeName" placeholder="Enter Route" required>
+                        <input type="text" class="form-control" name="routeID" id="routeID" value="<?php echo $row['id'];?>" hidden>
+                        <input type="text" class="form-control" name="routeName" id="routeName" placeholder="Enter Route" value="<?php echo $row['routeName'];?>" required>
                         <div class="invalid-feedback">
                           Please enter a Valid route name.
                         </div>
@@ -46,11 +49,16 @@
                       <div class="col-md-4 mb-3 ag-pad" style="padding-top: 0.5%;">
                         <label for="location" class="col-form-label">Location</label>
                         <select class="form-control" name="location" id="location" required>
-                          <option selected disabled value="">Select Location</option>
+                          <option disabled value="">Select Location</option>
                           <?php
-                            $sql = mysqli_query($conn, "SELECT DISTINCT city FROM retailerMaster");
-                            while($row = mysqli_fetch_assoc($sql)){
-                              echo '<option>'.$row["city"].'</option>';
+                            $sql1 = mysqli_query($conn, "SELECT DISTINCT city FROM retailerMaster");
+                            while($row1 = mysqli_fetch_assoc($sql1)){
+                              if($row1["city"]==$row["location"]){
+                                echo '<option selected>'.$row1["city"].'</option>';
+                              }
+                              else{
+                                echo '<option>'.$row1["city"].'</option>';
+                              }
                             }
                           ?>        
                         </select>
@@ -59,6 +67,7 @@
                         </div>
                       </div>
                       <div class="col-md-4 mb-3 ag-pad" style="padding-top: 0.5%;">
+                        <input id="subLocationInitial" value="<?php echo $row['subLocation'];?>" hidden>
                         <label for="subLocation" class="col-form-label">Sub Location</label>
                         <select class="form-control" name="subLocation" id="subLocation" required>
                           <option selected disabled value="">Select Location First</option>       
@@ -72,11 +81,16 @@
                       <div class="col-md-4 mb-3">
                         <label for="assignToEmployee" class="col-form-label">Employee</label>
                         <select class="form-control" name="assignToEmployee" id="assignToEmployee" required>
-                          <option selected disabled value="">Select Employee</option>
+                          <option disabled value="">Select Employee</option>
                           <?php
-                            $sql = mysqli_query($conn, "SELECT id,employeeName FROM employeeMaster WHERE status = 'ON'");
-                            while($row = mysqli_fetch_assoc($sql)){
-                              echo '<option value='.$row["id"].'>'.$row["employeeName"].'</option>';
+                            $sql1 = mysqli_query($conn, "SELECT id,employeeName FROM employeeMaster WHERE status = 'ON'");
+                            while($row1 = mysqli_fetch_assoc($sql1)){
+                              if($row1["id"]==$row["assignToEmployee"]){
+                                echo '<option value='.$row1["id"].' selected>'.$row1["employeeName"].'</option>';
+                              }
+                              else{
+                                echo '<option value='.$row1["id"].'>'.$row1["employeeName"].'</option>';
+                              }
                             }
                           ?>        
                         </select>
@@ -88,13 +102,13 @@
                         <label for="weekDay" class="col-form-label">Week Day</label>
                         <select class="form-control" name="weekDay" id="weekDay" required>
                           <option selected disabled value="">Select Week Day</option>
-                          <option>Sunday</option>
-                          <option>Monday</option>
-                          <option>Tuesday</option>
-                          <option>Wednesday</option>
-                          <option>Thursday</option>
-                          <option>Friday</option>
-                          <option>Saturday</option>
+                          <option <?php if($row['weekDay']=="Sunday") echo "selected";?>>Sunday</option>
+                          <option <?php if($row['weekDay']=="Monday") echo "selected";?>>Monday</option>
+                          <option <?php if($row['weekDay']=="Tuesday") echo "selected";?>>Tuesday</option>
+                          <option <?php if($row['weekDay']=="Wednesday") echo "selected";?>>Wednesday</option>
+                          <option <?php if($row['weekDay']=="Thursday") echo "selected";?>>Thursday</option>
+                          <option <?php if($row['weekDay']=="Friday") echo "selected";?>>Friday</option>
+                          <option <?php if($row['weekDay']=="Saturday") echo "selected";?>>Saturday</option>
                         </select>
                         <div class="invalid-feedback">
                           Please select a Valid Week Day.
@@ -103,11 +117,11 @@
                       <div class="col-md-4 mb-3">
                         <label for="frequency" class="col-form-label">Frequency</label>
                         <select class="form-control" name="frequency" id="frequency" required>
-                          <option selected disabled value="">Select Frequency</option>
-                          <option>Daily</option>
-                          <option>Weekly</option>
-                          <option>Monthly</option>
-                          <option>Quarterly</option>
+                          <option disabled value="">Select Frequency</option>
+                          <option <?php if($row['frequency']=="Daily") echo "selected";?>>Daily</option>
+                          <option <?php if($row['frequency']=="Weekly") echo "selected";?>>Weekly</option>
+                          <option <?php if($row['frequency']=="Monthly") echo "selected";?>>Monthly</option>
+                          <option <?php if($row['frequency']=="Quarterly") echo "selected";?>>Quarterly</option>
                         </select>
                         <div class="invalid-feedback">
                           Please select a Valid Frequency.
@@ -118,10 +132,10 @@
                     <div class="col-md-4 mb-3">
                         <label for="routeStatus" class="col-form-label">Status</label>
                         <select class="form-control" name="routeStatus" id="status" required>
-                          <option selected disabled value="">Select Status</option>
-                          <option>ON</option>
-                          <option>OFF</option>
-                          <option>Deleted</option>
+                          <option disabled value="">Select Status</option>
+                          <option <?php if($row['status']=="ON") echo "selected";?>>ON</option>
+                          <option <?php if($row['status']=="OFF") echo "selected";?>>OFF</option>
+                          <option <?php if($row['status']=="Deleted") echo "selected";?>>Deleted</option>
                         </select>
                         <div class="invalid-feedback">
                           Please select a Valid Status.
@@ -129,7 +143,7 @@
                       </div>
                       <div class="col-md-8 mb-3 ag-pad" style="padding-top: 0.1%;">
                         <label for="addtionalDetails" class="col-form-label">Additional Details</label>
-                        <input class="form-control" type="text" name="addtionalDetails" id="addtionalDetails">
+                        <input class="form-control" type="text" name="addtionalDetails" id="addtionalDetails" value="<?php echo $row['addtionalDetails'];?>">
                       </div>
 
                     </div>
@@ -137,19 +151,25 @@
                       <hr>
                     </div>
                     <div class="form-row">
-                      
-                      <div class="col-md-6 mb-3">
+                      <div class="col-md-4 mb-3">
+                        <label for="sequence" class="col-form-label">Sequence</label>
+                        <input class="form-control" type="number" name="sequence" id="sequence">
+                        <div class="invalid-feedback">
+                          Please enter a valid sequence.
+                        </div>
+                      </div>
+                      <div class="col-md-4 mb-3">
                         <label for="retailerName" class="col-form-label">Retailer Name</label>
-                        <select class="form-control" name="retailerName" id="retailerName" required>
+                        <select class="form-control" name="retailerName" id="retailerName">
                         <option selected disabled value="">Select Sub Location First</option>       
                         </select>
                         <div class="invalid-feedback">
                           Please select a Valid Retailer Name.
                         </div>
                       </div>
-                      <div class="col-md-6 mb-3">
+                      <div class="col-md-4 mb-3">
                         <label for="retailerStatus" class="col-form-label">Status</label>
-                        <select class="form-control" name="retailerStatus" id="retailerStatus" required>
+                        <select class="form-control" name="retailerStatus" id="retailerStatus">
                           <option selected disabled value="">Select Status</option>
                           <option>ON</option>
                           <option>OFF</option>
@@ -177,9 +197,28 @@
                             <th>Retailer Name</th>
                             <th>Status</th>
                             <th>Delete</th>
+                            <th hidden>retailerMappingID</th>
                         </thead>
                         <tbody id="routeList">
-                          <td colspan="3">No Elements</td>
+                          <?php
+                            $sql1 = mysqli_query($conn, "SELECT * FROM routeRetailerMapping WHERE routeID = '{$row['id']}'");
+                            while($row1 = mysqli_fetch_assoc($sql1)){
+                              $sql2 = mysqli_query($conn, "SELECT retailerName FROM retailerMaster WHERE id = '{$row1['retailerID']}'");
+                              $row2 = mysqli_fetch_assoc($sql2);
+                              echo '<tr draggable="true" ondragstart="start()" ondragover="dragover()">
+                                      <td hidden>'.$row1['retailerID'].'</td>
+                                      <td>'.$row2['retailerName'].'</td>';
+                              if($row1['status']=="ON"){
+                                echo '<td><span class="status-p bg-correct">ON</span></td>';
+                              }
+                              else{
+                                echo '<td><span class="status-p bg-inc">OFF</span></td>';
+                              }
+                              echo '<td><input type="button" class="btn btn-danger" value="Delete" onclick="deleteRow(this)"/></td>
+                                    <td hidden>'.$row1['id'].'</td>
+                                    </tr>';
+                            }
+                          ?>
                         </tbody>
                       </table>
                     </div>
@@ -211,7 +250,7 @@
     <script src="assets/js/custom.js"></script>
     <!-- Dashboard Selector -->
     <script src="./js/navbar.js"></script>
-    <script src="./js/employeeRoute.js"></script>
+    <script src="./js/editRoute.js"></script>
   </body>
 
 </html>

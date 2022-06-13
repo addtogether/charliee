@@ -31,32 +31,38 @@
         // var_dump($routes);
 
         $dateTime = date('Y-m-d H:i:s');
-        $sql = mysqli_query($conn, "INSERT INTO routeMaster (routeName, location, subLocation, frequency, weekDay, 
-                                    assignToEmployee, addtionalDetails, status, createdIP, createdDate)
-                                    VALUES ('{$routeName}', '{$location}', '{$subLocation}', '{$frequency}', '{$weekDay}', 
-                                    '{$assignToEmployee}', '{$addtionalDetails}', '{$routeStatus}', '{$ipaddress}', '{$dateTime}')");
-        if($sql){
-            $last_inserted = mysqli_insert_id($conn); // return last inserted id
-
-            $len = count($routes);
-            $isFirst = true;
-            $sqlValues = "";
-            foreach ($routes as $index => $values) {
-                if ($isFirst) {
-                    $isFirst = false;
-                    continue;
-                }
-                unset($routes[$index][2]);
-                $sqlValues .= '("'.$last_inserted.'", "';
-                $sqlValues .= implode('", "', $routes[$index]) . "\"";
-                $sqlValues .= ', "'.$ipaddress.'", "'.$dateTime.'")';
-                $sqlValues .= ($index == $len - 1) ? "" : ", \n";
-            }
-            $dateTime = date('Y-m-d H:i:s');
-            $sql1 = mysqli_query($conn, "INSERT INTO routeRetailerMapping (routeID, retailerID, priority, status, createdIP, 
-                                            createdDate) VALUES $sqlValues");
+        $sql = mysqli_query($conn, "SELECT id FROM routeMaster WHERE assignToEmployee = '{$assignToEmployee}' AND weekDay = '{$weekDay}'");
+        if(mysqli_num_rows($sql) == 0){
+            $sql1 = mysqli_query($conn, "INSERT INTO routeMaster (routeName, location, subLocation, frequency, weekDay, 
+                                        assignToEmployee, addtionalDetails, status, createdIP, createdDate)
+                                        VALUES ('{$routeName}', '{$location}', '{$subLocation}', '{$frequency}', '{$weekDay}', 
+                                        '{$assignToEmployee}', '{$addtionalDetails}', '{$routeStatus}', '{$ipaddress}', '{$dateTime}')");
             if($sql1){
-                echo "success";
+                $last_inserted = mysqli_insert_id($conn); // return last inserted id
+    
+                $len = count($routes);
+                $isFirst = true;
+                $sqlValues = "";
+                foreach ($routes as $index => $values) {
+                    if ($isFirst) {
+                        $isFirst = false;
+                        continue;
+                    }
+                    unset($routes[$index][1]);
+                    unset($routes[$index][3]);
+                    $sqlValues .= '("'.$last_inserted.'", "'.$routes[$index][0].'", "'.$index.'", "'.$routes[$index][2].'", "'.$ipaddress.'", "'.$dateTime.'")';
+                    $sqlValues .= ($index == $len - 1) ? "" : ", \n";
+                }
+                $dateTime = date('Y-m-d H:i:s');
+                $sql2 = mysqli_query($conn, "INSERT INTO routeRetailerMapping (routeID, retailerID, priority, status, createdIP, 
+                                                createdDate) VALUES $sqlValues");
+                if($sql2){
+                    echo "success";
+                }
+                else{
+                    echo "error";
+                    echo("Error description: " . mysqli_error($conn));
+                }
             }
             else{
                 echo "error";
@@ -64,8 +70,7 @@
             }
         }
         else{
-            echo "error";
-            // echo("Error description: " . mysqli_error($conn));
+            echo "Employee route for that day already exist!";
         }
     }
 

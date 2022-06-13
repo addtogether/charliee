@@ -40,12 +40,12 @@ include_once("navbar.php");
                                         <label for="employee" class="col-form-label">Employee</label>
                                         <select class="form-control" name="employee" id="employee" required>
                                             <option selected disabled value="">Select Employee</option>
-                                            <option> Test1</option>
-                                            <option> Test2</option>
-                                            <option> Test3</option>
-                                            <option> Test4</option>
-                                            <option> Test5</option>
-                                            <option> Test6</option>
+                                            <?php
+                                                $sql = mysqli_query($conn, "SELECT id,employeeName FROM employeeMaster");
+                                                while($row = mysqli_fetch_assoc($sql)){
+                                                echo '<option value='.$row["id"].'>'.$row["employeeName"].'</option>';
+                                                }
+                                            ?> 
                                         </select>
                                         <div class="invalid-feedback">
                                             Please select a Valid Employee Name.
@@ -69,7 +69,7 @@ include_once("navbar.php");
                                     </div>
                                 </div>
                                 <button class="btn btn-primary mb-3" id="submit" type="submit" formnovalidate>Show Route</button> 
-                                <a class="btn btn-primary mb-3 float-right" href="employeeRoute.php">Edit</a>    
+                                <a class="btn btn-primary mb-3 float-right" href="javascript:redirect()">Edit</a>    
                             </form>
                                                 
                             <div>
@@ -78,43 +78,12 @@ include_once("navbar.php");
                             <div class="table-responsive user-table">
                                 <table id="myTable" class="table table-striped display">
                                     <thead>
-                                        <th hidden>id</th>
                                         <th>Sequence</th>
                                         <th>Retailer Name</th>
                                         <th>Status</th>
                                     </thead>
                                     <tbody id="routeList">
-                                        <!-- <td colspan="3">No Elements</td> -->
-                                        <tr>
-                                            <td>1</td>
-                                            <td>TestRE1</td>
-                                            <td><span class="status-p bg-correct">On</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>TestRE2</td>
-                                            <td><span class="status-p bg-correct">On</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>TestRE1</td>
-                                            <td><span class="status-p bg-correct">On</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>TestRE2</td>
-                                            <td><span class="status-p bg-correct">On</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>TestRE1</td>
-                                            <td><span class="status-p bg-inc">Off</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td>TestRE2</td>
-                                            <td><span class="status-p bg-inc">Off</span></td>
-                                        </tr>
+                                        <td colspan="3">Select Employee and Day to view route</td>
                                     </tbody>
                                 </table>
                             </div>
@@ -128,23 +97,23 @@ include_once("navbar.php");
     <?php
     include_once("settings.php");
     ?>
-</div>
-<!-- General JS Scripts -->
-<script src="assets/js/app.min.js"></script>
-<!-- JS Libraies -->
-<script src="assets/bundles/summernote/summernote-bs4.js"></script>
-<script src="assets/bundles/jquery-selectric/jquery.selectric.min.js"></script>
-<script src="assets/bundles/upload-preview/assets/js/jquery.uploadPreview.min.js"></script>
-<script src="assets/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
-<!-- Page Specific JS File -->
-<script src="assets/js/page/create-post.js"></script>
-<!-- Template JS File -->
-<script src="assets/js/scripts.js"></script>
-<!-- Custom JS File -->
-<script src="assets/js/custom.js"></script>
-<!-- Dashboard Selector -->
-<script src="./js/navbar.js"></script>
-<script src="./js/employeeRoute.js"></script>
-</body>
+    </div>
+    <!-- General JS Scripts -->
+    <script src="assets/js/app.min.js"></script>
+    <!-- JS Libraies -->
+    <script src="assets/bundles/summernote/summernote-bs4.js"></script>
+    <script src="assets/bundles/jquery-selectric/jquery.selectric.min.js"></script>
+    <script src="assets/bundles/upload-preview/assets/js/jquery.uploadPreview.min.js"></script>
+    <script src="assets/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+    <!-- Page Specific JS File -->
+    <script src="assets/js/page/create-post.js"></script>
+    <!-- Template JS File -->
+    <script src="assets/js/scripts.js"></script>
+    <!-- Custom JS File -->
+    <script src="assets/js/custom.js"></script>
+    <!-- Dashboard Selector -->
+    <script src="./js/navbar.js"></script>
+    <script src="./js/routeShow.js"></script>
+    </body>
 
 </html>

@@ -88,7 +88,7 @@
                                           </a>
                                         </td>
                                         <td>
-                                            <i onclick="deleteEmployee(' . $row['id'] . ')" style="color: red; cursor:pointer" data-feather="trash-2"></i>
+                                            <i onclick="deleteEmployee(' . $row['id'] . ')" style="color: red; cursor:pointer;" data-feather="trash-2"></i>
                                         </td>
                                         </tr>';
                           }
