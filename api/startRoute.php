@@ -16,7 +16,7 @@
             $row = mysqli_fetch_assoc($sql);
             //base64 to image
             $datetime = strtotime($decoded['startRouteDateTime']);
-            $filename = $decoded['username']."-".$datetime."-startDay.jpeg";
+            $filename = $decoded['username']."-".$datetime."-startDay.png";
             file_put_contents("../files/route/".$filename, file_get_contents($decoded['startRoutePhoto']));
             // file_put_contents($path,base64_decode($decoded['startRoutePhoto']));
             $sql1 = mysqli_query($conn, "INSERT INTO employeeDailyStartRoute (username, routeID, startRouteDateTime, 
