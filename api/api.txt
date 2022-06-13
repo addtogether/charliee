@@ -68,7 +68,7 @@ category body:
 	"category": "-1"
 }
 
-subCategory api: http://localhost/charliee/api/category.php
+subCategory api: http://localhost/charliee/api/SubCategory.php
 subCategory body:
 {
 	"category": "A"
