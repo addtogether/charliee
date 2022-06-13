@@ -61,3 +61,15 @@ product body:
 	"category": "A",
 	"subCategory": "1"
 }
+
+category api: http://localhost/charliee/api/category.php
+category body:
+{
+	"category": "-1"
+}
+
+subCategory api: http://localhost/charliee/api/category.php
+subCategory body:
+{
+	"category": "A"
+}
