@@ -143,7 +143,7 @@
     <!-- Custom JS File -->
     <script src="assets/js/custom.js"></script>
     <!-- excel -->
-    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <!-- data tables -->
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
     <!-- Dashboard Selector -->

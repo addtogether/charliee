@@ -4,11 +4,10 @@
   <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Retailer - Charliee</title>
+    <title>Product - Charliee</title>
     <!-- General CSS Files -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/app.min.css">
-    <link rel="stylesheet" href="assets/bundles/jquery-selectric/selectric.css">
     <!-- Template CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/components.css">
@@ -20,10 +19,10 @@
   </head>
 
   <?php
-    require_once("./includes/connection.php");
-    include_once("navbar.php");
+  require_once("./includes/connection.php");
+  include_once("navbar.php");
   ?>
-
+  
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
@@ -31,13 +30,13 @@
 
             <div class="row mt-4">
               <div class="col-12">
-                <a href="addRetailer.php" class="create-new" href="">
+                <a href="addProduct.php" class="create-new" href="">
                   <i data-feather="plus"></i>
-                  Create new Retailer
+                  Create new Product
                 </a>
                 <div class="card">
                   <div class="card-header">
-                    <h4>All Retailer</h4>
+                    <h4>All Products</h4>
                   </div>
                   <div class="card-body">
                     <div class="float-right">
@@ -58,9 +57,12 @@
                         <thead>
                           <tr>
                             <th>ID</th>
-                            <th>Retailer Code</th>
-                            <th>Retailer Name</th>
-                            <th>Mobile Number</th>
+                            <th>Product Image</th>
+                            <th>Product Code</th>
+                            <th>Product Name</th>
+                            <th>Category</th>
+                            <th>Sub Category</th>
+                            <th>MRP</th>
                             <th>Status</th>
                             <th>Edit</th>
                             <th>Delete</th>
@@ -68,28 +70,36 @@
                         </thead>
                         <tbody>
                         <?php
-                          $sql = mysqli_query($conn,"SELECT * FROM retailerMaster");
+                          $sql = mysqli_query($conn,"SELECT * FROM productMaster");
                           while($row = mysqli_fetch_assoc($sql)){
-                              echo '<tr>
-                                    <td>'.$row['id'].'</td>
-                                    <td>'.$row['retailerCode'].'</td>
-                                    <td>'.$row['retailerName'].'</td>
-                                    <td>'.$row['mobileNumber'].'</td>
-                                    <td><span class="status-p bg-primary">'.$row['status'].'</span></td>
-                                    <td>
-                                      <a href="editRetailer.php?u='.$row['id'].'" style="color:#0080c0 ;" >
-                                        <i data-feather="edit"></i>
-                                      </a>
-                                    </td>
-                                    <td>
-                                        <i onclick="deleteRetailer('.$row['id'].')" style="color: red; cursor:pointer" data-feather="trash-2"></i>
-                                    </td>
-                                    </tr>';
-                          }   
+                            echo '<tr>
+                                  <td>'.$row['id'].'</td>';
+                                  if($row['photo']!=""){
+                                    echo '<td><img src="./photo/'.$row['photo'].'" width="50" height="50"></td>';
+                                  }
+                                  else{
+                                    echo '<td><img src="./photo/personCircle.svg" width="50" height="50"></td>';
+                                  }
+                                  echo '<td>'.$row['productCode'].'</td>
+                                        <td>'.$row['productName'].'</td>
+                                        <td>'.$row['category'].'</td>
+                                        <td>'.$row['subCategory'].'</td>
+                                        <td>'.$row['MRP'].'</td>
+                                        <td><span class="status-p bg-primary">'.$row['status'].'</span></td>
+                                        <td>
+                                          <a href="editProduct.php?u=' . $row['id'] . '" style="color:#0080c0 ;" >
+                                            <i data-feather="edit"></i>
+                                          </a>
+                                        </td>
+                                        <td>
+                                            <i onclick="deleteProduct(' . $row['id'] . ')" style="color: red; cursor:pointer;" data-feather="trash-2"></i>
+                                        </td>
+                                        </tr>';
+                          }
                         ?>
                         </tbody>
                       </table>
-                    </div>  
+                    </div>
                   </div>
                 </div>
               </div>
@@ -99,11 +109,11 @@
 
         <!-- settings-->
         <?php
-          include_once("settings.php");
+        include_once("settings.php");
         ?>
         <div style="display:none;">
           <?php
-          $sql = mysqli_query($conn, "SELECT * FROM retailerMaster");
+          $sql = mysqli_query($conn, "SELECT * FROM productMaster");
           echo '<table id="outputTable"><tr>';
           $flag = true;
           while ($row = mysqli_fetch_assoc($sql)) {
@@ -142,6 +152,7 @@
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
     <!-- Dashboard Selector -->
     <script src="./js/navbar.js"></script>
-    <script src="./js/retailer.js"></script>
+    <script src="./js/product.js"></script>
   </body>
+
 </html>

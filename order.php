@@ -69,7 +69,7 @@ include_once("navbar.php");
                                         <!-- <td colspan="3">No Elements</td> -->
                                         <tr>
                                             <td>1</td>
-                                            <a href="orderDetails.php"><td>Nikul </td></a>
+                                            <td><a href="orderDetails.php">Nikul</a></td>
                                             <td>
                                                 Borivali East
                                             </td>

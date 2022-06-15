@@ -6,10 +6,10 @@ const form = document.querySelector("form");
 // const dateOfBirthField = document.getElementById("dateOfBirth");
 // const addressField = document.getElementById("address");
 // const locationField = document.getElementById("location");
-// const pincodeField = document.getElementById("pincode");
-// const cityField = document.getElementById("city");
-// const stateField = document.getElementById("state");
-// const countryField = document.getElementById("country");
+const pincodeField = document.getElementById("pincode");
+const cityField = document.getElementById("city");
+const stateField = document.getElementById("state");
+const countryField = document.getElementById("country");
 const mobileNumberField = document.getElementById("mobileNumber");
 const designationField = document.getElementById("designation");
 const reportingManagerField = document.getElementById("reportingManager");
@@ -25,6 +25,23 @@ const reportingManagerField = document.getElementById("reportingManager");
 // const AF5Field = document.getElementById("AF5");
 
 submitBtn = document.getElementById("submit");
+
+//pincode api
+pincodeField.onchange = ()=> {
+    fetch("https://api.postalpincode.in/pincode/"+pincodeField.value)           //api for the get request
+    .then(response => response.json())
+    .then(data => {
+        if(data[0]["Status"]=="Success"){
+            // console.log(data[0]["PostOffice"][0]);
+            cityField.value = data[0]["PostOffice"][0]["Region"];
+            stateField.value = data[0]["PostOffice"][0]["State"];
+            countryField.value = data[0]["PostOffice"][0]["Country"]
+        }
+        else{
+            alert("Enter a valid pincode");
+        }  
+    });
+}
 
 form.onsubmit = (e)=>{
     e.preventDefault(); //preventing form from submitting

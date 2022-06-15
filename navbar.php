@@ -63,6 +63,9 @@
             <li class="" id="menu-retailer">
               <a href="retailer.php" class="nav-link"><i data-feather="shopping-cart"></i><span>Retailer's</span></a>
             </li>
+            <li class="" id="menu-product">
+              <a href="product.php" class="nav-link"><i data-feather="shopping-bag"></i><span>Product's</span></a>
+            </li>
 
             <li class="menu-header">Insight</li>
             <li class="" id="menu-route">

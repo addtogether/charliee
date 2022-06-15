@@ -124,7 +124,29 @@
         }
         else if($decoded[0][0]=="id" && $decoded[0][1]=="retailerCode"){
             if(isset($decoded[1])){
-                $query = bulkUpdateQuery("retailerMaster", $decoded);
+                $mobileNumbers = array_column($decoded, 12);
+                if(count(array_unique($mobileNumbers))==count($mobileNumbers)){
+                    $query = bulkUpdateQuery("retailerMaster", $decoded);
+                    $sql = mysqli_query($conn, "$query");
+                    if($sql){
+                        echo "success";
+                    }
+                    else{
+                        echo "error";
+                        // echo("Error description: " . mysqli_error($conn));
+                    }
+                }
+                else{
+                    echo "Excel contains duplicate mobile numbers";
+                }
+            }
+            else{
+                echo "Add atleast 1 row!";
+            }
+        }
+        else if($decoded[0][0]=="id" && $decoded[0][1]=="productCode"){
+            if(isset($decoded[1])){
+                $query = bulkUpdateQuery("productMaster", $decoded);
                 $sql = mysqli_query($conn, "$query");
                 if($sql){
                     echo "success";
@@ -141,4 +163,5 @@
         else{
             echo "Wrong Excel File Template!";
         }
+        
     }

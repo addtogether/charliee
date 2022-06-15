@@ -73,7 +73,7 @@ include_once("navbar.php");
                                         <th>Sr No.</th>
                                         <th>Start Time</th>
                                         <th>Start Geolocation</th>
-                                        <th>Starting Route Photo</th>
+                                        <th>Start Route Photo</th>
                                         <th>End Time</th>
                                         <th>End Geolocation</th>
                                         <th>End Route Photo</th>
