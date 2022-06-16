@@ -37,9 +37,9 @@ include_once("navbar.php");
                                 <div class="form-row">
                                     <div class="col-md-4 mb-3">
                                         <label for="retailerCode">Value</label>
-                                        <input type="text" class="form-control" name="value" id="value" placeholder="Value" required>
+                                        <input type="text" class="form-control" name="value" id="value" pattern="\d{10}" placeholder="Value" required>
                                         <div class="invalid-feedback">
-                                            Please enter a Valid Code.
+                                            Please enter a Valid Value.
                                         </div>
                                     </div>
                                 </div>
@@ -59,6 +59,7 @@ include_once("navbar.php");
     <?php
     include_once("settings.php");
     ?>
+    </div>
     <!-- General JS Scripts -->
     <script src="assets/js/app.min.js"></script>
     <!-- JS Libraies -->

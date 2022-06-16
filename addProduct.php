@@ -193,6 +193,7 @@ include_once("navbar.php");
     <?php
     include_once("settings.php");
     ?>
+    </div>
     <!-- General JS Scripts -->
     <script src="assets/js/app.min.js"></script>
     <!-- JS Libraies -->

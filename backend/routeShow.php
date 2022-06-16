@@ -6,7 +6,7 @@
         $employee = mysqli_real_escape_string($conn, $_POST['employee']);
         $day = mysqli_real_escape_string($conn, $_POST['day']);
         // echo $designationDropdown;
-        $sql = mysqli_query($conn, "SELECT id FROM routeMaster WHERE assignToEmployee = '{$employee}' AND weekDay = '{$day}'");
+        $sql = mysqli_query($conn, "SELECT id,routeName FROM routeMaster WHERE assignToEmployee = '{$employee}' AND weekDay = '{$day}'");
         if(mysqli_num_rows($sql) != 0){
             $row = mysqli_fetch_assoc($sql);
             $sql1 = mysqli_query($conn, "SELECT retailerID, priority, status FROM routeRetailerMapping WHERE routeID = '{$row['id']}' ORDER BY priority");
@@ -24,6 +24,7 @@
                 }
                 echo '</tr>';
             }
+            echo '<td colspan="3"><h4>'.$row['routeName'].'</h4></td>';
         }
         else{
             echo '<td colspan="3">No Routes</td>';

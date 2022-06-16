@@ -376,8 +376,6 @@
         ?>
       </div>
 
-    </div>
-  </div>
   <!-- General JS Scripts -->
   <script src="assets/js/app.min.js"></script>
   <!-- JS Libraies -->
