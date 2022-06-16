@@ -19,7 +19,7 @@
 </head>
 
 <?php
-include_once("navbar.php");
+    include_once("navbar.php");
 ?>
 
 <!-- Main Content -->
@@ -37,7 +37,7 @@ include_once("navbar.php");
                                 <div class="form-row">
                                     <div class="col-md-4 mb-3">
                                         <label for="retailerCode">Value</label>
-                                        <input type="text" class="form-control" name="value" id="value" pattern="\d{10}" placeholder="Value" required>
+                                        <input type="text" class="form-control" name="value" id="value" pattern="[0-9'-'\s]*" placeholder="Value" required>
                                         <div class="invalid-feedback">
                                             Please enter a Valid Value.
                                         </div>
@@ -75,7 +75,7 @@ include_once("navbar.php");
     <script src="assets/js/custom.js"></script>
     <!-- Dashboard Selector -->
     <script src="./js/navbar.js"></script>
-    <script src="./js/addRetailer.js"></script>
+    <script src="./js/geoFence.js"></script>
     </body>
 
 
