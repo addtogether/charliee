@@ -14,7 +14,6 @@
           </ul>
         </div>
         <ul class="navbar-nav navbar-right">
-
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image" src="assets/img/user.png" class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block"></span></a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
               <div class="dropdown-title">Hello Sarah Smith</div>
@@ -46,17 +45,7 @@
               <a href="index.php" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
             <li class="menu-header">Details</li>
-            <!-- <li class="dropdown">
-              <a href="#" class="menu-toggle nav-link has-dropdown">
-                <i class="fas fa-sticky-note"></i><span>Topic</span></a>
-              <ul class="dropdown-menu">
 
-                <li><a class="nav-link" href="posts.html">All Posts</a></li>
-                <li><a class="nav-link" href="create-post.html">Create Post</a></li>
-                <li><a class="nav-link" href="create-topic.html">Create Topic</a></li>
-               
-              </ul>
-            </li> -->
             <li class="" id="menu-employee">
               <a href="employee.php" class="nav-link"><i data-feather="users"></i><span>Employee's</span></a>
             </li>
@@ -82,6 +71,20 @@
             <li class="" id="menu-order">
               <a href="order.php" class="nav-link"><i data-feather="file-text"></i><span>View Order</span></a>
             </li>
+
+            <!-- setting start here  -->
+            <li class="menu-header">Setting</li>
+            <li class="dropdown">
+              <a href="#" class="menu-toggle nav-link has-dropdown">
+              <i class="fas fa-cog"></i></i><span>Setting</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="geoFence.php"></i></i>GeoFence</a></li>
+                <!-- <li><a class="nav-link" href="create-post.html">Create Post</a></li>
+                <li><a class="nav-link" href="create-topic.html">Create Topic</a></li> -->
+
+              </ul>
+            </li>
+            <!-- setting ends here  -->
           </ul>
         </aside>
       </div>
