@@ -1,13 +1,7 @@
 <?php
     session_start();
     require_once "../includes/connection.php";
-
-    //delete prouduct
-    if(isset($_POST['deleteProductID'])){
-        $deleteProductID = (int) mysqli_real_escape_string($conn, $_POST['deleteProductID']);
-        $sql1 = mysqli_query($conn, "UPDATE productMaster SET status = 'Deleted' WHERE id = '$deleteProductID'");
-    }
-
+    
     //add employee form
     if(isset($_POST['productCode'])){
         $ipaddress = '';
@@ -25,10 +19,9 @@
             $ipaddress = getenv('REMOTE_ADDR');
         else
             $ipaddress = 'UNKNOWN';
-        
 
-        $editProductID = (int) mysqli_real_escape_string($conn, $_POST['editProductID']);
-        $editProductPhoto = mysqli_real_escape_string($conn, $_POST['editProductPhoto']);
+        // $date = date("Y-m-d");
+        
         $productCode = mysqli_real_escape_string($conn, $_POST['productCode']);
         $productName = mysqli_real_escape_string($conn, $_POST['productName']);
         $GST = mysqli_real_escape_string($conn, $_POST['GST']);
@@ -51,19 +44,13 @@
             if($fileExt == "jpg" || $fileExt == "jpeg" || $fileExt == "png"){
                 $newFileName = $productCode."-productPhoto.".$fileExt;
                 // $newFileName = str_replace(" ", "-", $newFileName);
-                if($_FILES['productPhoto']['name'] != ""){
-                    unlink("../files/product/".$editProductPhoto);
-                    // echo "inside this";
-                }
                 if(move_uploaded_file($tmpName, "../files/product/".$newFileName)){
                     $dateTime = date('Y-m-d H:i:s');
-                    $sql1 = mysqli_query($conn, "UPDATE productMaster SET productCode = '{$productCode}', 
-                                                    productName = '{$productName}', GMS = '{$GMS}', photo = '{$newFileName}', 
-                                                    catalogueURL = '{$catalogueURL}', category = '{$category}',
-                                                    subCategory = '{$subCategory}', GST = '{$GST}', MRP = '{$MRP}', WR = '{$WR}', 
-                                                    DR = '{$DR}', SSR = '{$SSR}', schemeRate = '{$schemeRate}', status = '{$status}', 
-                                                    modifiedIP = '$ipaddress', modifiedDate = '{$dateTime}' 
-                                                    WHERE id = '$editProductID'");
+                    $sql1 = mysqli_query($conn, "INSERT INTO productMaster (productCode, productName, GMS, photo, catalogueURL, 
+                                                category, subCategory, GST, MRP, WR, DR, SSR, schemeRate, status, createdIP, createdDate) 
+                                                VALUES ('{$productCode}', '{$productName}', '{$GMS}', '{$newFileName}', '{$catalogueURL}', 
+                                                '{$category}', '{$subCategory}', '{$GST}', '{$MRP}', '{$WR}', '{$DR}', '{$SSR}', 
+                                                '{$schemeRate}', '{$status}', '$ipaddress', '{$dateTime}')");
                     if($sql1){
                         echo "success";
                     }    
@@ -81,19 +68,6 @@
             }
         }
         else{
-            $dateTime = date('Y-m-d H:i:s');
-            $sql1 = mysqli_query($conn, "UPDATE productMaster SET productCode = '{$productCode}', 
-                                        productName = '{$productName}', GMS = '{$GMS}', catalogueURL = '{$catalogueURL}', 
-                                        category = '{$category}', subCategory = '{$subCategory}', GST = '{$GST}', MRP = '{$MRP}', 
-                                        WR = '{$WR}', DR = '{$DR}', SSR = '{$SSR}', schemeRate = '{$schemeRate}', status = '{$status}', 
-                                        modifiedIP = '$ipaddress', modifiedDate = '{$dateTime}' 
-                                        WHERE id = '$editProductID'");
-            if($sql1){
-                echo "success";
-            }    
-            else{
-                echo "error";
-                // echo("Error description: " . mysqli_error($conn));
-            }
+            echo "Please select a file to upload!";
         }
     }

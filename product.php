@@ -75,7 +75,7 @@
                             echo '<tr>
                                   <td>'.$row['id'].'</td>';
                                   if($row['photo']!=""){
-                                    echo '<td><img src="./photo/'.$row['photo'].'" width="50" height="50"></td>';
+                                    echo '<td><img src="./files/product/'.$row['photo'].'" width="50" height="50"></td>';
                                   }
                                   else{
                                     echo '<td><img src="./photo/personCircle.svg" width="50" height="50"></td>';
@@ -87,7 +87,7 @@
                                         <td>'.$row['MRP'].'</td>
                                         <td><span class="status-p bg-primary">'.$row['status'].'</span></td>
                                         <td>
-                                          <a href="editProduct.php?u=' . $row['id'] . '" style="color:#0080c0 ;" >
+                                          <a href="editProduct.php?p=' . $row['id'] . '" style="color:#0080c0 ;" >
                                             <i data-feather="edit"></i>
                                           </a>
                                         </td>
