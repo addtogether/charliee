@@ -40,12 +40,12 @@ include_once("navbar.php");
                                         <label for="employee" class="col-form-label">Employee</label>
                                         <select class="form-control" name="employee" id="employee" required>
                                             <option selected disabled value="">Select Employee</option>
-                                            <option> Test1</option>
-                                            <option> Test2</option>
-                                            <option> Test3</option>
-                                            <option> Test4</option>
-                                            <option> Test5</option>
-                                            <option> Test6</option>
+                                            <?php
+                                                $sql = mysqli_query($conn, "SELECT id,employeeName FROM employeeMaster WHERE status = 'ON'");
+                                                while($row = mysqli_fetch_assoc($sql)){
+                                                echo '<option value='.$row["id"].'>'.$row["employeeName"].'</option>';
+                                                }
+                                            ?> 
                                         </select>
                                         <div class="invalid-feedback">
                                             Please select a Valid Employee Name.
@@ -53,15 +53,13 @@ include_once("navbar.php");
                                     </div>
                                     <div class="col-md-6 mb-3 ag-pad" style="padding-top: 0.5%;">
                                         <label for="month" class="col-form-label">Month and Year</label>
-                                        <input type="month" class="form-control" name="datepicker" id="datepicker" />
+                                        <input type="month" class="form-control" name="month" id="month" />
                                         <div class="invalid-feedback">
                                             Please select a Valid month and year.
                                         </div>
                                     </div>
-
                                 </div>
                                 <button class="btn btn-primary mb-3" id="submit" type="submit" formnovalidate>Show Attendance</button>
-                                <!-- <a class="btn btn-primary mb-3 float-right" href="employeeRoute.php">Edit</a> -->
                             </form>
 
                             <div>
@@ -77,10 +75,11 @@ include_once("navbar.php");
                                         <th>End Time</th>
                                         <th>End Geolocation</th>
                                         <th>End Route Photo</th>
+                                        <th>View Route</th>
                                     </thead>
-                                    <tbody id="routeList">
-                                        <!-- <td colspan="3">No Elements</td> -->
-                                        <tr>
+                                    <tbody id="attendanceList">
+                                        <td colspan="8">Select Employee and month to view Attendance</td>
+                                        <!-- <tr>
                                             <td>1</td>
                                             <td>11:30</td>
                                             <td>Latitude : 37.48 <br>
@@ -99,107 +98,8 @@ include_once("navbar.php");
                                                     <img src="assets/img/users/user-1.png" class="user-img " alt="">
                                                 </div>
                                             </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>11:30</td>
-                                            <td>Latitude : 37.48 <br>
-                                                Longitude : 122.48
-                                            </td>
-                                            <td>
-                                                <div class="support-ticket">
-                                                    <img src="assets/img/users/user-1.png" class="user-img " alt="">
-                                                </div>
-                                            </td>
-                                            <td>11:30</td>
-                                            <td>Latitude : 37.48 <br>
-                                                Longitude : 122.48</td>
-                                            <td>
-                                                <div class="support-ticket">
-                                                    <img src="assets/img/users/user-1.png" class="user-img " alt="">
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>11:30</td>
-                                            <td>Latitude : 37.48 <br>
-                                                Longitude : 122.48
-                                            </td>
-                                            <td>
-                                                <div class="support-ticket">
-                                                    <img src="assets/img/users/user-1.png" class="user-img " alt="">
-                                                </div>
-                                            </td>
-                                            <td>11:30</td>
-                                            <td>Latitude : 37.48 <br>
-                                                Longitude : 122.48</td>
-                                            <td>
-                                                <div class="support-ticket">
-                                                    <img src="assets/img/users/user-1.png" class="user-img " alt="">
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>11:30</td>
-                                            <td>Latitude : 37.48 <br>
-                                                Longitude : 122.48
-                                            </td>
-                                            <td>
-                                                <div class="support-ticket">
-                                                    <img src="assets/img/users/user-1.png" class="user-img " alt="">
-                                                </div>
-                                            </td>
-                                            <td>11:30</td>
-                                            <td>Latitude : 37.48 <br>
-                                                Longitude : 122.48</td>
-                                            <td>
-                                                <div class="support-ticket">
-                                                    <img src="assets/img/users/user-1.png" class="user-img " alt="">
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>11:30</td>
-                                            <td>Latitude : 37.48 <br>
-                                                Longitude : 122.48
-                                            </td>
-                                            <td>
-                                                <div class="support-ticket">
-                                                    <img src="assets/img/users/user-1.png" class="user-img " alt="">
-                                                </div>
-                                            </td>
-                                            <td>11:30</td>
-                                            <td>Latitude : 37.48 <br>
-                                                Longitude : 122.48</td>
-                                            <td>
-                                                <div class="support-ticket">
-                                                    <img src="assets/img/users/user-1.png" class="user-img " alt="">
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>11:30</td>
-                                            <td>Latitude : 37.48 <br>
-                                                Longitude : 122.48
-                                            </td>
-                                            <td>
-                                                <div class="support-ticket">
-                                                    <img src="assets/img/users/user-1.png" class="user-img " alt="">
-                                                </div>
-                                            </td>
-                                            <td>11:30</td>
-                                            <td>Latitude : 37.48 <br>
-                                                Longitude : 122.48</td>
-                                            <td>
-                                                <div class="support-ticket">
-                                                    <img src="assets/img/users/user-1.png" class="user-img " alt="">
-                                                </div>
-                                            </td>
-                                        </tr>
+                                            <td><a href="employeeRoute.php">View</a></td>
+                                        </tr> -->
                                     </tbody>
                                 </table>
                             </div>
@@ -229,7 +129,6 @@ include_once("navbar.php");
 <script src="assets/js/custom.js"></script>
 <!-- Dashboard Selector -->
 <script src="./js/navbar.js"></script>
-<script src="./js/employeeRoute.js"></script>
+<script src="./js/attendance.js"></script>
 </body>
-
 </html>

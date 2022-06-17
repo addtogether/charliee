@@ -54,7 +54,7 @@ include_once("navbar.php");
                                         <!-- <td colspan="3">No Elements</td> -->
                                         <tr>
                                             <td>1</td>
-                                            <a href="retailersOrder.php"><td>Nikul </td></a>
+                                            <td><a href="retailersOrder.php">Nikul </a></td>
                                             <td><span class="status-p bg-correct">Delivered</span></td>
                                             <td>1,1300.00</td>
                                             <td>34</td>
