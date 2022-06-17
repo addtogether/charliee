@@ -63,7 +63,7 @@ function handleFile(e) {
                         let data = xhr.response;
                         if(data == "success"){
                             alert("Excel Uploaded Successfully");
-                            location.href = "employee.php"
+                            location.href = "retailer.php"
                         }
                         else if(data == "Wrong Excel File Template!"){
                             alert(data);
