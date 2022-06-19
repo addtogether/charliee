@@ -10,15 +10,15 @@
 
     if(isset($decoded['id'])){
         $day = date("l");
-        $sql = mysqli_query($conn, "SELECT id FROM routeMaster 
+        $sql = mysqli_query($conn, "SELECT id, routeName FROM routeMaster 
                                 WHERE assignToEmployee = '{$decoded['id']}' AND weekDay = '{$day}' AND status = 'ON'");
         if(mysqli_num_rows($sql) != 0){
             $row = mysqli_fetch_assoc($sql);
             //base64 to image
             $datetime = strtotime($decoded['startRouteDateTime']);
             $filename = $decoded['username']."-".$datetime."-startDay.png";
-            file_put_contents("../files/route/".$filename, file_get_contents($decoded['startRoutePhoto']));
-            // file_put_contents($path,base64_decode($decoded['startRoutePhoto']));
+            // file_put_contents("../files/route/".$filename, file_get_contents($decoded['startRoutePhoto']));
+            file_put_contents("../files/route/".$filename,base64_decode($decoded['startRoutePhoto']));
             $sql1 = mysqli_query($conn, "INSERT INTO employeeDailyStartRoute (username, routeID, startRouteDateTime, 
                                         startRouteGeoLocation, startRoutePhoto) VALUES ('{$decoded['username']}', 
                                         '{$row['id']}', '{$decoded['startRouteDateTime']}', '{$decoded['startRouteGeoLocation']}', 

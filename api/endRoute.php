@@ -12,7 +12,8 @@
         //base64 to image
         $datetime = strtotime($decoded['endRouteDateTime']);
         $filename = $decoded['username']."-".$datetime."-endDay.png";
-        file_put_contents("../files/route/".$filename, file_get_contents($decoded['endRoutePhoto']));
+        // file_put_contents("../files/route/".$filename, file_get_contents($decoded['endRoutePhoto']));
+        file_put_contents("../files/route/".$filename,base64_decode($decoded['endRoutePhoto']));
         $sql1 = mysqli_query($conn, "UPDATE employeeDailyStartRoute SET endRouteDateTime = '{$decoded['endRouteDateTime']}',  
                                     endRouteGeoLocation = '{$decoded['endRouteGeoLocation']}', endRoutePhoto = '{$filename}' 
                                     WHERE id = '{$decoded['startID']}'");
