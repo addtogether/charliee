@@ -1,9 +1,6 @@
 <?php
     require_once "../includes/connection.php";
     header('Content-Type: application/json; charset=utf-8');
-    // category
-
-    // response : array of json
 
     $content = trim(file_get_contents("php://input"));
     $decoded = json_decode($content, true);
@@ -12,9 +9,27 @@
         foreach($decoded as $x => $val) {
             // var_dump($val);
             echo "\n".$val["m"];
-            foreach($val["d"] as $y => $yval){
-                echo "\n".$yval;
-            } 
+            $sql = mysqli_query($conn, $val["m"]);
+            if($sql){
+                $last_inserted = mysqli_insert_id($conn); // return last inserted id
+                $query = "INSERT INTO orderDetails (orderID, productID, quantity, amount, status) VALUES (";
+                $len = count($val["d"]);
+                foreach($val["d"] as $index => $columns){
+                    echo "\n".$columns;
+                    $query .= $last_inserted.", ".$columns.")";
+                    $query .= ($index == $len - 1) ? "" : ", \n";
+                }
+                $sql1 = mysqli_query($conn, $query);
+                if($sql1){
+                    echo json_encode(["inserted"=>true]);
+                }
+                else{
+                    echo json_encode(["inserted"=>false]);
+                } 
+            }
+            else{
+                echo json_encode(["inserted"=>false]);
+            }
         }
     }
     /*
