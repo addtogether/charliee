@@ -23,6 +23,12 @@ change password body:
 	"newPassword": "vishal"
 }
 
+shop api: http://localhost/charliee/api/shop.php
+shop body:
+{
+	"id": "6"
+}
+
 route api: http://localhost/charliee/api/route.php
 route body:
 {
