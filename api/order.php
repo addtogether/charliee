@@ -6,6 +6,7 @@
     $decoded = json_decode($content, true);
 
     if(isset($decoded)){
+        $flag = true;
         foreach($decoded as $x => $val) {
             // var_dump($val);
             // echo "\n".$val["m"];
@@ -21,16 +22,19 @@
                 }
                 $sql1 = mysqli_query($conn, $query);
                 if($sql1){
-                    echo json_encode(["inserted"=>true]);
+                    $flag = true;
                 }
                 else{
-                    echo json_encode(["inserted"=>false]);
+                    $flag = false;
+                    break;
                 } 
             }
             else{
-                echo json_encode(["inserted"=>false]);
+                $flag = false;
+                break;
             }
         }
+        echo json_encode(["inserted"=>$flag]);
     }
     /*
         [
