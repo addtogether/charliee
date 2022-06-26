@@ -1,0 +1,10 @@
+login 
+logout
+startRoute
+endRoute
+
+route => retailerID, retailerCode, retailerName, contactPersonName, address, location, pincode, city, state, 
+        country, geoLocation, geoAddress, mobileNumber, whatsappNumber, typeOfOutlet, classification, 
+        retailerType, workingDays, status
+        sort by priority
+
