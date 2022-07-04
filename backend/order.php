@@ -5,7 +5,7 @@
     if(isset($_POST['orderDate'])){
         $orderDate = mysqli_real_escape_string($conn, $_POST['orderDate']);
         // echo $designationDropdown;
-        $sql = mysqli_query($conn, "SELECT * FROM orderMaster WHERE orderDate BETWEEN '{$orderDate}' AND '{$orderDate}".`23:59:59`."'");
+        $sql = mysqli_query($conn, "SELECT * FROM orderMaster WHERE orderDate BETWEEN '{$orderDate}' AND '{$orderDate}".` 23:59:59`."'");
         if(mysqli_num_rows($sql) != 0){
             $no = 1;
             $totalAmount = 0;
