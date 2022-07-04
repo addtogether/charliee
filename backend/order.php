@@ -19,7 +19,7 @@
                 $row2 = mysqli_fetch_assoc($sql2);
                 echo '<tr>
                         <td>'.$no++.'</td>
-                        <td><a href="orderDetails.php?e='.$row['employeeID'].'">'.$row1['employeeName'].'</a></td>
+                        <td><a href="orderDetails.php?o='.$row['id'].'">'.$row1['employeeName'].'</a></td>
                         <td>'.$row2['routeName'].'</td>
                         <td>'.$row['totalAmount'].'</td>
                         <td>'.$row['totalQuantity'].'</td>
