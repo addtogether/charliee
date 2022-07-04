@@ -73,10 +73,10 @@
                             echo '<tr>
                                   <td>'.$row['id'].'</td>';
                                   if($row['employeePhoto']!=""){
-                                    echo '<td><img src="./photo/'.$row['employeePhoto'].'" width="50" height="50"></td>';
+                                    echo '<td><img src="./files/employeePhoto/'.$row['employeePhoto'].'" width="50" height="50"></td>';
                                   }
                                   else{
-                                    echo '<td><img src="./photo/personCircle.svg" width="50" height="50"></td>';
+                                    echo '<td><img src="./files/employeePhoto/personCircle.svg" width="50" height="50"></td>';
                                   }
                                   echo '<td>'.$row['employeeCode'].'</td>
                                         <td>'.$row['employeeName'].'</td>

@@ -47,10 +47,10 @@
                           </div>
                             <?php
                               if ($row['employeePhoto']==""){
-                                echo '<img id="employeePhotoPreview" src="./photo/personCircle.svg" width="250" height="250">';
+                                echo '<img id="employeePhotoPreview" src="./files/employeePhoto/personCircle.svg" width="250" height="250">';
                               }
                               else{
-                                echo '<img id="employeePhotoPreview" src="./photo/'.$row['employeePhoto'].'" width="250" height="250">';
+                                echo '<img id="employeePhotoPreview" src="./files/employeePhoto/'.$row['employeePhoto'].'" width="250" height="250">';
                               }
                             ?>
                         </div>

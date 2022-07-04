@@ -68,10 +68,10 @@
                     $newFileName = $mobileNumber."-employeePhoto.".$fileExt;
                     // $newFileName = str_replace(" ", "-", $newFileName);
                     if($_FILES['employeePhoto']['name'] != ""){
-                        unlink("../photo/".$editEmployeePhoto);
+                        unlink("../files/employeePhoto/".$editEmployeePhoto);
                         // echo "inside this";
                     }
-                    if(move_uploaded_file($tmpName, "../photo/".$newFileName)){
+                    if(move_uploaded_file($tmpName, "../files/employeePhoto/".$newFileName)){
                         $dateTime = date('Y-m-d H:i:s');
                         $sql1 = mysqli_query($conn, "UPDATE employeeMaster SET employeeCode = '{$employeeCode}', 
                                                         employeeName = '{$employeeName}', employeePhoto = '{$newFileName}', 

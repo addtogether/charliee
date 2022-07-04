@@ -59,7 +59,7 @@
                 if($fileExt == "jpg" || $fileExt == "jpeg" || $fileExt == "png"){
                     $newFileName = $mobileNumber."-employeePhoto.".$fileExt;
                     // $newFileName = str_replace(" ", "-", $newFileName);
-                    if(move_uploaded_file($tmpName, "../photo/".$newFileName)){
+                    if(move_uploaded_file($tmpName, "../files/employeePhoto/".$newFileName)){
                         $dateTime = date('Y-m-d H:i:s');
                         $sql1 = mysqli_query($conn, "INSERT INTO employeeMaster (employeeCode, employeeName, employeePhoto, gender, dateOfBirth, 
                                                         address, location, pincode, city, state, country, mobileNumber, whatsappNumber, IMEI, 
