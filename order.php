@@ -37,20 +37,14 @@ include_once("navbar.php");
                             <form action="" class="needs-validation">
                                 <div class="form-row">
                                     <div class="col-md-5 mb-3">
-                                        <label for="dateOfBirth" class="col-form-label">Select Date</label>
-                                        <input class="form-control" type="date" name="dateOfBirth" id="dateOfBirth" max="<?php echo date("Y-m-d"); ?>" required>
+                                        <label for="orderDate" class="col-form-label">Select Date</label>
+                                        <input class="form-control" type="date" name="orderDate" id="orderDate" required>
                                         <div class="invalid-feedback">
                                             Please select a Valid date.
                                         </div>
                                     </div>
-
-
-
-
-
                                 </div>
                                 <button class="btn btn-primary mb-3" id="submit" type="submit" formnovalidate>Show Order</button>
-                                <!-- <a class="btn btn-primary mb-3 float-right" href="employeeRoute.php">Edit</a> -->
                             </form>
 
                             <div>
@@ -65,73 +59,8 @@ include_once("navbar.php");
                                         <th>Total Amount ₹</th>
                                         <th>Total Quantity</th>
                                     </thead>
-                                    <tbody id="routeList">
-                                        <!-- <td colspan="3">No Elements</td> -->
-                                        <tr>
-                                            <td>1</td>
-                                            <td><a href="orderDetails.php">Nikul</a></td>
-                                            <td>
-                                                Borivali East
-                                            </td>
-                                            <td>1,1300.00</td>
-                                            <td>34</td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Nikul </td>
-                                            <td>
-                                                Borivali East
-                                            </td>
-                                            <td>1,1300.00</td>
-                                            <td>34</td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Nikul </td>
-                                            <td>
-                                                Borivali East
-                                            </td>
-                                            <td>1,1300.00</td>
-                                            <td>34</td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Nikul </td>
-                                            <td>
-                                                Borivali East
-                                            </td>
-                                            <td>1,1300.00</td>
-                                            <td>34</td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Nikul </td>
-                                            <td>
-                                                Borivali East
-                                            </td>
-                                            <td>1,1300.00</td>
-                                            <td>34</td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Nikul </td>
-                                            <td>
-                                                Borivali East
-                                            </td>
-                                            <td>1,1300.00</td>
-                                            <td>34</td>
-
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3"  >Total</td>
-                                            <td>234566.00</td>
-                                            <td>2345</td>
-                                        </tr>
+                                    <tbody id="orderList">
+                                        <td colspan="5">Select date to view orders!</td>
                                     </tbody>
                                 </table>
                             </div>
@@ -161,7 +90,7 @@ include_once("navbar.php");
 <script src="assets/js/custom.js"></script>
 <!-- Dashboard Selector -->
 <script src="./js/navbar.js"></script>
-<script src="./js/employeeRoute.js"></script>
+<script src="./js/order.js"></script>
 </body>
 
 </html>
