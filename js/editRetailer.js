@@ -36,7 +36,8 @@ pincodeField.onchange = ()=> {
             // console.log(data[0]["PostOffice"][0]);
             cityField.value = data[0]["PostOffice"][0]["Region"];
             stateField.value = data[0]["PostOffice"][0]["State"];
-            countryField.value = data[0]["PostOffice"][0]["Country"]
+            countryField.value = data[0]["PostOffice"][0]["Country"];
+            mobileNumberField.focus();
         }
         else{
             alert("Enter a valid pincode");

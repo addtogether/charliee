@@ -76,7 +76,7 @@ include_once("navbar.php");
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="GMS" class="col-form-label">GMS</label>
-                                        <input class="form-control" type="text" name="GMS" id="GMS" pattern="[a-zA-Z'-'\s]*" required>
+                                        <input class="form-control" type="text" name="GMS" id="GMS" required>
                                         <div class="invalid-feedback">
                                             Please enter a Valid GMS.
                                         </div>
@@ -122,7 +122,7 @@ include_once("navbar.php");
                                             <option>6</option>
                                         </select>
                                         <div class="invalid-feedback">
-                                            Please select a Valid SUb Category.
+                                            Please select a Valid Sub Category.
                                         </div>
                                     </div>
                                 </div>

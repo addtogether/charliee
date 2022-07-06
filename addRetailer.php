@@ -145,7 +145,7 @@
                       </div>
                       <div class="form-group">
                         <label for="geoAddress" class="col-form-label">GeoAddress</label>
-                        <input class="form-control" type="text" name="geoAddress" id="geoAddress" placeholder="GeoAddress" required>
+                        <input class="form-control" type="text" name="geoAddress" id="geoAddress" placeholder="GeoAddress">
                         <div class="invalid-feedback">
                           Please enter a GeoAddress.
                         </div>

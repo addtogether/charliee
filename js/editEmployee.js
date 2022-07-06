@@ -39,7 +39,8 @@ pincodeField.onchange = ()=> {
             // console.log(data[0]["PostOffice"][0]);
             cityField.value = data[0]["PostOffice"][0]["Region"];
             stateField.value = data[0]["PostOffice"][0]["State"];
-            countryField.value = data[0]["PostOffice"][0]["Country"]
+            countryField.value = data[0]["PostOffice"][0]["Country"];
+            mobileNumberField.focus();
         }
         else{
             alert("Enter a valid pincode");
@@ -90,9 +91,10 @@ form.onsubmit = (e)=>{
 }
 //employee photo preview and change
 employeePhotoPreviewField.onclick = ()=>{
-    alert("Are you sure you want to change this photo?");
-    employeePhotoPreviewField.hidden = true;
-    imagePreviewField.hidden = false;
+    if(confirm("Are you sure you want to change this photo?")){
+        employeePhotoPreviewField.hidden = true;
+        imagePreviewField.hidden = false;
+    }
 }
 
 // employee manager dropdown initial

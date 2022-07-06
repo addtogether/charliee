@@ -42,9 +42,10 @@ form.onsubmit = (e)=>{
 }
 //employee photo preview and change
 productPhotoPreviewField.onclick = ()=>{
-    alert("Are you sure you want to change this photo?");
-    productPhotoPreviewField.hidden = true;
-    imagePreviewField.hidden = false;
+    if(confirm("Are you sure you want to change this photo?")){
+        productPhotoPreviewField.hidden = true;
+        imagePreviewField.hidden = false;
+    }
 }
 
 

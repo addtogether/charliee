@@ -89,7 +89,7 @@
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="GMS" class="col-form-label">GMS</label>
-                                        <input class="form-control" type="text" name="GMS" id="GMS" value="<?php echo $row['GMS'];?>" pattern="[a-zA-Z'-'\s]*" required>
+                                        <input class="form-control" type="text" name="GMS" id="GMS" value="<?php echo $row['GMS'];?>" required>
                                         <div class="invalid-feedback">
                                             Please enter a Valid GMS.
                                         </div>

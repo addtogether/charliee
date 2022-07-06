@@ -149,7 +149,7 @@
                       </div>
                       <div class="form-group">
                         <label for="geoAddress" class="col-form-label">GeoAddress</label>
-                        <input class="form-control" type="text" name="geoAddress" id="geoAddress" placeholder="GeoAddress" value="<?php echo $row['geoAddress'];?>" required>
+                        <input class="form-control" type="text" name="geoAddress" id="geoAddress" placeholder="GeoAddress" value="<?php echo $row['geoAddress'];?>">
                         <div class="invalid-feedback">
                           Please enter a GeoAddress.
                         </div>
