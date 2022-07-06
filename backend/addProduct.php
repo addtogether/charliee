@@ -42,7 +42,8 @@
             $fileSplit = explode(".", $fileName);
             $fileExt = end($fileSplit);
             if($fileExt == "jpg" || $fileExt == "jpeg" || $fileExt == "png"){
-                $newFileName = $productCode."-productPhoto.".$fileExt;
+                $time = time();
+                $newFileName = $time."-productPhoto.".$fileExt;
                 // $newFileName = str_replace(" ", "-", $newFileName);
                 if(move_uploaded_file($tmpName, "../files/product/".$newFileName)){
                     $dateTime = date('Y-m-d H:i:s');

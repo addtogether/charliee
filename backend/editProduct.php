@@ -49,7 +49,8 @@
             $fileSplit = explode(".", $fileName);
             $fileExt = end($fileSplit);
             if($fileExt == "jpg" || $fileExt == "jpeg" || $fileExt == "png"){
-                $newFileName = $productCode."-productPhoto.".$fileExt;
+                $time = time();
+                $newFileName = $time."-productPhoto.".$fileExt;
                 // $newFileName = str_replace(" ", "-", $newFileName);
                 if($_FILES['productPhoto']['name'] != ""){
                     unlink("../files/product/".$editProductPhoto);
