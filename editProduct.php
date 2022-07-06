@@ -43,7 +43,7 @@
                                         <div id="image-preview" class="image-preview" hidden>
                                             <label for="employeeImage" id="image-label">Choose File</label>
                                             <!-- <input type="file" name="image" id="employeImage" accept="image/*" onchange="return fileValidation()" required/> -->
-                                            <input type="file" name="productPhoto" id="employeePhoto" accept="image/*" required />
+                                            <input type="file" name="productPhoto" id="employeePhoto" accept="image/*" />
                                         </div>
                                             <?php
                                                 if ($row['photo']==""){
