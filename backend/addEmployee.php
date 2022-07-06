@@ -71,11 +71,11 @@
                                                         {$salary}, '{$dateOfJoining}', '{$addtionalDetails}', '{$AF1}', '{$AF2}', '{$AF3}', 
                                                         '{$AF4}', '{$AF5}', '{$status}', '$ipaddress', '{$dateTime}')");
                         
-                        if($sql1 && $sql2){
+                        if($sql1){
                             $password = password_hash($mobileNumber, PASSWORD_DEFAULT);
                             $sql2 = mysqli_query($conn, "INSERT INTO employeeLogin (username, password, status) VALUES ('{$mobileNumber}', '{$password}',
                                                     '{$status}'");
-                            if($sql){
+                            if($sql2){
                                 echo "success";
                             }
                             else{
