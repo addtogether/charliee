@@ -16,7 +16,7 @@
                 echo '<tr>
                             <td>'.$no++.'</td>
                             <td>'.$row1['startRouteDateTime'].'</td>
-                            <td><a href="https://www.google.com/maps/search/'.$row1['startRouteGeoLocation'].'">'.$row1['startRouteGeoLocation'].'</a></td>
+                            <td><a href="https://www.google.com/maps/search/'.$row1['startRouteGeoLocation'].'" target="_blank">'.$row1['startRouteGeoLocation'].'</a></td>
                             <td>
                                 <div class="support-ticket">
                                     <a href="./files/route/'.$row1['startRoutePhoto'].'" target="_blank">
@@ -26,7 +26,7 @@
                             </td>';
                             if($row1["endRouteDateTime"]!=""){
                                 echo '<td>'.$row1['endRouteDateTime'].'</td>
-                                        <td><a href="https://www.google.com/maps/search/'.$row1['endRouteGeoLocation'].'">'.$row1['endRouteGeoLocation'].'</a></td>
+                                        <td><a href="https://www.google.com/maps/search/'.$row1['endRouteGeoLocation'].'" target="_blank">'.$row1['endRouteGeoLocation'].'</a></td>
                                         <td>
                                             <div class="support-ticket">
                                                 <a href="./files/route/'.$row1['endRoutePhoto'].'" target="_blank">
