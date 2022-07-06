@@ -44,7 +44,7 @@
                         </div>
                         <div class="col-md-4 mb-3">
                           <label for="retailerName">Retailer Name</label>
-                          <input type="text" class="form-control" name="retailerName" id="retailerName" placeholder="Retailer Name" pattern="[a-zA-Z'-'\s]*" required>
+                          <input type="text" class="form-control" name="retailerName" id="retailerName" placeholder="Retailer Name" required>
                           <div class="invalid-feedback">
                             Please enter a Valid Name.
                           </div>

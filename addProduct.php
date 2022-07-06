@@ -54,7 +54,7 @@ include_once("navbar.php");
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="productName" class="col-form-label">Product Name</label>
-                                        <input type="text" class="form-control" name="productName" id="productName" placeholder="Product Name" pattern="[a-zA-Z'-'\s]*" required>
+                                        <input type="text" class="form-control" name="productName" id="productName" placeholder="Product Name" required>
                                         <div class="invalid-feedback">
                                             Please enter a Valid Name.
                                         </div>
