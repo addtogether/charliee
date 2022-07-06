@@ -71,15 +71,21 @@
                                                         {$salary}, '{$dateOfJoining}', '{$addtionalDetails}', '{$AF1}', '{$AF2}', '{$AF3}', 
                                                         '{$AF4}', '{$AF5}', '{$status}', '$ipaddress', '{$dateTime}')");
                         
-                        $password = password_hash($mobileNumber, PASSWORD_DEFAULT);
-                        $sql2 = mysqli_query($conn, "INSERT INTO employeeLogin (username, password, status) VALUES ('{$mobileNumber}', '{$password}',
-                                                '{$status}'");
                         if($sql1 && $sql2){
-                            echo "success";
+                            $password = password_hash($mobileNumber, PASSWORD_DEFAULT);
+                            $sql2 = mysqli_query($conn, "INSERT INTO employeeLogin (username, password, status) VALUES ('{$mobileNumber}', '{$password}',
+                                                    '{$status}'");
+                            if($sql){
+                                echo "success";
+                            }
+                            else{
+                                echo "error";
+                                echo("Error description: " . mysqli_error($conn));
+                            }
                         }    
                         else{
                             echo "error";
-                            // echo("Error description: " . mysqli_error($conn));
+                            echo("Error description: " . mysqli_error($conn));
                         }
                     }
                     else{
