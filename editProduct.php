@@ -47,7 +47,7 @@
                                         </div>
                                             <?php
                                                 if ($row['photo']==""){
-                                                    echo '<img id="productPhotoPreview" src="./photo/personCircle.svg" width="250" height="250">';
+                                                    echo '<img id="productPhotoPreview" src="./files/product/product.svg" width="250" height="250">';
                                                 }
                                                 else{
                                                     echo '<img id="productPhotoPreview" src="./files/product/'.$row['photo'].'" width="250" height="250">';

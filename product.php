@@ -78,7 +78,7 @@
                                     echo '<td><img src="./files/product/'.$row['photo'].'" width="50" height="50"></td>';
                                   }
                                   else{
-                                    echo '<td><img src="./photo/personCircle.svg" width="50" height="50"></td>';
+                                    echo '<td><img src="./files/product/product.svg" width="50" height="50"></td>';
                                   }
                                   echo '<td>'.$row['productCode'].'</td>
                                         <td>'.$row['productName'].'</td>
