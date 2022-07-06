@@ -74,18 +74,18 @@
                         if($sql1){
                             $password = password_hash($mobileNumber, PASSWORD_DEFAULT);
                             $sql2 = mysqli_query($conn, "INSERT INTO employeeLogin (username, password, status) VALUES ('{$mobileNumber}', '{$password}',
-                                                    '{$status}'");
+                                                    '{$status}')");
                             if($sql2){
                                 echo "success";
                             }
                             else{
                                 echo "error";
-                                echo("Error description: " . mysqli_error($conn));
+                                // echo("Error description: " . mysqli_error($conn));
                             }
                         }    
                         else{
                             echo "error";
-                            echo("Error description: " . mysqli_error($conn));
+                            // echo("Error description: " . mysqli_error($conn));
                         }
                     }
                     else{
