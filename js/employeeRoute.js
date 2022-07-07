@@ -63,6 +63,7 @@ function deleteRow(btn) {
 }
 
 //filling the retailer sequence table
+retailers = [];
 function addRow(){
 
     if(retailerName.value == ""){
@@ -73,11 +74,16 @@ function addRow(){
     }
     else if(tbody.children[0].children.length == 1){
         if(retailerStatus.options[retailerStatus.selectedIndex].text == "ON"){
+            retailers.push(retailerName.value);
             tbody.innerHTML = "<tr draggable='true' ondragstart='start()' ondragover='dragover()'><td hidden>"+retailerName.value+"</td><td>"+retailerName.options[retailerName.selectedIndex].text+"</td><td><span class='status-p bg-correct'>ON</span></td><td><input type='button' class='btn btn-danger' value='Delete' onclick='deleteRow(this)'/></td></tr>";
         }
         else{
+            retailers.push(retailerName.value);
             tbody.innerHTML = "<tr draggable='true' ondragstart='start()' ondragover='dragover()'><td hidden>"+retailerName.value+"</td><td>"+retailerName.options[retailerName.selectedIndex].text+"</td><td><span class='status-p bg-inc'>OFF</span></td><td><input type='button' class='btn btn-danger' value='Delete' onclick='deleteRow(this)'/></td></tr>";
         }
+    }
+    else if(retailers.includes(retailerName.value)){
+        alert("Retailer already added!");
     }
     else if(retailerStatus.options[retailerStatus.selectedIndex].text == "ON"){
         tbody.innerHTML += "<tr draggable='true' ondragstart='start()' ondragover='dragover()'><td hidden>"+retailerName.value+"</td><td>"+retailerName.options[retailerName.selectedIndex].text+"</td><td><span class='status-p bg-correct'>ON</span></td><td><input type='button' class='btn btn-danger' value='Delete' onclick='deleteRow(this)'/></td></tr>";
