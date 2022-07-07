@@ -57,13 +57,15 @@ form.onsubmit = (e)=>{
 }
 
 //delete row
+retailers = [];
 function deleteRow(btn) {
     var row = btn.parentNode.parentNode;
+    // console.log(btn.parentNode.parentNode.firstChild.innerHTML);
+    retailers = retailers.filter(item => item !== btn.parentNode.parentNode.firstChild.innerHTML);
     row.parentNode.removeChild(row);
 }
 
 //filling the retailer sequence table
-retailers = [];
 function addRow(){
 
     if(retailerName.value == ""){
