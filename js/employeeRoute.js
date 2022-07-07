@@ -86,9 +86,11 @@ function addRow(){
         alert("Retailer already added!");
     }
     else if(retailerStatus.options[retailerStatus.selectedIndex].text == "ON"){
+        retailers.push(retailerName.value);
         tbody.innerHTML += "<tr draggable='true' ondragstart='start()' ondragover='dragover()'><td hidden>"+retailerName.value+"</td><td>"+retailerName.options[retailerName.selectedIndex].text+"</td><td><span class='status-p bg-correct'>ON</span></td><td><input type='button' class='btn btn-danger' value='Delete' onclick='deleteRow(this)'/></td></tr>";
     }
     else{
+        retailers.push(retailerName.value);
         tbody.innerHTML += "<tr draggable='true' ondragstart='start()' ondragover='dragover()'><td hidden>"+retailerName.value+"</td><td>"+retailerName.options[retailerName.selectedIndex].text+"</td><td><span class='status-p bg-inc'>OFF</span></td><td><input type='button' class='btn btn-danger' value='Delete' onclick='deleteRow(this)'/></td></tr>";
     }
     // let data = [...table.rows].map(t => [...t.children].map(u => u.innerText));
