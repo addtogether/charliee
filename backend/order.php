@@ -5,7 +5,8 @@
     if(isset($_POST['orderDate'])){
         $orderDate = mysqli_real_escape_string($conn, $_POST['orderDate']);
         // echo $designationDropdown;
-        $sql = mysqli_query($conn, "SELECT DISTINCT * FROM orderMaster WHERE DATE(orderDate) = '{$orderDate}'");
+        $sql = mysqli_query($conn, "SELECT DISTINCT id, employeeID, routeID, totalAmount, totalQuantity FROM orderMaster 
+                            WHERE DATE(orderDate) = '{$orderDate}'");
         if(mysqli_num_rows($sql) != 0){
             $no = 1;
             $totalAmount = 0;
