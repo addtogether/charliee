@@ -15,7 +15,7 @@
             while($row = mysqli_fetch_assoc($sql)){
                 $sql1 = mysqli_query($conn, "SELECT employeeName FROM employeeMaster WHERE id = '{$row['employeeID']}'");
                 $row1 = mysqli_fetch_assoc($sql1);
-                $sql2 = mysqli_query($conn, "SELECT routeName FROM routeMaster WHERE id IN  = (SELECT routeID FROM orderMaster 
+                $sql2 = mysqli_query($conn, "SELECT routeName FROM routeMaster WHERE id IN (SELECT routeID FROM orderMaster 
                                                 WHERE employeeID = '{$row['employeeID']}' AND DATE(orderDate) = '{$orderDate}')");
                 $row2 = mysqli_fetch_assoc($sql2);
                 $sql3 = mysqli_query($conn, "SELECT id FROM orderMaster WHERE employeeID = '{$row['employeeID']}' AND 
