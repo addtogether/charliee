@@ -23,6 +23,49 @@ require_once("./includes/connection.php");
 include_once("navbar.php");
 ?>
 
+<style>
+    .popup1 {
+        background: rgba(0, 0, 0, 0.65);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        opacity: 0;
+        pointer-events: none;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 100000;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .popup1.show {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .popup1 .box {
+        align-self: center;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(104, 80, 80, 0.2);
+        padding: 15px 20px;
+        width: 35%;
+        margin: 10px auto;
+        cursor: pointer;
+    }
+
+    .popup1 .box .part-1 h3 {
+        color: #1cc88a;
+        font-weight: bold;
+    }
+
+    .close {
+        float: right;
+        size: 14px;
+    }
+</style>
 
 <!-- Main Content -->
 <div class="main-content">
@@ -45,37 +88,34 @@ include_once("navbar.php");
                         </div>
                         <div class="card-body">
                             <div class="table-responsive user-table">
-                                <table id="myTable" class="table display">
-                                    <thead class="table-row">
-                                        <th scope="col">Sr No.</th>
-                                        <th scope="col">Product Name</th>
-                                        <th scope="col">Order Status</th>
-                                        <th scope="col">Total Amount ₹</th>
-                                        <th scope="col">Total Qauntity</th>
-                                        <th scope="col">Edit</th>
+                                <table id="myTable" class="table table-striped display">
+                                    <thead>
+                                        <th>Sr No.</th>
+                                        <th>Product Name</th>
+                                        <th>Order Status</th>
+                                        <th>Total Amount ₹</th>
+                                        <th>Total Quantity</th>
+                                        <th>Edit</th>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="routeList">
                                         <!-- <td colspan="3">No Elements</td> -->
-                                        <tr id="row-1">
-                                            <th scope="row">1</th>
-                                            <td class="name">Peanut Chikki</td>
-                                            <td><span class=" status status-p bg-correct">Delivered</span></td>
-                                            <td class="amount">1,1300.00</td>
-                                            <td class="qauntity">34</td>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Peanut Chikki</td>
+                                            <td><span class="status-p bg-correct">Delivered</span></td>
+                                            <td>1,1300.00</td>
+                                            <td>34</td>
                                             <td>
-                                                <a class="btn btn-sm btn-primary fas fa-pencil-alt noUnderlineCustom text-white" onclick="toggleModal(this, 1)"></a>
+                                                <a href="#" class="btn btn-danger btn-delete btn-sm" id="open">Edit</a>
                                             </td>
 
                                         </tr>
-                                        <tr id="row-2">
-                                            <th scope="row">1</th>
-                                            <td class="name">Peanut Chikki</td>
-                                            <td><span class=" status status-p bg-correct">Delivered</span></td>
-                                            <td class="amount">1,1300.00</td>
-                                            <td class="qauntity">34</td>
-                                            <td>
-                                                <a class="btn btn-sm btn-primary fas fa-pencil-alt noUnderlineCustom text-white" onclick="toggleModal(this, 2)"></a>
-                                            </td>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Peanut Chikki</td>
+                                            <td><span class="status-p bg-correct">Delivered</span></td>
+                                            <td>1,1300.00</td>
+                                            <td>34</td>
 
                                         </tr>
                                         <tr>
@@ -121,44 +161,44 @@ include_once("navbar.php");
                         </div>
                     </div>
                 </div>
-                <!-- show the order status change  -->
-                <!-- Creating a popup modal -->
-                <div class="modal" tabindex="-1" role="dialog" id="exampleModal" style="margin-top: 5% ;">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Edit Status</h5>
-                                <button type="button" class="close" onclick="closeModal()" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+
+                <!-- modal start -->
+                <div id="popup1" class="popup1">
+                    <div class="box">
+                        <span class="close" id="close">&times;</span>
+                        <div class="part-1">
+                            <h3>Order Status</h3>
+                        </div>
+
+                        <form action="" method="">
+                            <div class="form-row">
+                                <div class="content">
+                                    <!-- Any Content -->
+                                </div>
                             </div>
-                            <div class="modal-body">
+                            <div class="form-row">
                                 <div class="form-group">
-                                    <label class="col-form-label">Status</label>
-                                    <select class="form-control" name="status" id="status" required>
-                                        <option selected disabled value="">Select Status</option>
-                                        <option>Delivered</option>
-                                        <option>Pending</option>
-                                        <option>REfunded</option>
-                                        <!-- <option>Deleted</option> -->
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        Please select a Valid Status.
+                                    <div class="col-md-12 mb-3">
+
+                                        <label class="col-form-label">Status</label>
+                                        <select class="form-control" name="status" id="status" required>
+                                            <option selected disabled value="">Select Status</option>
+                                            <option>Delivered</option>
+                                            <option>Refunded</option>
+                                            <option>Pending</option>
+                                            
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Please select a Valid Status.
+                                        </div>
                                     </div>
                                 </div>
-
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" onclick="saveInfo()">Save changes</button>
-                                <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
-                            </div>
-                        </div>
+                            <button type="submit" class="btn btns btn-approve btn-warning" id="close">Update Status</button>
+                        </form>
                     </div>
                 </div>
-                <div class="modal-backdrop fade show modal1" id="backdrop" style="display: none; margin-top:2%;"></div>
-                <!-- show the order status change  -->
-
-
+                <!-- modal ends -->
 
             </div>
         </div>
@@ -168,50 +208,44 @@ include_once("navbar.php");
     include_once("settings.php");
     ?>
 </div>
+<!-- script for modal  -->
 <script>
-    let tableRowElement;
+    const btnOpen = document.querySelector('#open');
+    const btnClose = document.querySelector('#close');
 
-    function toggleModal(element) {
+    const popupContainer = document.querySelector('.popup1');
+    const boxContent = document.querySelector('.content');
 
-        tableRowElement = element.parentElement.parentElement;
-        let current = document.getElementsByClassName('name')[0].innerHTML;
-        console.log(current)
-        const name = tableRowElement.getElementsByClassName('name')[0].innerHTML;
-        const status = tableRowElement.getElementsByClassName('status')[0].innerHTML;
+    var modal = document.getElementById('popup1')
 
-        // document.getElementById('name').value = name;
-        // document.getElementById('email').value = email;
-        // document.getElementById('phone').value = phone;
-        document.getElementById('status').value = status;
+    btnOpen.addEventListener('click', () => {
 
-        openModal();
-    }
+        const component = btnOpen.parentElement.parentElement;
+        console.log(component);
 
-    function saveInfo() {
-        // const name = document.getElementById('name').value;
-        const status = document.getElementById('status').value;
+        for (let i = 0; i < component.cells.length - 1; i++) {
+            boxContent.innerHTML += component.cells[i].innerHTML + ' ';
+        }
 
-        // tableRowElement.getElementsByClassName('name')[0].innerHTML = name;
-        tableRowElement.getElementsByClassName('status')[0].innerHTML = status;
+        // for getting only one element 
+        // let element =1;
+        // boxContent.innerHTML = component.cells[i].innerHTML;
 
-        closeModal();
-    }
+        console.log(popupContainer);
+        popupContainer.classList.add('show');
 
-    function openModal() {
-        document.getElementById("backdrop").style.display = "block"
-        document.getElementById("exampleModal").style.display = "block"
-        document.getElementById("exampleModal").classList.add("show");
-    }
+    });
 
-    function closeModal() {
-        document.getElementById("backdrop").style.display = "none"
-        document.getElementById("exampleModal").style.display = "none"
-        document.getElementById("exampleModal").classList.remove("show");
-    }
+    btnClose.addEventListener('click', () => {
+        popupContainer.classList.remove('show')
+        boxContent.innerHTML = '';
+    });
 
-    function removeRow(current) {
-        current.parentElement.parentElement.remove();
-    }
+    // window.onclick = function(event) {
+    //     if (event.target == popup1) {
+    //         popup1.style.display = "none";
+    //     }
+    // }
 </script>
 
 <!-- General JS Scripts -->
