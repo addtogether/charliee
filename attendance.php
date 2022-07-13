@@ -132,3 +132,5 @@ include_once("navbar.php");
 <script src="./js/attendance.js"></script>
 </body>
 </html>
+
+<!-- https://www.lambdatest.com/blog/cross-browser-compatibility-issues-with-form-input-types/ -->

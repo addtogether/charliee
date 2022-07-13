@@ -4003,7 +4003,7 @@ table tr:hover .table-links {
     padding: 7px 13px
 }
 
-.modal-header,
+/* .modal-header,
 .modal-body,
 .modal-footer {
     padding: 25px
@@ -4064,7 +4064,7 @@ table tr:hover .table-links {
 
 .modal-part {
     display: none
-}
+} */
 
 .nav-tabs .nav-item .nav-link {
     color: #6777ef

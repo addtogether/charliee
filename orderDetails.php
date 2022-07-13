@@ -8,11 +8,13 @@
     <!-- General CSS Files -->
     <link rel="stylesheet" href="assets/css/app.min.css">
     <link rel="stylesheet" href="assets/bundles/summernote/summernote-bs4.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" /> -->
     <!-- <link rel="stylesheet" href="assets/bundles/jquery-selectric/selectric.css"> -->
     <link rel="stylesheet" href="assets/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
     <!-- Template CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/components.css">
+
     <!-- Custom style CSS -->
     <link rel="stylesheet" href="assets/css/custom.css">
     <link rel='shortcut icon' type='image/x-icon' href='assets/img/favicon.ico' />
@@ -22,49 +24,7 @@
 require_once("./includes/connection.php");
 include_once("navbar.php");
 ?>
-<style>
-    .popup1 {
-        background: rgba(0, 0, 0, 0.65);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: fixed;
-        opacity: 0;
-        pointer-events: none;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        z-index: 100000;
-        transition: all 0.3s ease-in-out;
-    }
 
-    .popup1.show {
-        opacity: 1;
-        pointer-events: auto;
-    }
-
-    .popup1 .box {
-        align-self: center;
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 10px 20px rgba(104, 80, 80, 0.2);
-        padding: 15px 20px;
-        width: 35%;
-        margin: 10px auto;
-        cursor: pointer;
-    }
-
-    .popup1 .box .part-1 h3 {
-        color: #1cc88a;
-        font-weight: bold;
-    }
-
-    .close {
-        float: right;
-        size: 14px;
-    }
-</style>
 
 <!-- Main Content -->
 <div class="main-content">
@@ -85,71 +45,84 @@ include_once("navbar.php");
                         </div>
                         <div class="card-body">
                             <div class="table-responsive user-table">
-                                <table id="myTable" class="table table-striped display">
-                                    <thead class="'table-row'">
-                                        <th>Sr No.</th>
-                                        <th>Reatiler Name</th>
-                                        <th>Status</th>
-                                        <th>Total Amount ₹</th>
-                                        <th>Total Quantity</th>
-                                        <th>Edit</th>
+                                <table id="myTable" class="table display">
+                                    <thead class="table-row">
+                                        <th scope="col">Sr No.</th>
+                                        <th scope="col">Reatiler Name</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Total Amount ₹</th>
+                                        <th scope="col">Total Quantity</th>
+                                        <th scope="col">Edit</th>
                                     </thead>
-                                    <tbody id="routeList">
+                                    <tbody>
                                         <!-- <td colspan="3">No Elements</td> -->
-                                        <tr>
-                                            <td>1</td>
-                                            <td><a href="retailersOrder.php">Nikul </a></td>
-                                            <td><span class="status-p bg-correct">Delivered</span></td>
-                                            <td>1,1300.00</td>
-                                            <td>34</td>
+                                        <tr id="row-1">
+                                            <th scope="row">1</th>
+                                            <td ><a class="name" href="retailersOrder.php">Nikul </a></td>
+                                            <td ><span class=" status status-p bg-correct">Delivered</span></td>
+                                            <td class="amount">1,1300.00</td>
+                                            <td class="qunatity">34</td>
                                             <td>
-                                                <a href="#" class="btn btn-danger btn-delete btn-sm" id="open">Edit</a>
+                                                <a class="btn btn-sm btn-primary fas fa-pencil-alt noUnderlineCustom text-white" onclick="toggleModal(this, 1)"></a>
+                                                
                                             </td>
-                                            
-
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Nikul1 </td>
-                                            <td><span class="status-p bg-correct">Delivered</span></td>
-                                            <td>1,1300.00</td>
-                                            <td>34</td>
-                                            
-
+                                        <tr id="row-2">
+                                            <th scope="row">2</th>
+                                            <td class="name">Nikul1 </td>
+                                            <td><span class=" status status-p bg-correct">Delivered</span></td>
+                                            <td class="amount">1,1300.00</td>
+                                            <td class="qunatity">34</td>
+                                            <td>
+                                                <a class="btn btn-sm btn-primary fas fa-pencil-alt noUnderlineCustom text-white" onclick="toggleModal(this, 2)"></a>
+                                                <!-- <a onclick="removeRow(this)">Delete</a> -->
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Nikul2 </td>
-                                            <td><span class="status-p bg-inc">No Order</span></td>
-                                            <td>1,1300.00</td>
-                                            <td>34</td>
+                                        <tr id="row-3">
+                                            <th scope="row">3</th>
+                                            <td class="name">Nikul2 </td>
+                                            <td class="status"><span class="status-p bg-inc">No Order</span></td>
+                                            <td class="amount">1,1300.00</td>
+                                            <td class="qunatity">34</td>
                                             <!-- <td><a href="" id="myBtn" > <i data-feather="edit"></i></a></td> -->
-
+                                            <td>
+                                                <a onclick="toggleModal(this, 3)">Edit</a>
+                                                <!-- <a onclick="removeRow(this)">Delete</a> -->
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>Nikul4 </td>
-                                            <td><span class="status-p bg-amber">Pending</span></td>
-                                            <td>1,1300.00</td>
-                                            <td>34</td>
+                                        <tr id="row-4">
+                                            <th scope="row">4</th>
+                                            <td class="name">Nikul4 </td>
+                                            <td class="status"><span class="status-p bg-amber">Pending</span></td>
+                                            <td class="amount">1,1300.00</td>
+                                            <td class="qunatity">34</td>
                                             <!-- <td><a href="" class="open-modal" data-open="modal2"> <i data-feather="edit"></i></a></td> -->
-
+                                            <td>
+                                                <a onclick="toggleModal(this, 4)">Edit</a>
+                                                <!-- <a onclick="removeRow(this)">Delete</a> -->
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Nikul </td>
-                                            <td><span class="status-p bg-amber">Pending</span></td>
-                                            <td>1,1300.00</td>
-                                            <td>34</td>
-
+                                        <tr id="row-5">
+                                            <th scope="row">5</th>
+                                            <td class="name">Nikul </td>
+                                            <td class="status"><span class="status-p bg-amber">Pending</span></td>
+                                            <td class="amount">1,1300.00</td>
+                                            <td class="qunatity">34</td>
+                                            <td>
+                                                <a onclick="toggleModal(this, 5)">Edit</a>
+                                                <!-- <a onclick="removeRow(this)">Delete</a> -->
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Nikul </td>
-                                            <td><span class="status-p bg-grey">Refunded</span></td>
-                                            <td>1,1300.00</td>
-                                            <td>34</td>
-
+                                        <tr id="row-6">
+                                            <th scope="row">6</th>
+                                            <td class="name">Nikul </td>
+                                            <td class="status"><span class="status-p bg-grey">Refunded</span></td>
+                                            <td class="amount">1,1300.00</td>
+                                            <td class="qunatity"> 34</td>
+                                            <td>
+                                                <a onclick="toggleModal(this, 6)">Edit</a>
+                                                <!-- <a onclick="removeRow(this)">Delete</a> -->
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td colspan="3">Total</td>
@@ -162,44 +135,44 @@ include_once("navbar.php");
                         </div>
                     </div>
                 </div>
-                <!-- modal start -->
-                <div id="popup1" class="popup1">
-                    <div class="box">
-                        <span class="close" id="close">&times;</span>
-                        <div class="part-1">
-                            <h3>Order Status</h3>
-                        </div>
-
-                        <form action="" method="">
-                            <div class="form-row">
-                                <div class="content">
-                                    <!-- Any Content -->
-                                </div>
+                <!-- show the order status change side   -->
+                <!-- Creating a popup modal -->
+                <div class="modal" tabindex="-1" role="dialog" id="exampleModal" style="margin-top: 5% ;">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Edit Status</h5>
+                                <button type="button" class="close" onclick="closeModal()" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                            <div class="form-row">
+                            <div class="modal-body">
                                 <div class="form-group">
-                                    <div class="col-md-12 mb-3">
-
-                                        <label class="col-form-label">Status</label>
-                                        <select class="form-control" name="status" id="status" required>
-                                            <option selected disabled value="">Select Status</option>
-                                            <option>Delivered</option>
-                                            <option>Refunded</option>
-                                            <option>Pending</option>
-                                            <option>No Order</option>
-                                            
-                                        </select>
-                                        <div class="invalid-feedback">
-                                            Please select a Valid Status.
-                                        </div>
-                                    </div>
+                                <label class="col-form-label">Status</label>
+                                <select class="form-control" name="status" id="status" required>
+                                    <option selected disabled value="">Select Status</option>
+                                    <option>Delivered</option>
+                                    <option>Pending</option>
+                                    <option>REfunded</option>
+                                    <!-- <option>Deleted</option> -->
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select a Valid Status.
                                 </div>
+                                </div>
+                                
                             </div>
-                            <button type="submit" class="btn btns btn-approve btn-warning" id="close">Update Status</button>
-                        </form>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" onclick="saveInfo()">Save changes</button>
+                                <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <!-- modal ends -->
+                <div class="modal-backdrop fade show modal1" id="backdrop" style="display: none; margin-top:2%;"></div>
+
+                <!-- show the order status change  -->
+
             </div>
         </div>
     </section>
@@ -210,39 +183,51 @@ include_once("navbar.php");
 </div>
 <!-- script for modal  -->
 <script>
-    const btnOpen = document.querySelector('#open');
-    const btnClose = document.querySelector('#close');
+    let tableRowElement;
 
-    const popupContainer = document.querySelector('.popup1');
-    const boxContent = document.querySelector('.content');
+    function toggleModal(element) {
 
-    var modal = document.getElementById('popup1')
+        tableRowElement = element.parentElement.parentElement;
+        let current = document.getElementsByClassName('name')[0].innerHTML;
+        console.log(current)  
+        const name = tableRowElement.getElementsByClassName('name')[0].innerHTML;
+        const status = tableRowElement.getElementsByClassName('status')[0].innerHTML;
 
-    btnOpen.addEventListener('click', () => {
+        // document.getElementById('name').value = name;
+        // document.getElementById('email').value = email;
+        // document.getElementById('phone').value = phone;
+        document.getElementById('status').value = status;
 
-        const component = btnOpen.parentElement.parentElement;
-        console.log(component);
+        openModal();
+    }
 
-        for (let i = 0; i < component.cells.length - 1; i++) {
-            boxContent.innerHTML += component.cells[i].innerHTML + ' ';
-        }
+    function saveInfo() {
+        // const name = document.getElementById('name').value;
+        const status = document.getElementById('status').value;
 
-        // for getting only one element 
-        // let element =1;
-        // boxContent.innerHTML = component.cells[i].innerHTML;
+        // tableRowElement.getElementsByClassName('name')[0].innerHTML = name;
+        tableRowElement.getElementsByClassName('status')[0].innerHTML = status;
 
-        console.log(popupContainer);
-        popupContainer.classList.add('show');
+        closeModal();
+    }
 
-    });
+    function openModal() {
+        document.getElementById("backdrop").style.display = "block"
+        document.getElementById("exampleModal").style.display = "block"
+        document.getElementById("exampleModal").classList.add("show");
+    }
 
-    btnClose.addEventListener('click', () => {
-        popupContainer.classList.remove('show')
-        boxContent.innerHTML = '';
-    });
+    function closeModal() {
+        document.getElementById("backdrop").style.display = "none"
+        document.getElementById("exampleModal").style.display = "none"
+        document.getElementById("exampleModal").classList.remove("show");
+    }
 
-    
+    function removeRow(current) {
+        current.parentElement.parentElement.remove();
+    }
 </script>
+
 <!-- General JS Scripts -->
 <script src="assets/js/app.min.js"></script>
 <!-- JS Libraies -->
