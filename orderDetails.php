@@ -183,7 +183,7 @@
 <script src="assets/js/custom.js"></script>
 <!-- Dashboard Selector -->
 <script src="./js/navbar.js"></script>
-<script src="./js/employeeRoute.js"></script>
+<script src="./js/orderDetails.js"></script>
 </body>
 
 </html>

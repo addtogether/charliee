@@ -39,12 +39,6 @@ function exportTableToExcel(tableID, filename = '') {
     downloadLink.click();
   }
 }
-// year picker 
-$("#datepicker").datepicker({
-  format: "mm-yyyy",
-  startView: "months",
-  minViewMode: "months"
-});
 
 /// draggable row in table 
 var row;
@@ -63,21 +57,3 @@ function dragover() {
   else
     e.target.parentNode.before(row);
 }
-
-// for the side main status change start
-function toggleModal(element) {
-  const id = element.parentElement.parentElement.firstChild.nextElementSibling.nextElementSibling;
-  const name = id.nextElementSibling.firstElementChild;
-  const status = id.nextElementSibling.nextElementSibling.firstElementChild;
-  console.log(id.innerHTML);
-  console.log(name);
-  console.log(status);
-
-  // document.getElementById('name').value = name;
-  document.getElementById('retailerID').value = id.innerHTML;
-  document.getElementById('retailerName').value = name.innerHTML;
-  document.getElementById('status').value = status.innerHTML;
-  document.getElementById('submit').disabled = false;
-}
-
-// for the side main status change end 

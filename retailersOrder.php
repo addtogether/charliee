@@ -177,7 +177,7 @@ include_once("navbar.php");
 <script src="assets/js/custom.js"></script>
 <!-- Dashboard Selector -->
 <script src="./js/navbar.js"></script>
-<script src="./js/employeeRoute.js"></script>
+<script src="./js/retailersOrder.js"></script>
 </body>
 
 </html>
