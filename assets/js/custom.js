@@ -68,7 +68,7 @@ function dragover() {
 function toggleModal(element) {
   const id = element.parentElement.parentElement.firstChild.nextElementSibling.nextElementSibling;
   const name = id.nextElementSibling.firstElementChild;
-  const status = name.nextElementSibling;
+  const status = name.nextElementSibling.firstElementChild;
   console.log(id.innerHTML);
   console.log(name);
   console.log(status);
