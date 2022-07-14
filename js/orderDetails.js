@@ -7,7 +7,7 @@ function toggleModal(element) {
     // console.log(name);
     // console.log(status);
   
-    document.getElementById('retailerID').value = id.innerHTML;
+    document.getElementById('orderID').value = id.innerHTML;
     document.getElementById('retailerName').value = name.innerHTML;
     document.getElementById('status').value = status.innerHTML;
     document.getElementById('submit').disabled = false;

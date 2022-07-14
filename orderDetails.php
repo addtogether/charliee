@@ -23,9 +23,9 @@
     include_once("navbar.php");
     $sql = mysqli_query($conn, "SELECT * FROM orderMaster WHERE id = {$_GET['o']}");
     $row = mysqli_fetch_assoc($sql);
-    $sql1 = mysqli_query($conn, "SELECT * FROM routeMaster WHERE id = {$row['routeID']}");
+    $sql1 = mysqli_query($conn, "SELECT routeName FROM routeMaster WHERE id = {$row['routeID']}");
     $row1 = mysqli_fetch_assoc($sql1);
-    $sql2 = mysqli_query($conn, "SELECT * FROM employeeMaster WHERE id = {$row['employeeID']}");
+    $sql2 = mysqli_query($conn, "SELECT employeeName FROM employeeMaster WHERE id = {$row['employeeID']}");
     $row2 = mysqli_fetch_assoc($sql2);
     $orderDate = explode(" ", $row['orderDate']);
     $orderDate = $orderDate[0];
@@ -53,75 +53,58 @@
                                 <table id="myTable" class="table table-striped display">
                                     <thead class="'table-row'">
                                         <th scope="col">Sr No.</th>
-                                        <th hidden scope="col">Retailer ID</th>
-                                        <th scope="col">Reatiler Name</th>
+                                        <th hidden scope="col">Order ID</th>
+                                        <th scope="col">Retailer Name</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Total Amount ₹</th>
                                         <th scope="col">Total Quantity</th>
                                         <th scope="col">Edit</th>
                                     </thead>
                                     <tbody id="routeList">
-                                        <tr>
-                                            <td scope="row">1</td>
-                                            <td hidden>60</td>
-                                            <td><a href="retailersOrder.php">Nikul</a></td>
-                                            <td><span class="status-p bg-correct">Refunded</span></td>
-                                            <td class="amount">1,1300.00</td>
-                                            <td class="quantity">34</td>
-                                            <td>
-                                                <a onclick="toggleModal(this)" class="btn btn-danger btn-delete btn-sm">Edit</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td scope="row">2</td>
-                                            <td hidden>30</td>
-                                            <td><a href="retailersOrder.php">Nikul23</a></td>
-                                            <td><span class="status-p bg-correct">Returned</span></td>
-                                            <td class="amount">1,1430.00</td>
-                                            <td class="quantity">34</td>
-                                            <td>
-                                                <a onclick="toggleModal(this)" class="btn btn-danger btn-delete btn-sm">Edit</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Nikul2 </td>
-                                            <td><span class="status-p bg-inc">No Order</span></td>
-                                            <td>1,1300.00</td>
-                                            <td>34</td>
-                                            <!-- <td><a href="" id="myBtn" > <i data-feather="edit"></i></a></td> -->
-
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>Nikul4 </td>
-                                            <td><span class="status-p bg-amber">Pending</span></td>
-                                            <td>1,1300.00</td>
-                                            <td>34</td>
-                                            <!-- <td><a href="" class="open-modal" data-open="modal2"> <i data-feather="edit"></i></a></td> -->
-
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Nikul </td>
-                                            <td><span class="status-p bg-amber">Pending</span></td>
-                                            <td>1,1300.00</td>
-                                            <td>34</td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Nikul </td>
-                                            <td><span class="status-p bg-grey">Refunded</span></td>
-                                            <td>1,1300.00</td>
-                                            <td>34</td>
-
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3">Total</td>
-                                            <td>234566.00</td>
-                                            <td>2345</td>
-                                        </tr>
+                                        <?php
+                                            $no = 1;
+                                            $totalAmount = 0;
+                                            $totalQuantity = 0;
+                                            $sql3 = mysqli_query($conn, "SELECT * FROM orderMaster 
+                                            WHERE employeeID = '{$row['employeeID']}' AND orderDate = '{$row['orderDate']}')");
+                                            while($row3 = mysqli_fetch_assoc($sql3)){
+                                                $sql4 = mysqli_query($conn, "SELECT retailerName FROM retailerMaster 
+                                                WHERE id = '{$row3['retailerID']}'");
+                                                $row4 = mysqli_fetch_assoc($sql4);
+                                                echo '<tr>
+                                                        <td scope="row">'.$no++.'</td>
+                                                        <td hidden>'.$row['id'].'</td>
+                                                        <td><a href="retailersOrder.php?o='.$row['id'].'">'.$row4['retailerName'].'</a></td>';
+                                                        if($row['status']=="Delivered"){
+                                                            echo '<td><span class="status-p bg-correct">Delivered</span></td>';
+                                                        }
+                                                        else if($row['status']=="Pending"){
+                                                            echo '<td><span class="status-p bg-amber">Pending</span></td>';
+                                                        }
+                                                        else if($row['status']=="Rejected"){
+                                                            echo '<td><span class="status-p bg-inc">Rejected</span></td>';
+                                                        }
+                                                        else if($row['status']=="Refunded"){
+                                                            echo '<td><span class="status-p bg-lime">Refunded</span></td>';
+                                                        }
+                                                        else{
+                                                            echo '<td><span class="status-p bg-grey">Deffered</span></td>';
+                                                        }
+                                                        $totalAmount += $row3['totalAmount'];
+                                                        $totalQuantity += $row3['totalQuantity'];
+                                                        echo '<td class="amount">'.$row3['totalAmount'].'</td>
+                                                                <td class="quantity">'.$row3['totalQuantity'].'</td>
+                                                                <td>
+                                                                    <a onclick="toggleModal(this)" class="btn btn-danger btn-delete btn-sm">Edit</a>
+                                                                </td>
+                                                        </tr>';
+                                            }
+                                            echo '<tr>
+                                                    <td colspan="3">Total</td>
+                                                    <td>'.$totalAmount.'</td>
+                                                    <td>'.$totalQuantity.'</td>
+                                            </tr>';
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -138,7 +121,7 @@
                             <!-- <div class="content" style="font-size:15px; font-weight :600; color:red;"></div> -->
                             <form action="" class="needs-validation">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="retailerID" id="retailerID" hidden>
+                                    <input type="text" class="form-control" name="orderID" id="orderID" hidden>
                                     <input type="text" class="form-control" name="retailerName" id="retailerName" placeholder="Retailer Name" disabled>
                                 </div>
                                 <div class="form-group">
@@ -147,8 +130,9 @@
                                         <option selected disabled value="">Select Status</option>
                                         <option>Delivered</option>
                                         <option>Pending</option>
-                                        <option>No Order</option>
+                                        <option>Rejected</option>
                                         <option>Refunded</option>
+                                        <option>Deffered</option>
                                     </select>
                                     <div class="invalid-feedback">
                                         Please select a Valid Status.
