@@ -19,18 +19,16 @@
 </head>
 
 <?php
-require_once("./includes/connection.php");
-include_once("navbar.php");
-$sql = mysqli_query($conn, "SELECT * FROM orderMaster WHERE id = {$_GET['o']}");
-$row = mysqli_fetch_assoc($sql);
-$sql1 = mysqli_query($conn, "SELECT * FROM routeMaster WHERE id = {$row['routeID']}");
-$row1 = mysqli_fetch_assoc($sql1);
-$sql2 = mysqli_query($conn, "SELECT * FROM retailerMaster WHERE id = {$row['retailerID']}");
-$row2 = mysqli_fetch_assoc($sql2);
-$sql3 = mysqli_query($conn, "SELECT * FROM employeeMaster WHERE id = {$row['employeeID']}");
-$row3 = mysqli_fetch_assoc($sql3);
-$orderDate = explode(",", $row['orderDate']);
-$orderDate = $orderDate[0];
+    require_once("./includes/connection.php");
+    include_once("navbar.php");
+    $sql = mysqli_query($conn, "SELECT * FROM orderMaster WHERE id = {$_GET['o']}");
+    $row = mysqli_fetch_assoc($sql);
+    $sql1 = mysqli_query($conn, "SELECT * FROM routeMaster WHERE id = {$row['routeID']}");
+    $row1 = mysqli_fetch_assoc($sql1);
+    $sql2 = mysqli_query($conn, "SELECT * FROM employeeMaster WHERE id = {$row['employeeID']}");
+    $row2 = mysqli_fetch_assoc($sql2);
+    $orderDate = explode(" ", $row['orderDate']);
+    $orderDate = $orderDate[0];
 ?>
 
 <!-- Main Content -->
@@ -41,7 +39,7 @@ $orderDate = $orderDate[0];
                 <div class="col-md-9 col-lg-9 col-xl-9">
                     <div class="card">
                         <div class="card-header">
-                            <h4><?php echo $row3['employeeName']; ?></h4>
+                            <h4><?php echo $row2['employeeName']; ?></h4>
                             <div class="verticalLine">
                                 <h4><?php echo $row1['routeName']; ?></h4>
                             </div>
@@ -62,11 +60,10 @@ $orderDate = $orderDate[0];
                                         <th scope="col">Edit</th>
                                     </thead>
                                     <tbody id="routeList">
-                                        <!-- <td colspan="3">No Elements</td> -->
                                         <tr id="row-1">
                                             <th scope="row">1</th>
                                             <td><a class="name" href="retailersOrder.php">Nikul</a></td>
-                                            <td><span class=" status status-p bg-correct">Delivered</span></td>
+                                            <td><span class=" status status-p bg-correct">Refunded</span></td>
                                             <td class="amount">1,1300.00</td>
                                             <td class="quantity">34</td>
                                             <td>
@@ -76,7 +73,7 @@ $orderDate = $orderDate[0];
                                         <tr id="row-1">
                                             <th scope="row">2</th>
                                             <td><a class="name" href="retailersOrder.php">Nikul12</a></td>
-                                            <td><span class=" status status-p bg-correct">Delivered</span></td>
+                                            <td><span class=" status status-p bg-correct">Pending</span></td>
                                             <td class="amount">1,1300.00</td>
                                             <td class="quantity">34</td>
                                             <td>
