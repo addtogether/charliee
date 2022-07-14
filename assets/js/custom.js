@@ -66,29 +66,18 @@ function dragover() {
 
 // for the side main status change start
 function toggleModal(element) {
-  let tableRowElement;
-  tableRowElement = element.parentElement.parentElement;
-  const name = tableRowElement.getElementsByClassName('name')[0].innerHTML;
-  const status = tableRowElement.getElementsByClassName('status')[0].innerHTML;
-  console.log(name);
-  console.log(status);
+  const id = element.parentElement.parentElement.firstChild.nextElementSibling;
+  const name = id.nextElementSibling;
+  const status = name.nextElementSibling;
+  console.log(id.innerHTML);
+  console.log(name.innerHTML);
+  console.log(status.innerHTML);
 
   // document.getElementById('name').value = name;
-  document.getElementById('status').value = status;
-
-  const boxContent = document.querySelector('.content');
-  console.log(boxContent);
-  boxContent.innerHTML = name;
-  console.log(boxContent);
-}
-
-function saveInfo(element) {
-
-  let tableRowElement;
-  tableRowElement = element.parentElement.parentElement;
-  const status = document.getElementById('status').value;
-  tableRowElement.getElementsByClassName('status')[0].innerHTML = status;
-
+  document.getElementById('retailerID').value = id.innerHTML;
+  document.getElementById('retailerName').value = name.innerHTML;
+  document.getElementById('status').value = status.innerHTML;
+  document.getElementById('submit').disabled = false;
 }
 
 // for the side main status change end 

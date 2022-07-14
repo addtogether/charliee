@@ -53,6 +53,7 @@
                                 <table id="myTable" class="table table-striped display">
                                     <thead class="'table-row'">
                                         <th scope="col">Sr No.</th>
+                                        <th hidden scope="col">Retailer ID</th>
                                         <th scope="col">Reatiler Name</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Total Amount ₹</th>
@@ -60,24 +61,26 @@
                                         <th scope="col">Edit</th>
                                     </thead>
                                     <tbody id="routeList">
-                                        <tr id="row-1">
-                                            <th scope="row">1</th>
-                                            <td><a class="name" href="retailersOrder.php">Nikul</a></td>
-                                            <td><span class=" status status-p bg-correct">Refunded</span></td>
+                                        <tr>
+                                            <td scope="row">1</td>
+                                            <td hidden>60</td>
+                                            <td><a href="retailersOrder.php">Nikul</a></td>
+                                            <td><span class="status-p bg-correct">Refunded</span></td>
                                             <td class="amount">1,1300.00</td>
                                             <td class="quantity">34</td>
                                             <td>
-                                                <a onclick="toggleModal(this, 1)" class="btn btn-danger btn-delete btn-sm">Edit</a>
+                                                <a onclick="toggleModal(this)" class="btn btn-danger btn-delete btn-sm">Edit</a>
                                             </td>
                                         </tr>
-                                        <tr id="row-1">
-                                            <th scope="row">2</th>
-                                            <td><a class="name" href="retailersOrder.php">Nikul12</a></td>
-                                            <td><span class=" status status-p bg-correct">Pending</span></td>
-                                            <td class="amount">1,1300.00</td>
+                                        <tr>
+                                            <td scope="row">2</td>
+                                            <td hidden>30</td>
+                                            <td><a href="retailersOrder.php">Nikul23</a></td>
+                                            <td><span class="status-p bg-correct">Returned</span></td>
+                                            <td class="amount">1,1430.00</td>
                                             <td class="quantity">34</td>
                                             <td>
-                                                <a onclick="toggleModal(this, 1)" class="btn btn-danger btn-delete btn-sm">Edit</a>
+                                                <a onclick="toggleModal(this)" class="btn btn-danger btn-delete btn-sm">Edit</a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -132,9 +135,13 @@
                             <h5>Order Status</h5>
                         </div>
                         <div class="card-body">
-                            <div class="content" style="font-size:15px; font-weight :600; color:red;">
-                            </div>
-                            <div class="form">
+                            <!-- <div class="content" style="font-size:15px; font-weight :600; color:red;"></div> -->
+                            <form action="" class="needs-validation">
+                                <div class="form-group">
+                                    <label for="retailerName">Retailer Name</label>
+                                    <input type="text" class="form-control" name="retailerID" id="retailerID" hidden>
+                                    <input type="text" class="form-control" name="retailerName" id="retailerName" placeholder="Retailer Name" disabled>
+                                </div>
                                 <div class="form-group">
                                     <label for="status" class="col-form-label">Status</label>
                                     <select class="form-control" name="status" id="status" required>
@@ -148,8 +155,8 @@
                                         Please select a Valid Status.
                                     </div>
                                 </div>
-                                <button class="btn btn-primary mb-3" id="submit" type="submit"  formnovalidate>Save</button>
-                            </div>
+                                <button class="btn btn-primary mb-3" id="submit" type="submit" formnovalidate disabled>Change Status</button>
+                            </form>
                         </div>
                     </div>
                 </div>
