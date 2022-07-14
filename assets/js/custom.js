@@ -67,8 +67,8 @@ function dragover() {
 // for the side main status change start
 function toggleModal(element) {
   const id = element.parentElement.parentElement.firstChild.nextElementSibling;
-  const name = id.nextElementSibling.firstChild;
-  const status = name.nextElementSibling.firstChild;
+  const name = id.nextElementSibling;
+  const status = name.nextElementSibling;
   console.log(id.innerHTML);
   console.log(name);
   console.log(status);
