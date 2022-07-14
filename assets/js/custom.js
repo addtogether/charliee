@@ -67,11 +67,11 @@ function dragover() {
 // for the side main status change start
 function toggleModal(element) {
   const id = element.parentElement.parentElement.firstChild.nextElementSibling;
-  const name = id.nextElementSibling.nextSibling;
-  const status = name.nextElementSibling.nextSibling;
+  const name = id.nextElementSibling.nextElementSibling;
+  const status = name.nextElementSibling.nextElementSibling;
   console.log(id.innerHTML);
-  console.log(name.innerHTML);
-  console.log(status.innerHTML);
+  console.log(name);
+  console.log(status);
 
   // document.getElementById('name').value = name;
   document.getElementById('retailerID').value = id.innerHTML;
