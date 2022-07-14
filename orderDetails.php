@@ -138,7 +138,6 @@
                             <!-- <div class="content" style="font-size:15px; font-weight :600; color:red;"></div> -->
                             <form action="" class="needs-validation">
                                 <div class="form-group">
-                                    <label for="retailerName">Retailer Name</label>
                                     <input type="text" class="form-control" name="retailerID" id="retailerID" hidden>
                                     <input type="text" class="form-control" name="retailerName" id="retailerName" placeholder="Retailer Name" disabled>
                                 </div>
