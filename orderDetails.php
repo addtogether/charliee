@@ -73,8 +73,8 @@
                                                 $row4 = mysqli_fetch_assoc($sql4);
                                                 echo '<tr>
                                                         <td scope="row">'.$no++.'</td>
-                                                        <td hidden>'.$row['id'].'</td>
-                                                        <td><a href="retailersOrder.php?o='.$row['id'].'">'.$row4['retailerName'].'</a></td>';
+                                                        <td hidden>'.$row3['id'].'</td>
+                                                        <td><a href="retailersOrder.php?o='.$row3['id'].'">'.$row4['retailerName'].'</a></td>';
                                                         if($row['status']=="Delivered"){
                                                             echo '<td><span class="status-p bg-correct">Delivered</span></td>';
                                                         }
