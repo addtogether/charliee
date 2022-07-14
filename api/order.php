@@ -6,6 +6,8 @@
     $decoded = json_decode($content, true);
 
     if(isset($decoded)){
+        $time = time();
+        file_put_contents("../files/route/".$time.".json", $decoded);
         $flag = true;
         foreach($decoded as $x => $val) {
             // var_dump($val);
