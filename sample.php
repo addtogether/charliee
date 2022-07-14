@@ -8,7 +8,7 @@
     <!-- General CSS Files -->
     <link rel="stylesheet" href="assets/css/app.min.css">
     <link rel="stylesheet" href="assets/bundles/summernote/summernote-bs4.css">
-    <!-- <link rel="stylesheet" href="assets/bundles/jquery-selectric/selectric.css"> -->
+    <link rel="stylesheet" href="assets/bundles/jquery-selectric/selectric.css">
     <link rel="stylesheet" href="assets/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
     <!-- Template CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
@@ -16,22 +16,14 @@
     <!-- Custom style CSS -->
     <link rel="stylesheet" href="assets/css/custom.css">
     <link rel='shortcut icon' type='image/x-icon' href='assets/img/favicon.ico' />
+    <!-- <script src="assets/js/custom.js"></script> -->
 </head>
 
 <?php
 require_once("./includes/connection.php");
 include_once("navbar.php");
-$sql = mysqli_query($conn, "SELECT * FROM orderMaster WHERE id = {$_GET['o']}");
-$row = mysqli_fetch_assoc($sql);
-$sql1 = mysqli_query($conn, "SELECT * FROM routeMaster WHERE id = {$row['routeID']}");
-$row1 = mysqli_fetch_assoc($sql1);
-$sql2 = mysqli_query($conn, "SELECT * FROM retailerMaster WHERE id = {$row['retailerID']}");
-$row2 = mysqli_fetch_assoc($sql2);
-$sql3 = mysqli_query($conn, "SELECT * FROM employeeMaster WHERE id = {$row['employeeID']}");
-$row3 = mysqli_fetch_assoc($sql3);
-$orderDate = explode(",", $row['orderDate']);
-$orderDate = $orderDate[0];
 ?>
+
 
 <!-- Main Content -->
 <div class="main-content">
@@ -41,22 +33,24 @@ $orderDate = $orderDate[0];
                 <div class="col-md-9 col-lg-9 col-xl-9">
                     <div class="card">
                         <div class="card-header">
-                            <h4><?php echo $row3['employeeName']; ?></h4>
+                            <h4>Vishal Kumar</h4>
                             <div class="verticalLine">
-                                <h4><?php echo $row1['routeName']; ?></h4>
+                                <h4>Dadar East</h4>
                             </div>
                             <div class="verticalLine">
-                                <h4><?php echo $orderDate; ?></h4>
+                                <h4>11/5/2022</h4>
                             </div>
-
+                            <div class="verticalLine">
+                                <h4>XYZ Company</h4>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive user-table">
-                                <table id="myTable" class="table table-striped display">
-                                    <thead class="'table-row'">
+                                <table id="myTable" class="table display">
+                                    <thead>
                                         <th scope="col">Sr No.</th>
-                                        <th scope="col">Reatiler Name</th>
-                                        <th scope="col">Status</th>
+                                        <th scope="col">Product Name</th>
+                                        <th scope="col">Order Status</th>
                                         <th scope="col">Total Amount ₹</th>
                                         <th scope="col">Total Quantity</th>
                                         <th scope="col">Edit</th>
@@ -65,45 +59,51 @@ $orderDate = $orderDate[0];
                                         <!-- <td colspan="3">No Elements</td> -->
                                         <tr id="row-1">
                                             <th scope="row">1</th>
-                                            <td><a class="name" href="retailersOrder.php">Nikul</a></td>
+                                            <td class="name">Peanut Chikki</td>
                                             <td><span class=" status status-p bg-correct">Delivered</span></td>
                                             <td class="amount">1,1300.00</td>
-                                            <td class="quantity">34</td>
+                                            <td class="qauntity">34</td>
                                             <td>
-                                                <a onclick="toggleModal(this, 1)" class="btn btn-danger btn-delete btn-sm">Edit</a>
+                                                <a onclick="toggleModal(this, 1)" class="btn btn-danger btn-delete btn-sm" >Edit</a>
                                             </td>
-                                        </tr>
-                                        <tr id="row-1">
-                                            <th scope="row">2</th>
-                                            <td><a class="name" href="retailersOrder.php">Nikul12</a></td>
-                                            <td><span class=" status status-p bg-correct">Delivered</span></td>
-                                            <td class="amount">1,1300.00</td>
-                                            <td class="quantity">34</td>
-                                            <td>
-                                                <a onclick="toggleModal(this, 1)" class="btn btn-danger btn-delete btn-sm">Edit</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Nikul2 </td>
-                                            <td><span class="status-p bg-inc">No Order</span></td>
-                                            <td>1,1300.00</td>
-                                            <td>34</td>
-                                            <!-- <td><a href="" id="myBtn" > <i data-feather="edit"></i></a></td> -->
 
                                         </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>Nikul4 </td>
-                                            <td><span class="status-p bg-amber">Pending</span></td>
-                                            <td>1,1300.00</td>
-                                            <td>34</td>
-                                            <!-- <td><a href="" class="open-modal" data-open="modal2"> <i data-feather="edit"></i></a></td> -->
+                                        <tr id = "row-2">
+                                            <th scope="row">1</th>
+                                            <td class="name">Peanut202 Chikki</td>
+                                            <td><span class="status status-p bg-correct">Delivered</span></td>
+                                            <td class="amount">1,1300.00</td>
+                                            <td class="qauntity">34</td>
+                                            <td>
+                                                <a onclick="toggleModal(this, 2)" class="btn btn-danger btn-delete btn-sm" >Edit</a>
+                                            </td>
+
+                                        </tr>
+                                        <tr id="row-3">
+                                            <th scope="row">1</th>
+                                            <td class="name">Pani Puri</td>
+                                            <td><span class=" status status-p bg-correct">Delivered</span></td>
+                                            <td class="amount">1,1300.00</td>
+                                            <td class="qauntity">34</td>
+                                            <td>
+                                                <a onclick="toggleModal(this, 3)" class="btn btn-danger btn-delete btn-sm" >Edit</a>
+                                            </td>
+
+                                        </tr>
+                                        <tr id = "row-4">
+                                            <th scope="row">1</th>
+                                            <td class="name">Peanut Chikki</td>
+                                            <td><span class=" status status-p bg-amber">Pending</span></td>
+                                            <td class="amount">1,1300.00</td>
+                                            <td class="qauntity">34</td>
+                                            <td>
+                                                <a onclick="toggleModal(this, 4)" class="btn btn-danger btn-delete btn-sm" >Edit</a>
+                                            </td>
 
                                         </tr>
                                         <tr>
                                             <td>1</td>
-                                            <td>Nikul </td>
+                                            <td>Peanut Chikki</td>
                                             <td><span class="status-p bg-amber">Pending</span></td>
                                             <td>1,1300.00</td>
                                             <td>34</td>
@@ -111,7 +111,7 @@ $orderDate = $orderDate[0];
                                         </tr>
                                         <tr>
                                             <td>1</td>
-                                            <td>Nikul </td>
+                                            <td>Peanut Chikki</td>
                                             <td><span class="status-p bg-grey">Refunded</span></td>
                                             <td>1,1300.00</td>
                                             <td>34</td>
@@ -128,6 +128,7 @@ $orderDate = $orderDate[0];
                         </div>
                     </div>
                 </div>
+
                 <!-- sidebar status change   -->
                 <div class="col-md-3 col-lg-3 col-xl-3">
                     <div class="card">
@@ -138,20 +139,19 @@ $orderDate = $orderDate[0];
                             <div class="content" style="font-size:15px; font-weight :600; color:red;">
                             </div>
                             <div class="form">
-                                <div class="form-group">
-                                    <label for="status" class="col-form-label">Status</label>
-                                    <select class="form-control" name="status" id="status" required>
-                                        <option selected disabled value="">Select Status</option>
-                                        <option>Delivered</option>
-                                        <option>Pending</option>
-                                        <option>No Order</option>
-                                        <option>Refunded</option>
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        Please select a Valid Status.
-                                    </div>
+                            <div class="form-group">
+                                <label for="status" class="col-form-label">Status</label>
+                                <select class="form-control" name="status" id="status" required>
+                                    <option selected disabled value="">Select Status</option>
+                                    <option>Delivered</option>
+                                    <option>Pending</option>
+                                    <option>Refunded</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select a Valid Status.
                                 </div>
-                                <button class="btn btn-primary mb-3" id="submit" type="submit"  formnovalidate>Save</button>
+                            </div>
+                            <button class="btn btn-primary mb-3" id= "submit" type="submit"  formnovalidate>Save</button>
                             </div>
                         </div>
                     </div>
@@ -165,6 +165,35 @@ $orderDate = $orderDate[0];
     include_once("settings.php");
     ?>
 </div>
+<!-- script for modal  -->
+<script>
+    function toggleModal(element) {
+        let tableRowElement;
+        tableRowElement = element.parentElement.parentElement;
+        const name = tableRowElement.getElementsByClassName('name')[0].innerHTML;
+        const status = tableRowElement.getElementsByClassName('status')[0].innerHTML;
+        console.log(name);
+        console.log(status);
+
+     
+        document.getElementById('status').value = status;
+
+        const boxContent = document.querySelector('.content');
+        console.log(boxContent);
+        boxContent.innerHTML = name ;
+        console.log(boxContent);
+
+
+    }
+
+    // function saveInfo(){
+    //     const status = document.getElementById('status').value;
+    //     tableRowElement.getElementsByClassName('status')[0].innerHTML = status;
+
+        
+    // }
+</script>
+
 <!-- General JS Scripts -->
 <script src="assets/js/app.min.js"></script>
 <!-- JS Libraies -->
@@ -177,7 +206,7 @@ $orderDate = $orderDate[0];
 <!-- Template JS File -->
 <script src="assets/js/scripts.js"></script>
 <!-- Custom JS File -->
-<script src="assets/js/custom.js"></script>
+<!-- <script src="assets/js/custom.js"></script> -->
 <!-- Dashboard Selector -->
 <script src="./js/navbar.js"></script>
 <script src="./js/employeeRoute.js"></script>
