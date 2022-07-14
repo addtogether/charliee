@@ -66,7 +66,7 @@
                                             $totalAmount = 0;
                                             $totalQuantity = 0;
                                             $sql3 = mysqli_query($conn, "SELECT * FROM orderMaster 
-                                            WHERE employeeID = '{$row['employeeID']}' AND orderDate = '{$row['orderDate']}')");
+                                            WHERE employeeID = '{$row['employeeID']}' AND DATE(orderDate) = '{$orderDate}')");
                                             while($row3 = mysqli_fetch_assoc($sql3)){
                                                 $sql4 = mysqli_query($conn, "SELECT retailerName FROM retailerMaster 
                                                 WHERE id = '{$row3['retailerID']}'");
