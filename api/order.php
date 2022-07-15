@@ -27,11 +27,13 @@
                     $flag = true;
                 }
                 else{
+                    echo "sql error".mysqli_error($conn);
                     $flag = false;
                     break;
                 } 
             }
             else{
+                echo "sql error".mysqli_error($conn);
                 $flag = false;
                 break;
             }
