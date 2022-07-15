@@ -11,7 +11,7 @@
         $flag = true;
         foreach($decoded as $x => $val) {
             // var_dump($val);
-            echo "\n".$val["m"];
+            // echo "\n".$val["m"];
             $sql = mysqli_query($conn, $val["m"]);
             if($sql){
                 $last_inserted = mysqli_insert_id($conn); // return last inserted id
@@ -22,19 +22,19 @@
                     $query .= "(".$last_inserted.", ".$columns.")";
                     $query .= ($index == $len - 1) ? "" : ", \n";
                 }
-                echo $query;
+                // echo $query;
                 $sql1 = mysqli_query($conn, $query);
                 if($sql1){
                     $flag = true;
                 }
                 else{
-                    echo "sql error".mysqli_error($conn);
+                    // echo "sql error".mysqli_error($conn);
                     $flag = false;
                     break;
                 } 
             }
             else{
-                echo "sql error".mysqli_error($conn);
+                // echo "sql error".mysqli_error($conn);
                 $flag = false;
                 break;
             }
