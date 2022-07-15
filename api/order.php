@@ -7,7 +7,7 @@
 
     if(isset($decoded)){
         $time = time();
-        file_put_contents("../files/order/".$time.".json", $decoded);
+        file_put_contents("../files/order/".$time.".json", $content);
         $flag = true;
         foreach($decoded as $x => $val) {
             // var_dump($val);
