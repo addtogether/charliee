@@ -47,9 +47,9 @@
             // echo strval($sql);
             if(mysqli_num_rows($sql) != 0){
                 $row = mysqli_fetch_assoc($sql);
-                $sql1 = mysqli_query($conn, "SELECT IMEI FROM employeeMaster WHERE mobileNumber = {$decoded['username']}'");
-                $row1 = mysqli_fetch_assoc($sql1);
-                $row["IMEI"] = $row1["IMEI"];
+                // $sql1 = mysqli_query($conn, "SELECT IMEI FROM employeeMaster WHERE mobileNumber = {$decoded['username']}'");
+                // $row1 = mysqli_fetch_assoc($sql1);
+                // $row["IMEI"] = $row1["IMEI"];
                 $check = password_verify($decoded['password'], $row['password']);
                 if(mysqli_num_rows($sql) != 0 && $check){
                     if($row['status']=="ON"){
