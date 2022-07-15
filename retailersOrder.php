@@ -49,7 +49,7 @@
                                 <h4><?php echo $orderDate; ?></h4>
                             </div>
                             <div class="verticalLine">
-                                <h4><?php echo $row2['retailerName']; ?></h4>
+                                <h4><?php echo $row3['retailerName']; ?></h4>
                             </div>
                         </div>
                         <div class="card-body">
@@ -69,34 +69,34 @@
                                             $no = 1;
                                             $totalAmount = 0;
                                             $totalQuantity = 0;
-                                            $sql3 = mysqli_query($conn, "SELECT * FROM orderDetails WHERE orderID = '{$row['id']}'");
-                                            while($row3 = mysqli_fetch_assoc($sql3)){
-                                                $sql4 = mysqli_query($conn, "SELECT productName FROM productMaster 
-                                                WHERE id = '{$row3['productID']}'");
-                                                $row4 = mysqli_fetch_assoc($sql4);
+                                            $sql4 = mysqli_query($conn, "SELECT * FROM orderDetails WHERE orderID = '{$row['id']}'");
+                                            while($row4 = mysqli_fetch_assoc($sql4)){
+                                                $sql5 = mysqli_query($conn, "SELECT productName FROM productMaster 
+                                                WHERE id = '{$row4['productID']}'");
+                                                $row5 = mysqli_fetch_assoc($sql5);
                                                 echo '<tr>
                                                         <td scope="row">'.$no++.'</td>
-                                                        <td hidden>'.$row3['id'].'</td>
-                                                        <td>'.$row4['productName'].'</td>';
+                                                        <td hidden>'.$row4['id'].'</td>
+                                                        <td>'.$row5['productName'].'</td>';
                                                         if($row3['status']=="Delivered"){
                                                             echo '<td><span class="status-p bg-correct">Delivered</span></td>';
                                                         }
-                                                        else if($row3['status']=="Pending"){
+                                                        else if($row4['status']=="Pending"){
                                                             echo '<td><span class="status-p bg-amber">Pending</span></td>';
                                                         }
-                                                        else if($row3['status']=="Rejected"){
+                                                        else if($row4['status']=="Rejected"){
                                                             echo '<td><span class="status-p bg-inc">Rejected</span></td>';
                                                         }
-                                                        else if($row3['status']=="Returned"){
+                                                        else if($row4['status']=="Returned"){
                                                             echo '<td><span class="status-p bg-lime">Returned</span></td>';
                                                         }
                                                         else{
                                                             echo '<td><span class="status-p bg-grey">Deffered</span></td>';
                                                         }
-                                                        $totalAmount += $row3['amount'];
-                                                        $totalQuantity += $row3['quantity'];
-                                                        echo '<td class="amount">'.$row3['amount'].'</td>
-                                                                <td class="quantity">'.$row3['quantity'].'</td>
+                                                        $totalAmount += $row4['amount'];
+                                                        $totalQuantity += $row4['quantity'];
+                                                        echo '<td class="amount">'.$row4['amount'].'</td>
+                                                                <td class="quantity">'.$row4['quantity'].'</td>
                                                                 <td>
                                                                     <a onclick="toggleModal(this)" class="btn btn-danger btn-delete btn-sm">Edit</a>
                                                                 </td>
