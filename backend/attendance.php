@@ -20,7 +20,7 @@
                             <td>
                                 <div class="support-ticket">
                                     <a href="./files/route/'.$row1['startRoutePhoto'].'" target="_blank">
-                                    <img src="./files/route/'.$row1['startRoutePhoto'].'" class="user-img " alt="">
+                                    <img src="./files/route/'.$row1['startRoutePhoto'].'" class="user-img " alt="" loading="lazy">
                                     </a>
                                 </div>
                             </td>';
@@ -30,7 +30,7 @@
                                         <td>
                                             <div class="support-ticket">
                                                 <a href="./files/route/'.$row1['endRoutePhoto'].'" target="_blank">
-                                                <img src="./files/route/'.$row1['endRoutePhoto'].'" class="user-img " alt="">
+                                                <img src="./files/route/'.$row1['endRoutePhoto'].'" class="user-img " alt="" loading="lazy">
                                                 </a>
                                             </div>
                                         </td>';
