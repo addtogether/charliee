@@ -75,16 +75,16 @@
                                                         <td scope="row">'.$no++.'</td>
                                                         <td hidden>'.$row3['id'].'</td>
                                                         <td><a href="retailersOrder.php?o='.$row3['id'].'">'.$row4['retailerName'].'</a></td>';
-                                                        if($row['status']=="Delivered"){
+                                                        if($row3['status']=="Delivered"){
                                                             echo '<td><span class="status-p bg-correct">Delivered</span></td>';
                                                         }
-                                                        else if($row['status']=="Pending"){
+                                                        else if($row3['status']=="Pending"){
                                                             echo '<td><span class="status-p bg-amber">Pending</span></td>';
                                                         }
-                                                        else if($row['status']=="Rejected"){
+                                                        else if($row3['status']=="Rejected"){
                                                             echo '<td><span class="status-p bg-inc">Rejected</span></td>';
                                                         }
-                                                        else if($row['status']=="Refunded"){
+                                                        else if($row3['status']=="Refunded"){
                                                             echo '<td><span class="status-p bg-lime">Refunded</span></td>';
                                                         }
                                                         else{
