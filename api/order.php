@@ -15,11 +15,11 @@
             $sql = mysqli_query($conn, $val["m"]);
             if($sql){
                 $last_inserted = mysqli_insert_id($conn); // return last inserted id
-                $query = "INSERT INTO orderDetails (orderID, productID, quantity, amount, status) VALUES (";
+                $query = "INSERT INTO orderDetails (orderID, productID, quantity, amount, status) VALUES ";
                 $len = count($val["d"]);
                 foreach($val["d"] as $index => $columns){
                     // echo "\n".$columns;
-                    $query .= $last_inserted.", ".$columns.")";
+                    $query .= "(".$last_inserted.", ".$columns.")";
                     $query .= ($index == $len - 1) ? "" : ", \n";
                 }
                 echo $query;
