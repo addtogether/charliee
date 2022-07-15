@@ -93,10 +93,10 @@
                                                         else{
                                                             echo '<td><span class="status-p bg-grey">Deffered</span></td>';
                                                         }
-                                                        $totalAmount += $row3['totalAmount'];
-                                                        $totalQuantity += $row3['totalQuantity'];
-                                                        echo '<td class="amount">'.$row3['totalAmount'].'</td>
-                                                                <td class="quantity">'.$row3['totalQuantity'].'</td>
+                                                        $totalAmount += $row3['amount'];
+                                                        $totalQuantity += $row3['quantity'];
+                                                        echo '<td class="amount">'.$row3['amount'].'</td>
+                                                                <td class="quantity">'.$row3['quantity'].'</td>
                                                                 <td>
                                                                     <a onclick="toggleModal(this)" class="btn btn-danger btn-delete btn-sm">Edit</a>
                                                                 </td>
