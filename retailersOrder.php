@@ -19,8 +19,18 @@
 </head>
 
 <?php
-require_once("./includes/connection.php");
-include_once("navbar.php");
+    require_once("./includes/connection.php");
+    include_once("navbar.php");
+    $sql = mysqli_query($conn, "SELECT * FROM orderMaster WHERE id = {$_GET['o']}");
+    $row = mysqli_fetch_assoc($sql);
+    $sql1 = mysqli_query($conn, "SELECT routeName FROM routeMaster WHERE id = {$row['routeID']}");
+    $row1 = mysqli_fetch_assoc($sql1);
+    $sql2 = mysqli_query($conn, "SELECT employeeName FROM employeeMaster WHERE id = {$row['employeeID']}");
+    $row2 = mysqli_fetch_assoc($sql2);
+    $sql3 = mysqli_query($conn, "SELECT retailerName FROM retailerMaster WHERE id = {$row['retailerID']}");
+    $row3 = mysqli_fetch_assoc($sql3);
+    $orderDate = explode(" ", $row['orderDate']);
+    $orderDate = $orderDate[0];
 ?>
 
 <!-- Main Content -->
@@ -31,15 +41,15 @@ include_once("navbar.php");
                 <div class="col-md-9 col-lg-9 col-xl-9">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Vishal Kumar</h4>
+                            <h4><?php echo $row2['employeeName']; ?></h4>
                             <div class="verticalLine">
-                                <h4>Dadar East</h4>
+                                <h4><?php echo $row1['routeName']; ?></h4>
                             </div>
                             <div class="verticalLine">
-                                <h4>11/5/2022</h4>
+                                <h4><?php echo $orderDate; ?></h4>
                             </div>
                             <div class="verticalLine">
-                                <h4>XYZ Company</h4>
+                                <h4><?php echo $row2['retailerName']; ?></h4>
                             </div>
                         </div>
                         <div class="card-body">
@@ -47,6 +57,7 @@ include_once("navbar.php");
                                 <table id="myTable" class="table table-striped display">
                                     <thead>
                                         <th scope="col">Sr No.</th>
+                                        <th hidden scope="col">Order Detail ID</th>
                                         <th scope="col">Product Name</th>
                                         <th scope="col">Order Status</th>
                                         <th scope="col">Total Amount ₹</th>
@@ -54,70 +65,49 @@ include_once("navbar.php");
                                         <th scope="col">Edit</th>
                                     </thead>
                                     <tbody id="routeList">
-                                        <!-- <td colspan="3">No Elements</td> -->
-                                        <tr id="row-1">
-                                            <th scope="row">1</th>
-                                            <td class="name">Peanut Chikki</td>
-                                            <td><span class="status status-p bg-correct">Delivered</span></td>
-                                            <td class="amount">1,1300.00</td>
-                                            <td class="quantity">34</td>
-                                            <td>
-                                                <a onclick="toggleModal(this, 1)" class="btn btn-danger btn-delete btn-sm">Edit</a>
-                                            </td>
-
-                                        </tr>
-                                        <tr id="row-2">
-                                            <th scope="row">1</th>
-                                            <td class="name">Peanut202 Chikki</td>
-                                            <td><span class=" status status-p bg-correct">Delivered</span></td>
-                                            <td class="amount">1,1300.00</td>
-                                            <td class="quantity">34</td>
-                                            <td>
-                                                <a onclick="toggleModal(this, 2)" class="btn btn-danger btn-delete btn-sm">Edit</a>
-                                            </td>
-                                        </tr>
-                                        <tr id="row-3">
-                                            <th scope="row">1</th>
-                                            <td class="name">Pani Chikki</td>
-                                            <td><span class=" status status-p bg-correct">Delivered</span></td>
-                                            <td class="amount">1,1300.00</td>
-                                            <td class="quantity">34</td>
-                                            <td>
-                                                <a onclick="toggleModal(this, 3)" class="btn btn-danger btn-delete btn-sm">Edit</a>
-                                            </td>
-                                        </tr>
-                                        <tr id="row-3">
-                                            <th scope="row">1</th>
-                                            <td class="name">Peanut Chikki</td>
-                                            <td><span class="status status-p bg-amber">Pending</span></td>
-                                            <td class="amount">1,1300.00</td>
-                                            <td class="quantity">34</td>
-                                            <td>
-                                                <a onclick="toggleModal(this, 3)" class="btn btn-danger btn-delete btn-sm">Edit</a>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Peanut Chikki</td>
-                                            <td><span class="status-p bg-amber">Pending</span></td>
-                                            <td>1,1300.00</td>
-                                            <td>34</td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Peanut Chikki</td>
-                                            <td><span class="status-p bg-grey">Refunded</span></td>
-                                            <td>1,1300.00</td>
-                                            <td>34</td>
-
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3">Total</td>
-                                            <td>234566.00</td>
-                                            <td>2345</td>
-                                        </tr>
+                                        <?php
+                                            $no = 1;
+                                            $totalAmount = 0;
+                                            $totalQuantity = 0;
+                                            $sql3 = mysqli_query($conn, "SELECT * FROM orderDetails WHERE orderID = '{$row['id']}'");
+                                            while($row3 = mysqli_fetch_assoc($sql3)){
+                                                $sql4 = mysqli_query($conn, "SELECT productName FROM productMaster 
+                                                WHERE id = '{$row3['productID']}'");
+                                                $row4 = mysqli_fetch_assoc($sql4);
+                                                echo '<tr>
+                                                        <td scope="row">'.$no++.'</td>
+                                                        <td hidden>'.$row3['id'].'</td>
+                                                        <td>'.$row4['productName'].'</td>';
+                                                        if($row3['status']=="Delivered"){
+                                                            echo '<td><span class="status-p bg-correct">Delivered</span></td>';
+                                                        }
+                                                        else if($row3['status']=="Pending"){
+                                                            echo '<td><span class="status-p bg-amber">Pending</span></td>';
+                                                        }
+                                                        else if($row3['status']=="Rejected"){
+                                                            echo '<td><span class="status-p bg-inc">Rejected</span></td>';
+                                                        }
+                                                        else if($row3['status']=="Returned"){
+                                                            echo '<td><span class="status-p bg-lime">Returned</span></td>';
+                                                        }
+                                                        else{
+                                                            echo '<td><span class="status-p bg-grey">Deffered</span></td>';
+                                                        }
+                                                        $totalAmount += $row3['totalAmount'];
+                                                        $totalQuantity += $row3['totalQuantity'];
+                                                        echo '<td class="amount">'.$row3['totalAmount'].'</td>
+                                                                <td class="quantity">'.$row3['totalQuantity'].'</td>
+                                                                <td>
+                                                                    <a onclick="toggleModal(this)" class="btn btn-danger btn-delete btn-sm">Edit</a>
+                                                                </td>
+                                                        </tr>';
+                                            }
+                                            echo '<tr>
+                                                    <td colspan="3">Total</td>
+                                                    <td>'.$totalAmount.'</td>
+                                                    <td>'.$totalQuantity.'</td>
+                                            </tr>';
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -131,23 +121,28 @@ include_once("navbar.php");
                             <h5>Order Status</h5>
                         </div>
                         <div class="card-body">
-                            <div class="content" style="font-size:15px; font-weight :600; color:red;">
-                            </div>
-                            <div class="form">
+                            <!-- <div class="content" style="font-size:15px; font-weight :600; color:red;"></div> -->
+                            <form action="" class="needs-validation">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="orderDetailID" id="orderDetailID" hidden>
+                                    <input type="text" class="form-control" name="productName" id="productName" placeholder="Product Name" disabled>
+                                </div>
                                 <div class="form-group">
                                     <label for="status" class="col-form-label">Status</label>
                                     <select class="form-control" name="status" id="status" required>
                                         <option selected disabled value="">Select Status</option>
                                         <option>Delivered</option>
                                         <option>Pending</option>
-                                        <option>Refunded</option>
+                                        <option>Rejected</option>
+                                        <option>Returned</option>
+                                        <option>Deffered</option>
                                     </select>
                                     <div class="invalid-feedback">
                                         Please select a Valid Status.
                                     </div>
                                 </div>
-                                <button class="btn btn-primary mb-3" id="submit" type="submit"  formnovalidate>Save</button>
-                            </div>
+                                <button class="btn btn-primary mb-3" id="submit" type="submit" formnovalidate disabled>Change Status</button>
+                            </form>
                         </div>
                     </div>
                 </div>
