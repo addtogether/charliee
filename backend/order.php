@@ -36,6 +36,8 @@
                 echo '<td>'.$totalAmount.'</td>
                         <td>'.$totalQuantity.'</td>
                         </tr>';
+                $totalAmount = 0;
+                $totalQuantity = 0;
             }
             echo '<tr>
                     <td colspan="3">Total</td>
