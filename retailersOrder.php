@@ -78,7 +78,7 @@
                                                         <td scope="row">'.$no++.'</td>
                                                         <td hidden>'.$row4['id'].'</td>
                                                         <td>'.$row5['productName'].'</td>';
-                                                        if($row3['status']=="Delivered"){
+                                                        if($row4['status']=="Delivered"){
                                                             echo '<td><span class="status-p bg-correct">Delivered</span></td>';
                                                         }
                                                         else if($row4['status']=="Pending"){
