@@ -1,7 +1,11 @@
 const form = document.querySelector("form");
-const orderID = document.getElementById('orderID');
 
 submitBtn = document.getElementById("submit");
+
+//getting url parameter
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const orderID = urlParams.get('o');
 
 form.onsubmit = (e)=>{
     e.preventDefault(); //preventing form from submitting
@@ -18,7 +22,7 @@ form.onsubmit = (e)=>{
                     let data = xhr.response;
                     if(data == "success"){
                       alert("Status Updated Succesfully!");
-                      window.location.replace("orderDetails.php?o="+orderID.value);
+                      window.location.replace("orderDetails.php?o="+orderID);
                       //console.log(data);
                     }
                     else{
