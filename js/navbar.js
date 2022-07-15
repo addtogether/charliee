@@ -40,8 +40,8 @@ else if(filename=="routeShow.php" || filename=="editRoute.php"){
     routeShow.classList.add("active");
 }
 else if(filename== "attendance.php"){
-    attendance.classList.add("active")
+    attendance.classList.add("active");
 }
-else if(filename== "order.php" || filename == "orderDetails.php"){
-    order.classList.add("active")
+else if(filename== "order.php" || filename == "orderDetails.php" || filename == "retailersOrder.php"){
+    order.classList.add("active");
 }
