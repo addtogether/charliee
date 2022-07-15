@@ -18,10 +18,11 @@
                 $query = "INSERT INTO orderDetails (orderID, productID, quantity, amount, status) VALUES (";
                 $len = count($val["d"]);
                 foreach($val["d"] as $index => $columns){
-                    echo "\n".$columns;
+                    // echo "\n".$columns;
                     $query .= $last_inserted.", ".$columns.")";
                     $query .= ($index == $len - 1) ? "" : ", \n";
                 }
+                echo $query;
                 $sql1 = mysqli_query($conn, $query);
                 if($sql1){
                     $flag = true;
