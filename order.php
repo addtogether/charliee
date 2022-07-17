@@ -50,20 +50,70 @@ include_once("navbar.php");
                             <div>
                                 <hr>
                             </div>
-                            <div class="table-responsive user-table">
-                                <table id="myTable" class="table table-striped display">
-                                    <thead>
-                                        <th>Sr No.</th>
-                                        <th>Employee Name</th>
-                                        <th>Route Name</th>
-                                        <th>Total Amount ₹</th>
-                                        <th>Total Quantity</th>
-                                    </thead>
-                                    <tbody id="orderList">
-                                        <td colspan="5">Select date to view orders!</td>
-                                    </tbody>
-                                </table>
+                            <!-- Tabs navs -->
+                            <ul id="myTab2" role="tablist" class="nav nav-tabs nav-pills with-arrow lined flex-column flex-sm-row text-center">
+                                <li class="nav-item flex-sm-fill">
+                                    <a id="order-tab2" data-toggle="tab" href="#orderTab" role="tab" aria-controls="orderTab" aria-selected="true" class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0 active" style="color:black;">Orders</a>
+                                </li>
+                                <li class="nav-item flex-sm-fill">
+                                    <a id="noOrder-tab2" data-toggle="tab" href="#noOrderTab" role="tab" aria-controls="noOrderTab" aria-selected="false" class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0" style="color:black;">No Orders</a>
+                                </li>
+                                <li class="nav-item flex-sm-fill">
+                                    <a id="return-tab2" data-toggle="tab" href="#returnTab" role="tab" aria-controls="returnTab" aria-selected="false" class="nav-link text-uppercase font-weight-bold rounded-0" style="color:black;">Returns</a>
+                                </li>
+                            </ul>
+                            <!-- Tabs navs -->
+                            <!-- content  -->
+                            <div id="myTab2Content" class="tab-content">
+                                <div id="orderTab" role="tabpanel" aria-labelledby="order-tab" class="tab-pane fade px-4 py-5 show active">
+                                    <div class="table-responsive user-table">
+                                        <table id="orderTable" class="table table-striped display">
+                                            <thead>
+                                                <th>Sr No.</th>
+                                                <th>Employee Name</th>
+                                                <th>Route Name</th>
+                                                <th>Total Amount ₹</th>
+                                                <th>Total Quantity</th>
+                                            </thead>
+                                            <tbody id="orderList">
+                                                <td colspan="5">Select date to view orders!</td>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div id="noOrderTab" role="tabpanel" aria-labelledby="noOrder-tab" class="tab-pane fade px-4 py-5 show active">
+                                    <div class="table-responsive user-table">
+                                        <table id="noOrderTable" class="table table-striped display">
+                                            <thead>
+                                                <th>Sr No.</th>
+                                                <th>Employee Name</th>
+                                                <th>Route Name</th>
+                                                <th>Reason</th>
+                                            </thead>
+                                            <tbody id="noOrderList">
+                                                <td colspan="5">Select date to view orders!</td>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div id="returnTab" role="tabpanel" aria-labelledby="return-tab" class="tab-pane fade px-4 py-5 show active">
+                                    <div class="table-responsive user-table">
+                                        <table id="returnTable" class="table table-striped display">
+                                            <thead>
+                                                <th>Sr No.</th>
+                                                <th>Employee Name</th>
+                                                <th>Route Name</th>
+                                                <th>Total Amount ₹</th>
+                                                <th>Total Quantity</th>
+                                            </thead>
+                                            <tbody id="returnList">
+                                                <td colspan="5">Select date to view returns!</td>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
+                            <!-- content  -->
                         </div>
                     </div>
                 </div>
@@ -72,7 +122,7 @@ include_once("navbar.php");
     </section>
     <!-- settings-->
     <?php
-    include_once("settings.php");
+        include_once("settings.php");
     ?>
 </div>
 <!-- General JS Scripts -->
