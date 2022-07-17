@@ -140,7 +140,7 @@
                                             <tbody id="returnList">
                                                 <?php
                                                     $sql6 = mysqli_query($conn, "SELECT id FROM returnMaster WHERE employeeID = 
-                                                    '{$row['employeeID']}' AND DATE(orderDate) = '{$orderDate}' AND 
+                                                    '{$row['employeeID']}' AND DATE(returnDate) = '{$orderDate}' AND 
                                                     retailerID = '{$row['retailerID']}'");
                                                     $row6 = mysqli_fetch_assoc($sql6);
                                                     $no = 1;
