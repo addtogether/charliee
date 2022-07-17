@@ -206,6 +206,7 @@
                             <form action="" class="needs-validation">
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="orderDetailID" id="orderDetailID" hidden>
+                                    <input type="text" class="form-control" name="orderBoolean" id="orderBoolean" hidden>
                                     <input type="text" class="form-control" name="productName" id="productName" placeholder="Product Name" disabled>
                                 </div>
                                 <div class="form-group">

@@ -40,8 +40,8 @@ form.onsubmit = (e)=>{
     }
 }
 
-// for the side main status change start
-function toggleModal(element) {
+// for the side main order status change 
+function toggleModalOrder(element) {
     const id = element.parentElement.parentElement.firstChild.nextElementSibling.nextElementSibling;
     const name = id.nextElementSibling;
     const status = id.nextElementSibling.nextElementSibling.firstElementChild;
@@ -49,11 +49,27 @@ function toggleModal(element) {
     // console.log(name);
     // console.log(status);
     document.body.scrollIntoView({behavior: "smooth"});
-  
+    
+    document.getElementById('orderBoolean').value = true;
     document.getElementById('orderDetailID').value = id.innerHTML;
     document.getElementById('productName').value = name.innerHTML;
     document.getElementById('status').value = status.innerHTML;
     document.getElementById('submit').disabled = false;
-  }
+}
   
-  // for the side main status change end 
+  // for the side main return status change 
+function toggleModalReturn(element) {
+    const id = element.parentElement.parentElement.firstChild.nextElementSibling.nextElementSibling;
+    const name = id.nextElementSibling;
+    const status = id.nextElementSibling.nextElementSibling.firstElementChild;
+    // console.log(id.innerHTML);
+    // console.log(name);
+    // console.log(status);
+    document.body.scrollIntoView({behavior: "smooth"});
+    
+    document.getElementById('orderBoolean').value = false;
+    document.getElementById('orderDetailID').value = id.innerHTML;
+    document.getElementById('productName').value = name.innerHTML;
+    document.getElementById('status').value = status.innerHTML;
+    document.getElementById('submit').disabled = false;
+}
