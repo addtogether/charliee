@@ -46,7 +46,7 @@
                                 <h4><?php echo $row1['routeName']; ?></h4>
                             </div>
                             <div class="verticalLine">
-                                <h4><?php echo $orderDate; ?></h4>
+                                <h4><?php echo date('d F Y', strtotime($orderDate)); ?></h4>
                             </div>
                             <div class="verticalLine">
                                 <h4><?php echo $row3['retailerName']; ?></h4>
