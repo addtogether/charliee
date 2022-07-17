@@ -135,16 +135,20 @@
                                                     $no = 1;
                                                     $sql5 = mysqli_query($conn, "SELECT * FROM noOrder 
                                                     WHERE employeeID = '{$row['employeeID']}' AND DATE(orderDate) = '{$orderDate}'");
-                                                    while($row5 = mysqli_fetch_assoc($sql5)){
-                                                        $sql6 = mysqli_query($conn, "SELECT retailerName FROM retailerMaster 
-                                                        WHERE id = '{$row5['retailerID']}'");
-                                                        $row6 = mysqli_fetch_assoc($sql6);
-                                                        echo '<tr>
-                                                                <td scope="row">'.$no++.'</td>
-                                                                <td hidden>'.$row5['id'].'</td>
-                                                                <td>'.$row6['retailerName'].'</td>
-                                                                <td>'.$row5['reason'].'</td>
-                                                            </tr>';
+                                                    if(mysqli_num_rows($sql5) != 0){
+                                                        while($row5 = mysqli_fetch_assoc($sql5)){
+                                                            $sql6 = mysqli_query($conn, "SELECT retailerName FROM retailerMaster 
+                                                            WHERE id = '{$row5['retailerID']}'");
+                                                            $row6 = mysqli_fetch_assoc($sql6);
+                                                            echo '<tr>
+                                                                    <td scope="row">'.$no++.'</td>
+                                                                    <td>'.$row6['retailerName'].'</td>
+                                                                    <td>'.$row5['reason'].'</td>
+                                                                </tr>';
+                                                        }
+                                                    }
+                                                    else{
+                                                        echo '<td colspan="3">No Records</td>';
                                                     }
                                                 ?>
                                             </tbody>

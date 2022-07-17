@@ -147,40 +147,45 @@
                                                     $totalAmount = 0;
                                                     $totalQuantity = 0;
                                                     $sql7 = mysqli_query($conn, "SELECT * FROM returnDetails WHERE returnID = '{$row6['id']}'");
-                                                    while($row7 = mysqli_fetch_assoc($sql7)){
-                                                        $sql8 = mysqli_query($conn, "SELECT productName FROM productMaster 
-                                                        WHERE id = '{$row7['productID']}'");
-                                                        $row8 = mysqli_fetch_assoc($sql8);
+                                                    if(mysqli_num_rows($sql7) != 0){
+                                                        while($row7 = mysqli_fetch_assoc($sql7)){
+                                                            $sql8 = mysqli_query($conn, "SELECT productName FROM productMaster 
+                                                            WHERE id = '{$row7['productID']}'");
+                                                            $row8 = mysqli_fetch_assoc($sql8);
+                                                            echo '<tr>
+                                                                    <td scope="row">'.$no++.'</td>
+                                                                    <td hidden>'.$row7['id'].'</td>
+                                                                    <td>'.$row8['productName'].'</td>';
+                                                                    if($row7['status']=="Accepted"){
+                                                                        echo '<td><span class="status-p bg-correct">Accepted</span></td>';
+                                                                    }
+                                                                    else if($row7['status']=="Pending"){
+                                                                        echo '<td><span class="status-p bg-amber">Pending</span></td>';
+                                                                    }
+                                                                    else if($row7['status']=="Rejected"){
+                                                                        echo '<td><span class="status-p bg-inc">Rejected</span></td>';
+                                                                    }
+                                                                    else{
+                                                                        echo '<td><span class="status-p bg-grey">Deffered</span></td>';
+                                                                    }
+                                                                    $totalAmount += $row7['amount'];
+                                                                    $totalQuantity += $row7['quantity'];
+                                                                    echo '<td class="amount">'.$row7['amount'].'</td>
+                                                                            <td class="quantity">'.$row7['quantity'].'</td>
+                                                                            <td>
+                                                                                <a onclick="toggleModal(this)" class="btn btn-danger btn-delete btn-sm">Edit</a>
+                                                                            </td>
+                                                                    </tr>';
+                                                        }
                                                         echo '<tr>
-                                                                <td scope="row">'.$no++.'</td>
-                                                                <td hidden>'.$row7['id'].'</td>
-                                                                <td>'.$row8['productName'].'</td>';
-                                                                if($row7['status']=="Accepted"){
-                                                                    echo '<td><span class="status-p bg-correct">Accepted</span></td>';
-                                                                }
-                                                                else if($row7['status']=="Pending"){
-                                                                    echo '<td><span class="status-p bg-amber">Pending</span></td>';
-                                                                }
-                                                                else if($row7['status']=="Rejected"){
-                                                                    echo '<td><span class="status-p bg-inc">Rejected</span></td>';
-                                                                }
-                                                                else{
-                                                                    echo '<td><span class="status-p bg-grey">Deffered</span></td>';
-                                                                }
-                                                                $totalAmount += $row7['amount'];
-                                                                $totalQuantity += $row7['quantity'];
-                                                                echo '<td class="amount">'.$row7['amount'].'</td>
-                                                                        <td class="quantity">'.$row7['quantity'].'</td>
-                                                                        <td>
-                                                                            <a onclick="toggleModal(this)" class="btn btn-danger btn-delete btn-sm">Edit</a>
-                                                                        </td>
-                                                                </tr>';
+                                                                <td colspan="3">Total</td>
+                                                                <td>'.$totalAmount.'</td>
+                                                                <td>'.$totalQuantity.'</td>
+                                                        </tr>';
                                                     }
-                                                    echo '<tr>
-                                                            <td colspan="3">Total</td>
-                                                            <td>'.$totalAmount.'</td>
-                                                            <td>'.$totalQuantity.'</td>
-                                                    </tr>';
+                                                    else{
+                                                        echo '<td colspan="6">No Returns</td>';
+                                                    }
                                                 ?>
                                             </tbody>
                                         </table>
