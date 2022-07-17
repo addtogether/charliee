@@ -111,7 +111,7 @@
                                                                 echo '<td>'.$row4['amount'].'</td>
                                                                         <td>'.$row4['quantity'].'</td>
                                                                         <td>
-                                                                            <a onclick="toggleModal(this)" class="btn btn-danger btn-delete btn-sm">Edit</a>
+                                                                            <a onclick="toggleModalOrder(this)" class="btn btn-danger btn-delete btn-sm">Edit</a>
                                                                         </td>
                                                                 </tr>';
                                                     }
@@ -173,7 +173,7 @@
                                                                     echo '<td class="amount">'.$row7['amount'].'</td>
                                                                             <td class="quantity">'.$row7['quantity'].'</td>
                                                                             <td>
-                                                                                <a onclick="toggleModal(this)" class="btn btn-danger btn-delete btn-sm">Edit</a>
+                                                                                <a onclick="toggleModalReturn(this)" class="btn btn-danger btn-delete btn-sm">Edit</a>
                                                                             </td>
                                                                     </tr>';
                                                         }
