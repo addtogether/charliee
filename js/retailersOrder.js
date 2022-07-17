@@ -48,7 +48,7 @@ function toggleModal(element) {
     // console.log(id.innerHTML);
     // console.log(name);
     // console.log(status);
-    name.scrollIntoView();
+    document.getElementById('productName').scrollIntoView();
   
     document.getElementById('orderDetailID').value = id.innerHTML;
     document.getElementById('productName').value = name.innerHTML;
