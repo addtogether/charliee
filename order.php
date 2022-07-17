@@ -91,7 +91,7 @@ include_once("navbar.php");
                                                 <th>Reason</th>
                                             </thead>
                                             <tbody id="noOrderList">
-                                                <td colspan="5">Select date to view orders!</td>
+                                                <td colspan="4">Select date to view orders!</td>
                                             </tbody>
                                         </table>
                                     </div>
