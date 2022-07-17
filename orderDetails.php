@@ -49,64 +49,108 @@
 
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive user-table">
-                                <table id="myTable" class="table table-striped display">
-                                    <thead class="'table-row'">
-                                        <th scope="col">Sr No.</th>
-                                        <th hidden scope="col">Order ID</th>
-                                        <th scope="col">Retailer Name</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Total Amount ₹</th>
-                                        <th scope="col">Total Quantity</th>
-                                        <th scope="col">Edit</th>
-                                    </thead>
-                                    <tbody id="routeList">
-                                        <?php
-                                            $no = 1;
-                                            $totalAmount = 0;
-                                            $totalQuantity = 0;
-                                            $sql3 = mysqli_query($conn, "SELECT * FROM orderMaster 
-                                            WHERE employeeID = '{$row['employeeID']}' AND DATE(orderDate) = '{$orderDate}'");
-                                            while($row3 = mysqli_fetch_assoc($sql3)){
-                                                $sql4 = mysqli_query($conn, "SELECT retailerName FROM retailerMaster 
-                                                WHERE id = '{$row3['retailerID']}'");
-                                                $row4 = mysqli_fetch_assoc($sql4);
-                                                echo '<tr>
-                                                        <td scope="row">'.$no++.'</td>
-                                                        <td hidden>'.$row3['id'].'</td>
-                                                        <td><a href="retailersOrder.php?o='.$row3['id'].'">'.$row4['retailerName'].'</a></td>';
-                                                        if($row3['status']=="Delivered"){
-                                                            echo '<td><span class="status-p bg-correct">Delivered</span></td>';
-                                                        }
-                                                        else if($row3['status']=="Pending"){
-                                                            echo '<td><span class="status-p bg-amber">Pending</span></td>';
-                                                        }
-                                                        else if($row3['status']=="Rejected"){
-                                                            echo '<td><span class="status-p bg-inc">Rejected</span></td>';
-                                                        }
-                                                        else if($row3['status']=="Refunded"){
-                                                            echo '<td><span class="status-p bg-lime">Refunded</span></td>';
-                                                        }
-                                                        else{
-                                                            echo '<td><span class="status-p bg-grey">Deffered</span></td>';
-                                                        }
-                                                        $totalAmount += $row3['totalAmount'];
-                                                        $totalQuantity += $row3['totalQuantity'];
-                                                        echo '<td class="amount">'.$row3['totalAmount'].'</td>
-                                                                <td class="quantity">'.$row3['totalQuantity'].'</td>
-                                                                <td>
-                                                                    <a onclick="toggleModal(this)" class="btn btn-danger btn-delete btn-sm">Edit</a>
-                                                                </td>
-                                                        </tr>';
-                                            }
-                                            echo '<tr>
-                                                    <td colspan="3">Total</td>
-                                                    <td>'.$totalAmount.'</td>
-                                                    <td>'.$totalQuantity.'</td>
-                                            </tr>';
-                                        ?>
-                                    </tbody>
-                                </table>
+                            <!-- Tabs navs -->
+                            <ul id="myTab2" role="tablist" class="nav nav-tabs nav-pills with-arrow lined flex-column flex-sm-row text-center">
+                                <li class="nav-item flex-sm-fill">
+                                    <a id="order-tab2" data-toggle="tab" href="#orderTab" role="tab" aria-controls="orderTab" aria-selected="true" class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0 active" style="color:black;">Orders</a>
+                                </li>
+                                <li class="nav-item flex-sm-fill">
+                                    <a id="noOrder-tab2" data-toggle="tab" href="#noOrderTab" role="tab" aria-controls="noOrderTab" aria-selected="false" class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0" style="color:black;">No Orders</a>
+                                </li>
+                            </ul>
+                            <!-- Tabs navs -->
+                            <!-- content  -->
+                            <div id="myTab2Content" class="tab-content">
+                                <div id="orderTab" role="tabpanel" aria-labelledby="order-tab" class="tab-pane fade px-4 py-5 show active">
+                                    <div class="table-responsive user-table">
+                                        <table id="orderTable" class="table table-striped display">
+                                            <thead class="'table-row'">
+                                                <th scope="col">Sr No.</th>
+                                                <th hidden scope="col">Order ID</th>
+                                                <th scope="col">Retailer Name</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Total Amount ₹</th>
+                                                <th scope="col">Total Quantity</th>
+                                                <th scope="col">Edit</th>
+                                            </thead>
+                                            <tbody id="orderList">
+                                                <?php
+                                                    $no = 1;
+                                                    $totalAmount = 0;
+                                                    $totalQuantity = 0;
+                                                    $sql3 = mysqli_query($conn, "SELECT * FROM orderMaster 
+                                                    WHERE employeeID = '{$row['employeeID']}' AND DATE(orderDate) = '{$orderDate}'");
+                                                    while($row3 = mysqli_fetch_assoc($sql3)){
+                                                        $sql4 = mysqli_query($conn, "SELECT retailerName FROM retailerMaster 
+                                                        WHERE id = '{$row3['retailerID']}'");
+                                                        $row4 = mysqli_fetch_assoc($sql4);
+                                                        echo '<tr>
+                                                                <td scope="row">'.$no++.'</td>
+                                                                <td hidden>'.$row3['id'].'</td>
+                                                                <td><a href="retailersOrder.php?o='.$row3['id'].'">'.$row4['retailerName'].'</a></td>';
+                                                                if($row3['status']=="Delivered"){
+                                                                    echo '<td><span class="status-p bg-correct">Delivered</span></td>';
+                                                                }
+                                                                else if($row3['status']=="Pending"){
+                                                                    echo '<td><span class="status-p bg-amber">Pending</span></td>';
+                                                                }
+                                                                else if($row3['status']=="Rejected"){
+                                                                    echo '<td><span class="status-p bg-inc">Rejected</span></td>';
+                                                                }
+                                                                else if($row3['status']=="Refunded"){
+                                                                    echo '<td><span class="status-p bg-lime">Refunded</span></td>';
+                                                                }
+                                                                else{
+                                                                    echo '<td><span class="status-p bg-grey">Deffered</span></td>';
+                                                                }
+                                                                $totalAmount += $row3['totalAmount'];
+                                                                $totalQuantity += $row3['totalQuantity'];
+                                                                echo '<td>'.$row3['totalAmount'].'</td>
+                                                                        <td>'.$row3['totalQuantity'].'</td>
+                                                                        <td>
+                                                                            <a onclick="toggleModal(this)" class="btn btn-danger btn-delete btn-sm">Edit</a>
+                                                                        </td>
+                                                                </tr>';
+                                                    }
+                                                    echo '<tr>
+                                                            <td colspan="3">Total</td>
+                                                            <td>'.$totalAmount.'</td>
+                                                            <td>'.$totalQuantity.'</td>
+                                                    </tr>';
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div id="noOrderTab" role="tabpanel" aria-labelledby="noOrder-tab" class="tab-pane fade px-4 py-5">
+                                    <div class="table-responsive user-table">
+                                        <table id="noOrderTable" class="table table-striped display">
+                                            <thead class="'table-row'">
+                                                <th scope="col">Sr No.</th>
+                                                <th scope="col">Retailer Name</th>
+                                                <th scope="col">Reason</th>
+                                            </thead>
+                                            <tbody id="noOrderList">
+                                                <?php
+                                                    $no = 1;
+                                                    $sql5 = mysqli_query($conn, "SELECT * FROM noOrder 
+                                                    WHERE employeeID = '{$row['employeeID']}' AND DATE(orderDate) = '{$orderDate}'");
+                                                    while($row5 = mysqli_fetch_assoc($sql5)){
+                                                        $sql6 = mysqli_query($conn, "SELECT retailerName FROM retailerMaster 
+                                                        WHERE id = '{$row5['retailerID']}'");
+                                                        $row6 = mysqli_fetch_assoc($sql6);
+                                                        echo '<tr>
+                                                                <td scope="row">'.$no++.'</td>
+                                                                <td hidden>'.$row5['id'].'</td>
+                                                                <td>'.$row6['retailerName'].'</td>
+                                                                <td>'.$row5['reason'].'</td>
+                                                            </tr>';
+                                                    }
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -53,63 +53,139 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive user-table">
-                                <table id="myTable" class="table table-striped display">
-                                    <thead>
-                                        <th scope="col">Sr No.</th>
-                                        <th hidden scope="col">Order Detail ID</th>
-                                        <th scope="col">Product Name</th>
-                                        <th scope="col">Order Status</th>
-                                        <th scope="col">Total Amount ₹</th>
-                                        <th scope="col">Total Quantity</th>
-                                        <th scope="col">Edit</th>
-                                    </thead>
-                                    <tbody id="routeList">
-                                        <?php
-                                            $no = 1;
-                                            $totalAmount = 0;
-                                            $totalQuantity = 0;
-                                            $sql4 = mysqli_query($conn, "SELECT * FROM orderDetails WHERE orderID = '{$row['id']}'");
-                                            while($row4 = mysqli_fetch_assoc($sql4)){
-                                                $sql5 = mysqli_query($conn, "SELECT productName FROM productMaster 
-                                                WHERE id = '{$row4['productID']}'");
-                                                $row5 = mysqli_fetch_assoc($sql5);
-                                                echo '<tr>
-                                                        <td scope="row">'.$no++.'</td>
-                                                        <td hidden>'.$row4['id'].'</td>
-                                                        <td>'.$row5['productName'].'</td>';
-                                                        if($row4['status']=="Delivered"){
-                                                            echo '<td><span class="status-p bg-correct">Delivered</span></td>';
-                                                        }
-                                                        else if($row4['status']=="Pending"){
-                                                            echo '<td><span class="status-p bg-amber">Pending</span></td>';
-                                                        }
-                                                        else if($row4['status']=="Rejected"){
-                                                            echo '<td><span class="status-p bg-inc">Rejected</span></td>';
-                                                        }
-                                                        else if($row4['status']=="Returned"){
-                                                            echo '<td><span class="status-p bg-lime">Returned</span></td>';
-                                                        }
-                                                        else{
-                                                            echo '<td><span class="status-p bg-grey">Deffered</span></td>';
-                                                        }
-                                                        $totalAmount += $row4['amount'];
-                                                        $totalQuantity += $row4['quantity'];
-                                                        echo '<td class="amount">'.$row4['amount'].'</td>
-                                                                <td class="quantity">'.$row4['quantity'].'</td>
-                                                                <td>
-                                                                    <a onclick="toggleModal(this)" class="btn btn-danger btn-delete btn-sm">Edit</a>
-                                                                </td>
-                                                        </tr>';
-                                            }
-                                            echo '<tr>
-                                                    <td colspan="3">Total</td>
-                                                    <td>'.$totalAmount.'</td>
-                                                    <td>'.$totalQuantity.'</td>
-                                            </tr>';
-                                        ?>
-                                    </tbody>
-                                </table>
+                            <!-- Tabs navs -->
+                            <ul id="myTab2" role="tablist" class="nav nav-tabs nav-pills with-arrow lined flex-column flex-sm-row text-center">
+                                <li class="nav-item flex-sm-fill">
+                                    <a id="order-tab2" data-toggle="tab" href="#orderTab" role="tab" aria-controls="orderTab" aria-selected="true" class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0 active" style="color:black;">Orders</a>
+                                </li>
+                                <li class="nav-item flex-sm-fill">
+                                    <a id="return-tab2" data-toggle="tab" href="#returnTab" role="tab" aria-controls="returnTab" aria-selected="false" class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0" style="color:black;">Returns</a>
+                                </li>
+                            </ul>
+                            <!-- Tabs navs -->
+                            <!-- content  -->
+                            <div id="myTab2Content" class="tab-content">
+                                <div id="orderTab" role="tabpanel" aria-labelledby="order-tab" class="tab-pane fade px-4 py-5 show active">
+                                    <div class="table-responsive user-table">
+                                        <table id="orderTable" class="table table-striped display">
+                                            <thead>
+                                                <th scope="col">Sr No.</th>
+                                                <th hidden scope="col">Order Detail ID</th>
+                                                <th scope="col">Product Name</th>
+                                                <th scope="col">Order Status</th>
+                                                <th scope="col">Total Amount ₹</th>
+                                                <th scope="col">Total Quantity</th>
+                                                <th scope="col">Edit</th>
+                                            </thead>
+                                            <tbody id="orderList">
+                                                <?php
+                                                    $no = 1;
+                                                    $totalAmount = 0;
+                                                    $totalQuantity = 0;
+                                                    $sql4 = mysqli_query($conn, "SELECT * FROM orderDetails WHERE orderID = '{$row['id']}'");
+                                                    while($row4 = mysqli_fetch_assoc($sql4)){
+                                                        $sql5 = mysqli_query($conn, "SELECT productName FROM productMaster 
+                                                        WHERE id = '{$row4['productID']}'");
+                                                        $row5 = mysqli_fetch_assoc($sql5);
+                                                        echo '<tr>
+                                                                <td scope="row">'.$no++.'</td>
+                                                                <td hidden>'.$row4['id'].'</td>
+                                                                <td>'.$row5['productName'].'</td>';
+                                                                if($row4['status']=="Delivered"){
+                                                                    echo '<td><span class="status-p bg-correct">Delivered</span></td>';
+                                                                }
+                                                                else if($row4['status']=="Pending"){
+                                                                    echo '<td><span class="status-p bg-amber">Pending</span></td>';
+                                                                }
+                                                                else if($row4['status']=="Rejected"){
+                                                                    echo '<td><span class="status-p bg-inc">Rejected</span></td>';
+                                                                }
+                                                                else if($row4['status']=="Returned"){
+                                                                    echo '<td><span class="status-p bg-lime">Returned</span></td>';
+                                                                }
+                                                                else{
+                                                                    echo '<td><span class="status-p bg-grey">Deffered</span></td>';
+                                                                }
+                                                                $totalAmount += $row4['amount'];
+                                                                $totalQuantity += $row4['quantity'];
+                                                                echo '<td>'.$row4['amount'].'</td>
+                                                                        <td>'.$row4['quantity'].'</td>
+                                                                        <td>
+                                                                            <a onclick="toggleModal(this)" class="btn btn-danger btn-delete btn-sm">Edit</a>
+                                                                        </td>
+                                                                </tr>';
+                                                    }
+                                                    echo '<tr>
+                                                            <td colspan="3">Total</td>
+                                                            <td>'.$totalAmount.'</td>
+                                                            <td>'.$totalQuantity.'</td>
+                                                    </tr>';
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div id="returnTab" role="tabpanel" aria-labelledby="return-tab" class="tab-pane fade px-4 py-5">
+                                    <div class="table-responsive user-table">
+                                        <table id="returnTable" class="table table-striped display">
+                                            <thead>
+                                                <th scope="col">Sr No.</th>
+                                                <th hidden scope="col">Order Detail ID</th>
+                                                <th scope="col">Product Name</th>
+                                                <th scope="col">Order Status</th>
+                                                <th scope="col">Total Amount ₹</th>
+                                                <th scope="col">Total Quantity</th>
+                                                <th scope="col">Edit</th>
+                                            </thead>
+                                            <tbody id="returnList">
+                                                <?php
+                                                    $sql6 = mysqli_query($conn, "SELECT id FROM returnMaster WHERE employeeID = 
+                                                    '{$row['employeeID']}' AND DATE(orderDate) = '{$orderDate}' AND 
+                                                    retailerID = '{$row['retailerID']}'");
+                                                    $row6 = mysqli_fetch_assoc($sql6);
+                                                    $no = 1;
+                                                    $totalAmount = 0;
+                                                    $totalQuantity = 0;
+                                                    $sql7 = mysqli_query($conn, "SELECT * FROM returnDetails WHERE returnID = '{$row6['id']}'");
+                                                    while($row7 = mysqli_fetch_assoc($sql7)){
+                                                        $sql8 = mysqli_query($conn, "SELECT productName FROM productMaster 
+                                                        WHERE id = '{$row7['productID']}'");
+                                                        $row8 = mysqli_fetch_assoc($sql8);
+                                                        echo '<tr>
+                                                                <td scope="row">'.$no++.'</td>
+                                                                <td hidden>'.$row7['id'].'</td>
+                                                                <td>'.$row8['productName'].'</td>';
+                                                                if($row7['status']=="Accepted"){
+                                                                    echo '<td><span class="status-p bg-correct">Accepted</span></td>';
+                                                                }
+                                                                else if($row7['status']=="Pending"){
+                                                                    echo '<td><span class="status-p bg-amber">Pending</span></td>';
+                                                                }
+                                                                else if($row7['status']=="Rejected"){
+                                                                    echo '<td><span class="status-p bg-inc">Rejected</span></td>';
+                                                                }
+                                                                else{
+                                                                    echo '<td><span class="status-p bg-grey">Deffered</span></td>';
+                                                                }
+                                                                $totalAmount += $row7['amount'];
+                                                                $totalQuantity += $row7['quantity'];
+                                                                echo '<td class="amount">'.$row7['amount'].'</td>
+                                                                        <td class="quantity">'.$row7['quantity'].'</td>
+                                                                        <td>
+                                                                            <a onclick="toggleModal(this)" class="btn btn-danger btn-delete btn-sm">Edit</a>
+                                                                        </td>
+                                                                </tr>';
+                                                    }
+                                                    echo '<tr>
+                                                            <td colspan="3">Total</td>
+                                                            <td>'.$totalAmount.'</td>
+                                                            <td>'.$totalQuantity.'</td>
+                                                    </tr>';
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
