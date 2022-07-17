@@ -30,7 +30,7 @@
     $sql3 = mysqli_query($conn, "SELECT retailerName FROM retailerMaster WHERE id = {$row['retailerID']}");
     $row3 = mysqli_fetch_assoc($sql3);
     $orderDate = explode(" ", $row['orderDate']);
-    $orderDate = $orderDate[0];
+    $orderDate = date('d F Y', strtotime($orderDate[0]));
 ?>
 
 <!-- Main Content -->
