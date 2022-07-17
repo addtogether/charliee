@@ -81,7 +81,7 @@ include_once("navbar.php");
                                         </table>
                                     </div>
                                 </div>
-                                <div id="noOrderTab" role="tabpanel" aria-labelledby="noOrder-tab" class="tab-pane fade px-4 py-5 show active">
+                                <div id="noOrderTab" role="tabpanel" aria-labelledby="noOrder-tab" class="tab-pane fade px-4 py-5">
                                     <div class="table-responsive user-table">
                                         <table id="noOrderTable" class="table table-striped display">
                                             <thead>
@@ -96,7 +96,7 @@ include_once("navbar.php");
                                         </table>
                                     </div>
                                 </div>
-                                <div id="returnTab" role="tabpanel" aria-labelledby="return-tab" class="tab-pane fade px-4 py-5 show active">
+                                <div id="returnTab" role="tabpanel" aria-labelledby="return-tab" class="tab-pane fade px-4 py-5">
                                     <div class="table-responsive user-table">
                                         <table id="returnTable" class="table table-striped display">
                                             <thead>
