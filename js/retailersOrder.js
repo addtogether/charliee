@@ -48,6 +48,9 @@ function toggleModalOrder(element) {
     // console.log(id.innerHTML);
     // console.log(name);
     // console.log(status);
+
+    document.getElementById('status').innerHTML = "<option selected disabled value=''>Select Status</option><option>Delivered</option><option>Pending</option><option>Rejected</option><option>Returned</option><option>Deffered</option>";
+
     document.body.scrollIntoView({behavior: "smooth"});
     
     document.getElementById('orderBoolean').value = true;
@@ -65,6 +68,9 @@ function toggleModalReturn(element) {
     // console.log(id.innerHTML);
     // console.log(name);
     // console.log(status);
+
+    document.getElementById('status').innerHTML = "<option selected disabled value=''>Select Status</option><option>Accepted</option><option>Pending</option><option>Rejected</option><option>Deffered</option>";
+
     document.body.scrollIntoView({behavior: "smooth"});
     
     document.getElementById('orderBoolean').value = false;

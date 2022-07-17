@@ -212,12 +212,7 @@
                                 <div class="form-group">
                                     <label for="status" class="col-form-label">Status</label>
                                     <select class="form-control" name="status" id="status" required>
-                                        <option selected disabled value="">Select Status</option>
-                                        <option>Delivered</option>
-                                        <option>Pending</option>
-                                        <option>Rejected</option>
-                                        <option>Returned</option>
-                                        <option>Deffered</option>
+                                        <option selected disabled value="">Select a product to change status</option>
                                     </select>
                                     <div class="invalid-feedback">
                                         Please select a Valid Status.
