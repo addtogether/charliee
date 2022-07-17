@@ -28,7 +28,7 @@
     $sql2 = mysqli_query($conn, "SELECT employeeName FROM employeeMaster WHERE id = {$row['employeeID']}");
     $row2 = mysqli_fetch_assoc($sql2);
     $orderDate = explode(" ", $row['orderDate']);
-    $orderDate = date('d F Y', strtotime($orderDate[0]));
+    $orderDate = $orderDate[0];
 ?>
 
 <!-- Main Content -->
