@@ -9,6 +9,8 @@
         $time = time();
         file_put_contents("../files/order/".$time.".json", $content);
         $flag = true;
+        mysqli_autocommit($conn, false);
+        mysqli_begin_transaction($conn);
         foreach($decoded as $x => $val) {
             // var_dump($val);
             // echo "\n".$val["m"];
@@ -24,20 +26,23 @@
                 }
                 // echo $query;
                 $sql1 = mysqli_query($conn, $query);
-                if($sql1){
-                    $flag = true;
-                }
-                else{
+                if(!$sql1){
                     // echo "sql error".mysqli_error($conn);
                     $flag = false;
                     break;
-                } 
+                }
             }
             else{
                 // echo "sql error".mysqli_error($conn);
                 $flag = false;
                 break;
             }
+        }
+        if($flag){
+            mysqli_commit($conn);
+        }
+        else{
+            mysqli_rollback($conn);
         }
         echo json_encode(["inserted"=>$flag]);
     }
