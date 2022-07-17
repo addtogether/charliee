@@ -3,7 +3,7 @@
     require_once "../includes/connection.php";
     
     if(isset($_POST['orderDetailID'])){
-        if($_POST['orderBoolean']){
+        if($_POST['orderBoolean']=="true"){
             $orderDetailID = (int) mysqli_real_escape_string($conn, $_POST['orderDetailID']);
             $status = mysqli_real_escape_string($conn, $_POST['status']);
     
