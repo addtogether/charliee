@@ -13,7 +13,7 @@
             // var_dump($val);
             // echo "\n".$val["m"];
             $sql = mysqli_query($conn, $val["m"]);
-            if(!$sql1){
+            if(!$sql){
                 // echo "sql error".mysqli_error($conn);
                 $flag = false;
                 break;
