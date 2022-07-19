@@ -72,6 +72,21 @@
               <a href="order.php" class="nav-link"><i data-feather="file-text"></i><span>View Order</span></a>
             </li>
 
+            <!-- Target Page Start Here  -->
+            <li class="menu-header">Target</li>
+            <li class="dropdown">
+              <a href="#" class="menu-toggle nav-link has-dropdown">
+              <i class="fas fa-bullseye"></i></i><span>Target</span></a>
+              <ul class="dropdown-menu">
+                <li id="menu-assign-target" ><a class="nav-link" href="assignTarget.php"></i></i>Assign Target</a></li>
+                <li id="menu-view-target"><a class="nav-link" href="viewTarget.php"></i></i>View Target</a></li>
+                <!-- <li><a class="nav-link" href="create-post.html">Create Post</a></li>
+                <li><a class="nav-link" href="create-topic.html">Create Topic</a></li> -->
+
+              </ul>
+            </li>
+            <!-- Target Page ends Here  -->
+
             <!-- setting start here  -->
             <li class="menu-header">Setting</li>
             <li class="dropdown">

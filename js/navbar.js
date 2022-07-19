@@ -9,6 +9,8 @@ route = document.getElementById("menu-route");
 routeShow = document.getElementById("menu-routeShow");
 attendance = document.getElementById("menu-attendance");
 order = document.getElementById("menu-order");
+assign = document.getElementById("menu-assign-target");
+viewTarget = document.getElementById("menu-view-target");
 
 
 dashboard.classList.remove("active");
@@ -19,6 +21,8 @@ route.classList.remove("active");
 routeShow.classList.remove("active");
 attendance.classList.remove("active")
 order.classList.remove("active")
+assign.classList.remove("active");
+viewTarget.classList.remove("active");
 
 
 if(filename=="index.php" || filename==""){
@@ -44,4 +48,10 @@ else if(filename== "attendance.php"){
 }
 else if(filename== "order.php" || filename == "orderDetails.php" || filename == "retailersOrder.php"){
     order.classList.add("active");
+}
+else if(filename == "assignTarget.php"){
+    assign.classList.add("active");
+}
+else if(filename == "viewTarget.php"){
+    viewTarget.classList.add("active");
 }
