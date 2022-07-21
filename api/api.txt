@@ -79,3 +79,9 @@ subCategory body:
 {
 	"category": "A"
 }
+
+target api: http://localhost/charliee/api/target.php
+target body:
+{
+	"id": "4"
+}
