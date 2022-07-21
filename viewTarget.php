@@ -19,8 +19,8 @@
 </head>
 
 <?php
-require_once("./includes/connection.php");
-include_once("navbar.php");
+    require_once("./includes/connection.php");
+    include_once("navbar.php");
 ?>
 
 <!-- Main Content -->
@@ -39,7 +39,7 @@ include_once("navbar.php");
                                     
                                     <div class="col-md-4 mb-3 ag-pad" style="padding-top: 0.5%;">
                                         <label for="month" class="col-form-label">Month and Year</label>
-                                        <input type="month" class="form-control" name="month" id="month" />
+                                        <input type="month" class="form-control" name="month" id="month" required>
                                         <div class="invalid-feedback">
                                             Please select a Valid month and year.
                                         </div>
@@ -60,30 +60,8 @@ include_once("navbar.php");
                                         <th>Achieved (₹)</th>
                                         <th>Percent (%)</th>
                                     </thead>
-                                    <tbody id="attendanceList">
-                                        <!-- <td colspan="8">Select Employee and month to view Attendance</td> -->
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Aamir</td>
-                                            <td>1,00, 000</td>
-                                            <td>75,000</td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Aamir Khan</td>
-                                            <td>2,00, 000</td>
-                                            <td>55,000</td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 27.5%" aria-valuenow="27.5" aria-valuemin="0" aria-valuemax="100">27.5%</div>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                    <tbody id="viewTargetList">
+                                        <td colspan="5">Select month to view Target</td>
                                     </tbody>
                                 </table>
                             </div>
@@ -113,7 +91,7 @@ include_once("navbar.php");
 <script src="assets/js/custom.js"></script>
 <!-- Dashboard Selector -->
 <script src="./js/navbar.js"></script>
-<script src="./js/attendance.js"></script>
+<script src="./js/viewTarget.js"></script>
 </body>
 
 </html>

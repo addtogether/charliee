@@ -82,7 +82,7 @@
                                         <th>Percent (%)</th>
                                     </thead>
                                     <tbody id="assignTargetList">
-                                        <td colspan="8">Select Employee to view Target</td>
+                                        <td colspan="5">Select Employee to view Target</td>
                                     </tbody>
                                 </table>
                             </div>
