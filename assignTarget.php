@@ -36,7 +36,7 @@
                         <div class="card-body">
                             <form action="" class="needs-validation">
                                 <div class="form-row">
-                                    <div class="col-md-4 mb-3 ag-pad" style="padding-top: 0.5%;">
+                                    <div class="col-md-4 mb-3 ag-pad">
                                         <label for="employee" class="col-form-label">Employee</label>
                                         <select class="form-control" name="employee" id="employee" required>
                                             <option selected disabled value="">Select Employee</option>
@@ -51,7 +51,7 @@
                                             Please select a Valid Employee Name.
                                         </div>
                                     </div>
-                                    <div class="col-md-4 mb-3 ag-pad" style="padding-top: 0.5%;">
+                                    <div class="col-md-4 mb-3 ag-pad">
                                         <label for="month" class="col-form-label">Month and Year</label>
                                         <input type="month" class="form-control" name="month" id="month" />
                                         <div class="invalid-feedback">
