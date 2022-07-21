@@ -53,7 +53,7 @@
                                     </div>
                                     <div class="col-md-4 mb-3 ag-pad">
                                         <label for="month" class="col-form-label">Month and Year</label>
-                                        <input type="month" class="form-control" name="month" id="month" />
+                                        <input type="month" class="form-control" name="month" id="month" required>
                                         <div class="invalid-feedback">
                                             Please select a Valid month and year.
                                         </div>
