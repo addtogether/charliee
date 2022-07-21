@@ -53,7 +53,7 @@ include_once("navbar.php");
                                     </div>
                                     <div class="col-md-6 mb-3 ag-pad" style="padding-top: 0.5%;">
                                         <label for="month" class="col-form-label">Month and Year</label>
-                                        <input type="month" class="form-control" name="month" id="month" />
+                                        <input type="month" class="form-control" name="month" id="month" required>
                                         <div class="invalid-feedback">
                                             Please select a Valid month and year.
                                         </div>
