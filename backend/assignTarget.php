@@ -55,7 +55,7 @@
             $sql = mysqli_query($conn, "SELECT * FROM employeeTarget WHERE employeeID = '{$employee}' AND monthYear = '{$ym}'");
             if(mysqli_num_rows($sql)!=0){
                 $row = mysqli_fetch_assoc($sql);
-                $percentage = ($row['achieved']/$row['target'])*100;
+                $percentage = round((($row['achieved']/$row['target'])*100), 2);
                 echo '<tr>
                         <td>'.$no++.'</td>
                         <td>'.$row['monthYear'].'</td>
