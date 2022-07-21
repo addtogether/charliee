@@ -19,8 +19,8 @@
 </head>
 
 <?php
-require_once("./includes/connection.php");
-include_once("navbar.php");
+    require_once("./includes/connection.php");
+    include_once("navbar.php");
 ?>
 
 <!-- Main Content -->
@@ -36,28 +36,33 @@ include_once("navbar.php");
                         <div class="card-body">
                             <form action="" class="needs-validation">
                                 <div class="form-row">
-                                    <div class="col-md-6 mb-3 ag-pad" style="padding-top: 0.5%;">
+                                    <div class="col-md-4 mb-3 ag-pad" style="padding-top: 0.5%;">
                                         <label for="employee" class="col-form-label">Employee</label>
                                         <select class="form-control" name="employee" id="employee" required>
                                             <option selected disabled value="">Select Employee</option>
-                                            <!-- <?php
-                                                    $sql = mysqli_query($conn, "SELECT id,employeeName FROM employeeMaster WHERE status = 'ON'");
-                                                    while ($row = mysqli_fetch_assoc($sql)) {
-                                                        echo '<option value=' . $row["id"] . '>' . $row["employeeName"] . '</option>';
-                                                    }
-                                                    ?>  -->
-                                            <option value="">Nikul</option>
-                                            <option value="">Nikul2</option>
+                                            <?php
+                                                $sql = mysqli_query($conn, "SELECT id,employeeName FROM employeeMaster WHERE status = 'ON'");
+                                                while ($row = mysqli_fetch_assoc($sql)) {
+                                                    echo '<option value=' . $row["id"] . '>' . $row["employeeName"] . '</option>';
+                                                }
+                                            ?>
                                         </select>
                                         <div class="invalid-feedback">
                                             Please select a Valid Employee Name.
                                         </div>
                                     </div>
-                                    <div class="col-md-6 mb-3 ag-pad" style="padding-top: 0.5%;">
+                                    <div class="col-md-4 mb-3 ag-pad" style="padding-top: 0.5%;">
                                         <label for="month" class="col-form-label">Month and Year</label>
                                         <input type="month" class="form-control" name="month" id="month" />
                                         <div class="invalid-feedback">
                                             Please select a Valid month and year.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="target" class="col-form-label">Target</label>
+                                        <input class="form-control" type="text" name="target" id="target" required>
+                                        <div class="invalid-feedback">
+                                            Please enter a Valid Target.
                                         </div>
                                     </div>
                                 </div>
@@ -129,7 +134,7 @@ include_once("navbar.php");
 <script src="assets/js/custom.js"></script>
 <!-- Dashboard Selector -->
 <script src="./js/navbar.js"></script>
-<script src="./js/attendance.js"></script>
+<script src="./js/assignTarget.js"></script>
 </body>
 
 </html>
