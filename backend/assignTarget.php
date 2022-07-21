@@ -58,7 +58,7 @@
                 $percentage = round((($row['achieved']/$row['target'])*100), 2);
                 echo '<tr>
                         <td>'.$no++.'</td>
-                        <td>'.$row['monthYear'].'</td>
+                        <td>'.date('d F Y', strtotime($row['monthYear'])).'</td>
                         <td>'.$row['target'].'</td>
                         <td>'.$row['achieved'].'</td>
                         <td>
