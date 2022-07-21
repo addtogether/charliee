@@ -9,10 +9,12 @@
         $sql = mysqli_query($conn, "SELECT * FROM employeeTarget WHERE monthYear = '{$month}'");
         if(mysqli_num_rows($sql)!=0){
             while($row = mysqli_fetch_assoc($sql)){
+                $sql1 = mysqli_query($conn, "SELECT employeeName FROM employeeMaster WHERE id = '{$row['employeeID']}'");
+                $row1 = mysqli_fetch_assoc($sql1);
                 $percentage = round((($row['achieved']/$row['target'])*100), 2);
                 echo '<tr>
                         <td>'.$no++.'</td>
-                        <td>'.date('F Y', strtotime($row['monthYear'])).'</td>
+                        <td>'.$row1['employeeName'].'</td>
                         <td>'.$row['target'].'</td>
                         <td>'.$row['achieved'].'</td>
                         <td>
