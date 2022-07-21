@@ -20,6 +20,10 @@ form.onsubmit = (e)=>{
                       window.location.replace("assignTarget.php");
                       //console.log(data);
                     }
+                    else if(data == "Employee's Target already exist!"){
+                        alert(data);
+                        //console.log(data);
+                    }
                     else{
                         alert("Something went wrong!");
                         // console.log(data);
