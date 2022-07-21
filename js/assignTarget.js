@@ -1,4 +1,6 @@
 const form = document.querySelector("form");
+const employee = document.getElementById("employee");
+const tbody = document.getElementById("assignTargetList");
 
 submitBtn = document.getElementById("submit");
 
@@ -37,4 +39,26 @@ form.onsubmit = (e)=>{
         xhr.send(formData); // sending form data to php
         submitBtn.disabled = false;
     }
+}
+
+//assignTargetList
+employee.onchange = ()=> {
+
+    // console.log(designationField.value);
+    //Ajax
+    let xhr = new XMLHttpRequest(); //creating XML object
+    xhr.open("POST", "backend/assignTarget.php", true);
+    xhr.onload = ()=>{
+        if(xhr.readyState == XMLHttpRequest.DONE){
+            if(xhr.status == 200){
+                let data = xhr.response;
+                // console.log(data)
+                tbody.innerHTML = data;
+            }
+        }
+    }
+    // Sending data from Ajax to php
+    let formData = new FormData(); //creating new formData
+    formData.append("assignTargetList", employee.value);
+    xhr.send(formData); // sending form data to php
 }

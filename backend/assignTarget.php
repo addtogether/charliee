@@ -43,3 +43,30 @@
             echo "Employee's Target already exist!";
         }
     }
+
+    if(isset($_POST['assignTargetList'])){
+        $employee = mysqli_real_escape_string($conn, $_POST['assignTargetList']);
+        $no = 1;
+        $now = date('Y-m');
+        // $last12monthYear = date('Y-m', strtotime($now . " -12 month"));
+        for($x = 12; $x >= 1; $x--) {
+            $ym = date('Y-m', strtotime($now . " -$x month"));
+            
+            $sql = mysqli_query($conn, "SELECT * FROM employeeTarget WHERE employeeID = '{$employee}' AND monthYear = '{$ym}'");
+            if(mysqli_num_rows($sql)!=0){
+                $row = mysqli_fetch_assoc($sql);
+                $percentage = ($row['achieved']/$row['target'])*100;
+                echo '<tr>
+                        <td>'.$no++.'</td>
+                        <td>'.$row['monthYear'].'</td>
+                        <td>'.$row['target'].'</td>
+                        <td>'.$row['achieved'].'</td>
+                        <td>
+                            <div class="progress">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: '.$percentage.'%" aria-valuenow="'.$percentage.'" aria-valuemin="0" aria-valuemax="100">'.$percentage.'%</div>
+                            </div>
+                        </td>
+                    </tr>';
+            }
+        }
+    }

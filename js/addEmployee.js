@@ -123,7 +123,6 @@ designationField.onchange = ()=> {
     let formData = new FormData(); //creating new formData
     formData.append("designationDropdown",designationDropdown);
     xhr.send(formData); // sending form data to php
-
 }
 
 

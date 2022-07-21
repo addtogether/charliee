@@ -81,30 +81,8 @@
                                         <th>Achieved (₹)</th>
                                         <th>Percent (%)</th>
                                     </thead>
-                                    <tbody id="attendanceList">
-                                        <!-- <td colspan="8">Select Employee and month to view Attendance</td> -->
-                                        <tr>
-                                            <td>1</td>
-                                            <td>June 2022</td>
-                                            <td>1,00, 000</td>
-                                            <td>75,000</td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>July 2022</td>
-                                            <td>2,00, 000</td>
-                                            <td>55,000</td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 27.5%" aria-valuenow="27.5" aria-valuemin="0" aria-valuemax="100">27.5%</div>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                    <tbody id="assignTargetList">
+                                        <td colspan="8">Select Employee to view Target</td>
                                     </tbody>
                                 </table>
                             </div>
