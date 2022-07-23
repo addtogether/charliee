@@ -34,15 +34,35 @@
                                     status = '{$status}', modifiedIP = '$ipaddress', modifiedDate = '{$dateTime}' 
                                     WHERE id = '{$orderDetailID}'");
             if($sql2){
-                $sql3 = mysqli_query($conn, "SELECT totalAmount, totalQuantity FROM orderMaster WHERE id = '{$row['orderID']}'");
+                $sql3 = mysqli_query($conn, "SELECT employeeID, orderDate, totalAmount, totalQuantity FROM orderMaster 
+                                        WHERE id = '{$row['orderID']}'");
                 $row3 = mysqli_fetch_assoc($sql3);
                 $totalAmount = ($row3['totalAmount'] - $row['amount']) + $newAmount;
                 $totalQuantity = ($row3['totalQuantity'] - $row['quantity']) + $newQuantity;
                 $sql4 = mysqli_query($conn, "UPDATE orderMaster SET totalAmount = '{$totalAmount}', totalQuantity = '{$totalQuantity}', 
                                         modifiedIP = '$ipaddress', modifiedDate = '{$dateTime}' 
-                                    WHERE id = '{$row['orderID']}'");
+                                        WHERE id = '{$row['orderID']}'");
                 if($sql4){
-                    echo "success";
+                    if($status == "Delivered"){
+                        $month = date_format(date_create($row3['orderDate']),"Y-m");
+                        $sql5 = mysqli_query($conn, "SELECT achieved FROM employeeTarget WHERE employeeID = '{$row3['employeeID']}' 
+                                                AND monthYear = '{$month}'");
+                        $row5 = mysqli_fetch_assoc($row5);
+                        $newAchieved = $row5['achieved'] + $newAmount;
+                        $sql5 = mysqli_query($conn, "UPDATE employeeTarget SET achieved = $newAchieved, modifiedIP = '$ipaddress', 
+                                                modifiedDate = '{$dateTime}' WHERE employeeID = '{$row3['employeeID']}' 
+                                                AND monthYear = '{$month}'");
+                        if($sql5){
+                            echo "success";
+                        }
+                        else{
+                            echo "error";
+                            // echo("Error description: " . mysqli_error($conn));
+                        }
+                    }
+                    else{
+                        echo "success";
+                    }
                 }    
                 else{
                     echo "error";
