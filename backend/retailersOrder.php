@@ -47,9 +47,9 @@
                         $month = date_format(date_create($row3['orderDate']),"Y-m");
                         $sql5 = mysqli_query($conn, "SELECT achieved FROM employeeTarget WHERE employeeID = '{$row3['employeeID']}' 
                                                 AND monthYear = '{$month}'");
-                        $row5 = mysqli_fetch_assoc($row5);
+                        $row5 = mysqli_fetch_assoc($sql5);
                         $newAchieved = $row5['achieved'] + $newAmount;
-                        $sql6 = mysqli_query($conn, "UPDATE employeeTarget SET achieved = $newAchieved, modifiedIP = '$ipaddress', 
+                        $sql6 = mysqli_query($conn, "UPDATE employeeTarget SET achieved = '{$newAchieved}', modifiedIP = '{$ipaddress}', 
                                                 modifiedDate = '{$dateTime}' WHERE employeeID = '{$row3['employeeID']}' 
                                                 AND monthYear = '{$month}'");
                         if($sql6){
