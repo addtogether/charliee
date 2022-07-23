@@ -49,10 +49,10 @@
                                                 AND monthYear = '{$month}'");
                         $row5 = mysqli_fetch_assoc($row5);
                         $newAchieved = $row5['achieved'] + $newAmount;
-                        $sql5 = mysqli_query($conn, "UPDATE employeeTarget SET achieved = $newAchieved, modifiedIP = '$ipaddress', 
+                        $sql6 = mysqli_query($conn, "UPDATE employeeTarget SET achieved = $newAchieved, modifiedIP = '$ipaddress', 
                                                 modifiedDate = '{$dateTime}' WHERE employeeID = '{$row3['employeeID']}' 
                                                 AND monthYear = '{$month}'");
-                        if($sql5){
+                        if($sql6){
                             echo "success";
                         }
                         else{

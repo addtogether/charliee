@@ -21,7 +21,7 @@ form.onsubmit = (e)=>{
                 if(xhr.status == 200){
                     let data = xhr.response;
                     if(data == "success"){
-                      alert("Status Updated Succesfully!");
+                      alert("Product Updated Succesfully!");
                       window.location.replace("retailersOrder.php?o="+orderID);
                       //console.log(data);
                     }
