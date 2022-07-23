@@ -210,6 +210,13 @@
                                     <input type="text" class="form-control" name="productName" id="productName" placeholder="Product Name" disabled>
                                 </div>
                                 <div class="form-group">
+                                    <label for="totalQuantity" class="col-form-label">Total Quantity</label>
+                                    <input type="text" class="form-control" name="totalQuantity" id="totalQuantity" placeholder="Total Quantity">
+                                    <div class="invalid-feedback">
+                                        Please enter a Valid Total Quantity.
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label for="status" class="col-form-label">Status</label>
                                     <select class="form-control" name="status" id="status" required>
                                         <option selected disabled value="">Select a product to change status</option>
