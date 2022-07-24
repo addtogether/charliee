@@ -19,6 +19,8 @@
   </head>
 
   <?php
+    require_once("./includes/connection.php");
+    include_once("navbar.php");
     $id = mysqli_real_escape_string($conn, $_GET['o']);
     $sql = mysqli_query($conn, "SELECT * FROM orderMaster WHERE id = {$id}");
     $row = mysqli_fetch_assoc($sql);
@@ -30,8 +32,6 @@
     $row3 = mysqli_fetch_assoc($sql3);
     $orderDate = explode(" ", $row['orderDate']);
     $orderDate = $orderDate[0];
-    require_once("./includes/connection.php");
-    include_once("navbar.php");
   ?>
 
     <!-- Main Content -->
