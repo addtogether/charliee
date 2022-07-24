@@ -85,7 +85,7 @@
                           <?php
                             $sql = mysqli_query($conn, "SELECT DISTINCT category FROM productMaster");
                             while($row = mysqli_fetch_assoc($sql)){
-                              echo '<option '.$row["category"].'</option>';
+                              echo '<option>'.$row["category"].'</option>';
                             }
                           ?>        
                         </select>
