@@ -6,6 +6,11 @@ const productField = document.getElementById("product");
 
 submitBtn = document.getElementById("submit");
 
+//getting url parameter
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const orderID = urlParams.get('o');
+
 form.onsubmit = (e)=>{
     e.preventDefault(); //preventing form from submitting
 
@@ -21,7 +26,7 @@ form.onsubmit = (e)=>{
                     let data = xhr.response;
                     if(data == "success"){
                         alert("Product Added Succesfully!");
-                        window.location.replace("order.php");
+                        window.location.replace("retailersOrder.php?o="+orderID);
                         // console.log(data);
                     }
                     else{
