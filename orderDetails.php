@@ -21,7 +21,8 @@
 <?php
     require_once("./includes/connection.php");
     include_once("navbar.php");
-    $sql = mysqli_query($conn, "SELECT * FROM orderMaster WHERE id = {$_GET['o']}");
+    $id = mysqli_real_escape_string($conn, $_GET['o']);
+    $sql = mysqli_query($conn, "SELECT * FROM orderMaster WHERE id = {$id}");
     $row = mysqli_fetch_assoc($sql);
     $sql1 = mysqli_query($conn, "SELECT routeName FROM routeMaster WHERE id = {$row['routeID']}");
     $row1 = mysqli_fetch_assoc($sql1);

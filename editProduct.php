@@ -20,7 +20,8 @@
 <?php
   require_once("./includes/connection.php");
   include_once("navbar.php");
-  $sql = mysqli_query($conn, "SELECT * FROM productMaster WHERE id = {$_GET['p']}");
+  $id = mysqli_real_escape_string($conn, $_GET['p']);
+  $sql = mysqli_query($conn, "SELECT * FROM productMaster WHERE id = {$id}");
   $row = mysqli_fetch_assoc($sql);
 ?>
 

@@ -21,7 +21,9 @@
   <?php
     require_once("./includes/connection.php");
     include_once("navbar.php");
-    $sql = mysqli_query($conn, "SELECT * FROM routeMaster WHERE assignToEmployee = {$_GET['id']} AND weekDay = '{$_GET['d']}'");
+    $id = mysqli_real_escape_string($conn, $_GET['id']);
+    $day = mysqli_real_escape_string($conn, $_GET['d']);
+    $sql = mysqli_query($conn, "SELECT * FROM routeMaster WHERE assignToEmployee = {$id} AND weekDay = '{$day}'");
     $row = mysqli_fetch_assoc($sql);
   ?>
 
