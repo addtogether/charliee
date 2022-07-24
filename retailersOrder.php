@@ -52,6 +52,9 @@
                             <div class="verticalLine">
                                 <h4><?php echo $row3['retailerName']; ?></h4>
                             </div>
+                            <div class="float-right">
+                                <a href="orderProduct.php?o=".$id></a>
+                            </div>
                         </div>
                         <div class="card-body">
                             <!-- Tabs navs -->
