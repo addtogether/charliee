@@ -20,7 +20,7 @@
 
         $orderID = mysqli_real_escape_string($conn, $_POST['orderID']);
         $product = mysqli_real_escape_string($conn, $_POST['product']);
-        $quantity = mysqli_real_escape_string($conn, $_POST['quantity']);
+        $quantity = (int) mysqli_real_escape_string($conn, $_POST['quantity']);
 
         $sql = mysqli_query($conn, "SELECT WR FROM productMaster WHERE id = '{$product}'");
         $row = mysqli_fetch_assoc($sql);
