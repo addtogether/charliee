@@ -53,7 +53,7 @@
                                 <h4><?php echo $row3['retailerName']; ?></h4>
                             </div>
                             <div class="float-right">
-                                <a href="orderProduct.php?o="<?php echo $id;?>> Add Product</a>
+                                <a href="orderProduct.php?o=<?php echo $id;?>"> Add Product</a>
                             </div>
                         </div>
                         <div class="card-body">
