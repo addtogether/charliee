@@ -53,7 +53,7 @@
                                 <h4><?php echo $row3['retailerName']; ?></h4>
                             </div>
                             <div class="float-right">
-                                <a href="orderProduct.php?o=".$id></a>
+                                <a href="orderProduct.php?o="<?php echo $id;?>> Add Product</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -229,7 +229,7 @@
                                         Please select a Valid Status.
                                     </div>
                                 </div>
-                                <button class="btn btn-primary mb-3" id="submit" type="submit" formnovalidate disabled>Change Status</button>
+                                <button class="btn btn-primary mb-3" id="submit" type="submit" formnovalidate disabled>Update Order</button>
                             </form>
                         </div>
                     </div>
