@@ -24,7 +24,7 @@
 
         $sql = mysqli_query($conn, "SELECT WR FROM productMaster WHERE id = '{$product}'");
         $row = mysqli_fetch_assoc($sql);
-        $amount = $quantity * $row1['WR'];
+        $amount = $quantity * $row['WR'];
 
         $dateTime = date('Y-m-d H:i:s');
         $sql1 = mysqli_query($conn, "INSERT INTO orderDetails (orderID, productID, quantity, amount, status, modifiedIP, modifiedDate)
