@@ -1,7 +1,7 @@
 <?php
     require_once "../includes/connection.php";
 
-    if(isset($_POST['routes'])){
+    if(isset($_POST['orderID'])){
         $ipaddress = '';
         if (getenv('HTTP_CLIENT_IP'))
             $ipaddress = getenv('HTTP_CLIENT_IP');
