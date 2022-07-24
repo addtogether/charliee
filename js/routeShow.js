@@ -34,8 +34,8 @@ form.onsubmit = (e)=>{
 //redirect for edit page
 function redirect(){
     if(employeeField.value != "" && dayField.value != ""){
-        console.log(tbody.children.length);
-        if(tbody.children[0].children.length != 1){
+        // console.log(tbody.children.length);
+        if(tbody.children.length != 1){
             window.location.replace("editRoute.php?id="+employeeField.value+"&d="+dayField.value);
         }
         else{
