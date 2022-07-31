@@ -130,6 +130,7 @@
                                                 <th scope="col">Sr No.</th>
                                                 <th scope="col">Retailer Name</th>
                                                 <th scope="col">Reason</th>
+                                                <th scope="col">Image</th>
                                             </thead>
                                             <tbody id="noOrderList">
                                                 <?php
@@ -144,8 +145,15 @@
                                                             echo '<tr>
                                                                     <td scope="row">'.$no++.'</td>
                                                                     <td>'.$row6['retailerName'].'</td>
-                                                                    <td>'.$row5['reason'].'</td>
-                                                                </tr>';
+                                                                    <td>'.$row5['reason'].'</td>';
+                                                            if($row5['image'] != null){
+                                                                echo '<td><a href="./files/noOrder/'.$row5['image'].'" target="_blank">View Image</a></td>
+                                                                    </tr>';
+                                                            }
+                                                            else{
+                                                                echo '<td>-</td>
+                                                                    </tr>';
+                                                            }
                                                         }
                                                     }
                                                     else{
