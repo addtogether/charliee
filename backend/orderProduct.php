@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once "../includes/connection.php";
 
     if(isset($_POST['orderID'])){
@@ -27,8 +28,8 @@
         $amount = $quantity * $row['WR'];
 
         $dateTime = date('Y-m-d H:i:s');
-        $sql1 = mysqli_query($conn, "INSERT INTO orderDetails (orderID, productID, quantity, amount, status, modifiedIP, modifiedDate)
-                                    VALUES ('{$orderID}', '{$product}', '{$quantity}', '{$amount}', 'Pending', '{$ipaddress}', '{$dateTime}')");
+        $sql1 = mysqli_query($conn, "INSERT INTO orderDetails (orderID, productID, quantity, amount, status, modifiedBy, modifiedIP, modifiedDate)
+                                    VALUES ('{$orderID}', '{$product}', '{$quantity}', '{$amount}', 'Pending', '{$_SESSION['adminID']}', '{$ipaddress}', '{$dateTime}')");
         if($sql1){
             echo "success";
         }

@@ -29,8 +29,8 @@
         $sql = mysqli_query($conn,"SELECT * FROM employeeTarget WHERE employeeID = '{$employee}' AND monthYear = '{$month}'");
         if(mysqli_num_rows($sql) == 0){
             $dateTime = date('Y-m-d H:i:s');
-            $sql1 = mysqli_query($conn, "INSERT INTO employeeTarget (employeeID, monthYear, target, createdIP, createdDate) 
-                                            VALUES ('{$employee}', '{$month}', '{$target}', '$ipaddress', '{$dateTime}')");
+            $sql1 = mysqli_query($conn, "INSERT INTO employeeTarget (employeeID, monthYear, target, createdBy, createdIP, createdDate) 
+                                            VALUES ('{$employee}', '{$month}', '{$target}', '{$_SESSION['adminID']}', '$ipaddress', '{$dateTime}')");
             if($sql1){
                 echo "success";
             }    

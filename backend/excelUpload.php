@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once "../includes/connection.php";
 
     if(isset($_POST['excel'])){
@@ -41,7 +42,7 @@
             $columns = $array[0];
             $columns_as_string = implode(', ', $columns);
             $sql .= "INSERT INTO $table
-                    (" . $columns_as_string . ", createdIP, createdDate)
+                    (" . $columns_as_string . ", createdBy, createdIP, createdDate)
                     VALUES ";
             $len = count($array);
             $isFirst = true;
@@ -53,7 +54,7 @@
                 $sql .= '("';
                 $sql .= implode('", "', $array[$index]) . "\"";
                 $dateTime = date('Y-m-d H:i:s');
-                $sql .= ', "'.$ipaddress.'", "'.$dateTime.'")';
+                $sql .= ', "'.$_SESSION['adminID'].'", "'.$ipaddress.'", "'.$dateTime.'")';
                 $sql .= ($index == $len - 1) ? "" : ", \n";
             }
             $sql .= "\nON DUPLICATE KEY UPDATE \n";
@@ -65,6 +66,7 @@
             }
             $dateTime = date('Y-m-d H:i:s');
             $sql .= ',
+                    modifiedBy="'.$_SESSION['adminID'].'".
                     modifiedIP="'.$ipaddress.'",
                     modifiedDate="'.$dateTime.'";';
             return $sql;

@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['adminID'])){
+        header("location: index.php");
+    }
+?>
 <body>
   <div class="loader"></div>
   <div id="app">
@@ -25,7 +31,7 @@
                 Settings
               </a> -->
                 <div class="dropdown-divider"></div>
-                <a href="auth-login.html" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
+                <a href="backend/logout.php" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
                   Logout
                 </a>
             </div>

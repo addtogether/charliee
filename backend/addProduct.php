@@ -48,10 +48,10 @@
                 if(move_uploaded_file($tmpName, "../files/product/".$newFileName)){
                     $dateTime = date('Y-m-d H:i:s');
                     $sql1 = mysqli_query($conn, "INSERT INTO productMaster (productCode, productName, GMS, photo, catalogueURL, 
-                                                category, subCategory, GST, MRP, WR, DR, SSR, schemeRate, status, createdIP, createdDate) 
+                                                category, subCategory, GST, MRP, WR, DR, SSR, schemeRate, status, createdBy, createdIP, createdDate) 
                                                 VALUES ('{$productCode}', '{$productName}', '{$GMS}', '{$newFileName}', '{$catalogueURL}', 
                                                 '{$category}', '{$subCategory}', '{$GST}', '{$MRP}', '{$WR}', '{$DR}', '{$SSR}', 
-                                                '{$schemeRate}', '{$status}', '$ipaddress', '{$dateTime}')");
+                                                '{$schemeRate}', '{$status}', '{$_SESSION['adminID']}', '$ipaddress', '{$dateTime}')");
                     if($sql1){
                         echo "success";
                     }    

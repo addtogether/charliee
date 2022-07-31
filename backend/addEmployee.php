@@ -64,12 +64,12 @@
                         $sql1 = mysqli_query($conn, "INSERT INTO employeeMaster (employeeCode, employeeName, employeePhoto, gender, dateOfBirth, 
                                                         address, location, pincode, city, state, country, mobileNumber, whatsappNumber, IMEI, 
                                                         designation, reportingManager, salary, dateOfJoining, additionalDetails, AF1, AF2, AF3, 
-                                                        AF4, AF5, status, createdIP, createdDate) 
+                                                        AF4, AF5, status, createdBy, createdIP, createdDate) 
                                                         VALUES ('{$employeeCode}', '{$employeeName}', '{$newFileName}', '{$gender}', '{$dateOfBirth}', 
                                                         '{$address}', '{$location}', '{$pincode}', '{$city}', '{$state}', '{$country}', 
                                                         '{$mobileNumber}', '{$whatsappNumber}', '{$imei}', '{$designation}', {$reportingManager} , 
                                                         {$salary}, '{$dateOfJoining}', '{$addtionalDetails}', '{$AF1}', '{$AF2}', '{$AF3}', 
-                                                        '{$AF4}', '{$AF5}', '{$status}', '$ipaddress', '{$dateTime}')");
+                                                        '{$AF4}', '{$AF5}', '{$status}', '{$_SESSION['adminID']}', '$ipaddress', '{$dateTime}')");
                         
                         if($sql1){
                             $password = password_hash($mobileNumber, PASSWORD_DEFAULT);

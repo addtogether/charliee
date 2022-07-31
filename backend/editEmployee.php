@@ -83,7 +83,7 @@
                                                         salary = {$salary}, dateOfJoining = '{$dateOfJoining}', 
                                                         additionalDetails = '{$addtionalDetails}', AF1 = '{$AF1}', AF2 = '{$AF2}', 
                                                         AF3 = '{$AF3}', AF4 = '{$AF4}', AF5 = '{$AF5}', status = '{$status}', 
-                                                        modifiedIP = '$ipaddress', modifiedDate = '{$dateTime}' 
+                                                        modifiedBy = '{$_SESSION['adminID']}', modifiedIP = '$ipaddress', modifiedDate = '{$dateTime}' 
                                                         WHERE id = '$editEmployeeID'");
                         
                         $sql2 = mysqli_query($conn, "UPDATE employeeLogin SET status = '{$status}' WHERE id = '$editEmployeeID'");
@@ -114,7 +114,7 @@
                                                 salary = {$salary}, dateOfJoining = '{$dateOfJoining}', 
                                                 additionalDetails = '{$addtionalDetails}', AF1 = '{$AF1}', AF2 = '{$AF2}', 
                                                 AF3 = '{$AF3}', AF4 = '{$AF4}', AF5 = '{$AF5}', status = '{$status}', 
-                                                modifiedIP = '$ipaddress', modifiedDate = '{$dateTime}' 
+                                                modifiedBy = '{$_SESSION['adminID']}', modifiedIP = '$ipaddress', modifiedDate = '{$dateTime}' 
                                                 WHERE id = '$editEmployeeID'");
 
                 $sql2 = mysqli_query($conn, "UPDATE employeeLogin SET status = '{$status}', username = '{$mobileNumber}' 

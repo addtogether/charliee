@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once "../includes/connection.php";
 
     if(isset($_POST['routes'])){
@@ -34,9 +35,9 @@
         $sql = mysqli_query($conn, "SELECT id FROM routeMaster WHERE assignToEmployee = '{$assignToEmployee}' AND weekDay = '{$weekDay}'");
         if(mysqli_num_rows($sql) == 0){
             $sql1 = mysqli_query($conn, "INSERT INTO routeMaster (routeName, location, subLocation, frequency, weekDay, 
-                                        assignToEmployee, addtionalDetails, status, createdIP, createdDate)
+                                        assignToEmployee, addtionalDetails, status, createdBy, createdIP, createdDate)
                                         VALUES ('{$routeName}', '{$location}', '{$subLocation}', '{$frequency}', '{$weekDay}', 
-                                        '{$assignToEmployee}', '{$addtionalDetails}', '{$routeStatus}', '{$ipaddress}', '{$dateTime}')");
+                                        '{$assignToEmployee}', '{$addtionalDetails}', '{$routeStatus}', '{$_SESSION['adminID']}', '{$ipaddress}', '{$dateTime}')");
             if($sql1){
                 $last_inserted = mysqli_insert_id($conn); // return last inserted id
     
@@ -50,11 +51,11 @@
                     }
                     unset($routes[$index][1]);
                     unset($routes[$index][3]);
-                    $sqlValues .= '("'.$last_inserted.'", "'.$routes[$index][0].'", "'.$index.'", "'.$routes[$index][2].'", "'.$ipaddress.'", "'.$dateTime.'")';
+                    $sqlValues .= '("'.$last_inserted.'", "'.$routes[$index][0].'", "'.$index.'", "'.$routes[$index][2].'", "'.$_SESSION['adminID'].'", "'.$ipaddress.'", "'.$dateTime.'")';
                     $sqlValues .= ($index == $len - 1) ? "" : ", \n";
                 }
                 $dateTime = date('Y-m-d H:i:s');
-                $sql2 = mysqli_query($conn, "INSERT INTO routeRetailerMapping (routeID, retailerID, priority, status, createdIP, 
+                $sql2 = mysqli_query($conn, "INSERT INTO routeRetailerMapping (routeID, retailerID, priority, status, createdBy, createdIP, 
                                                 createdDate) VALUES $sqlValues");
                 if($sql2){
                     echo "success";

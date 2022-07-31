@@ -58,13 +58,13 @@
                                             location, pincode, city, state, country, geoLocation, geoAddress, mobileNumber, 
                                             whatsappNumber, typeOfOutlet, classification, retailerType, gstNumber, fssaiNo, 
                                             validityDate, workingDays, additionalDetails, AF1, AF2, AF3, AF4, AF5, status, 
-                                            createdIP, createdDate) 
+                                            createdBy, createdIP, createdDate) 
                                             VALUES ('{$retailerCode}', '{$retailerName}', '{$contactPersonName}', '{$address}', 
                                             '{$location}', '{$pincode}', '{$city}', '{$state}', '{$country}', '{$geoLocation}', 
                                             '{$geoAddress}', '{$mobileNumber}', '{$whatsappNumber}', '{$typeOfOutlet}', 
                                             '{$classification}', '{$retailerType}' , '{$gstNumber}', '{$fssaiNo}', '{$validityDate}', 
                                             '{$workingDays}', '{$additionalDetails}', '{$AF1}', '{$AF2}', '{$AF3}', '{$AF4}', 
-                                            '{$AF5}', '{$status}', '$ipaddress', '{$dateTime}')");
+                                            '{$AF5}', '{$status}', '{$_SESSION['adminID']}', '$ipaddress', '{$dateTime}')");
             if($sql1){
                 echo "success";
             }    

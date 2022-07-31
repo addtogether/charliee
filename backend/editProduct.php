@@ -63,7 +63,7 @@
                                                     catalogueURL = '{$catalogueURL}', category = '{$category}',
                                                     subCategory = '{$subCategory}', GST = '{$GST}', MRP = '{$MRP}', WR = '{$WR}', 
                                                     DR = '{$DR}', SSR = '{$SSR}', schemeRate = '{$schemeRate}', status = '{$status}', 
-                                                    modifiedIP = '$ipaddress', modifiedDate = '{$dateTime}' 
+                                                    modifiedBy = '{$_SESSION['adminID']}', modifiedIP = '$ipaddress', modifiedDate = '{$dateTime}' 
                                                     WHERE id = '$editProductID'");
                     if($sql1){
                         echo "success";
@@ -87,7 +87,7 @@
                                         productName = '{$productName}', GMS = '{$GMS}', catalogueURL = '{$catalogueURL}', 
                                         category = '{$category}', subCategory = '{$subCategory}', GST = '{$GST}', MRP = '{$MRP}', 
                                         WR = '{$WR}', DR = '{$DR}', SSR = '{$SSR}', schemeRate = '{$schemeRate}', status = '{$status}', 
-                                        modifiedIP = '$ipaddress', modifiedDate = '{$dateTime}' 
+                                        modifiedBy = '{$_SESSION['adminID']}', modifiedIP = '$ipaddress', modifiedDate = '{$dateTime}' 
                                         WHERE id = '$editProductID'");
             if($sql1){
                 echo "success";

@@ -72,7 +72,7 @@
                                             validityDate = '{$validityDate}', workingDays = '{$workingDays}', 
                                             additionalDetails = '{$additionalDetails}', AF1 = '{$AF1}', AF2 = '{$AF2}', 
                                             AF3 = '{$AF3}', AF4 = '{$AF4}', AF5 = '{$AF5}', status = '{$status}', 
-                                            modifiedIP = '$ipaddress', modifiedDate = '{$dateTime}' 
+                                            modifiedBy = '{$_SESSION['adminID']}', modifiedIP = '$ipaddress', modifiedDate = '{$dateTime}' 
                                             WHERE id = '$editRetailerID'");
             if($sql1){
                 echo "success";

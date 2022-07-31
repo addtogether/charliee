@@ -31,7 +31,7 @@
             $row1 = mysqli_fetch_assoc($sql1);
             $newAmount = $newQuantity * $row1['WR'];
             $sql2 = mysqli_query($conn, "UPDATE orderDetails SET quantity = '{$newQuantity}', amount = '{$newAmount}', 
-                                    status = '{$status}', modifiedIP = '$ipaddress', modifiedDate = '{$dateTime}' 
+                                    status = '{$status}', modifiedBy = '{$_SESSION['adminID']}', modifiedIP = '$ipaddress', modifiedDate = '{$dateTime}' 
                                     WHERE id = '{$orderDetailID}'");
             if($sql2){
                 $sql3 = mysqli_query($conn, "SELECT employeeID, orderDate, totalAmount, totalQuantity FROM orderMaster 
@@ -49,7 +49,8 @@
                                                 AND monthYear = '{$month}'");
                         $row5 = mysqli_fetch_assoc($sql5);
                         $newAchieved = $row5['achieved'] + $newAmount;
-                        $sql6 = mysqli_query($conn, "UPDATE employeeTarget SET achieved = '{$newAchieved}', modifiedIP = '{$ipaddress}', 
+                        $sql6 = mysqli_query($conn, "UPDATE employeeTarget SET achieved = '{$newAchieved}', 
+                                                modifiedBy = '{$_SESSION['adminID']}', modifiedIP = '{$ipaddress}', 
                                                 modifiedDate = '{$dateTime}' WHERE employeeID = '{$row3['employeeID']}' 
                                                 AND monthYear = '{$month}'");
                         if($sql6){
@@ -85,7 +86,7 @@
             $row1 = mysqli_fetch_assoc($sql1);
             $newAmount = $newQuantity * $row1['WR'];
             $sql2 = mysqli_query($conn, "UPDATE returnDetails SET quantity = '{$newQuantity}', amount = '{$newAmount}', 
-                                    status = '{$status}', modifiedIP = '$ipaddress', modifiedDate = '{$dateTime}' 
+                                    status = '{$status}', modifiedBy = '{$_SESSION['adminID']}', modifiedIP = '$ipaddress', modifiedDate = '{$dateTime}' 
                                     WHERE id = '{$orderDetailID}'");
             if($sql2){
                 $sql3 = mysqli_query($conn, "SELECT totalAmount, totalQuantity FROM returnMaster WHERE id = '{$row['orderID']}'");
@@ -93,7 +94,7 @@
                 $totalAmount = ($row3['totalAmount'] - $row['amount']) + $newAmount;
                 $totalQuantity = ($row3['totalQuantity'] - $row['quantity']) + $newQuantity;
                 $sql4 = mysqli_query($conn, "UPDATE returnMaster SET totalAmount = '{$totalAmount}', totalQuantity = '{$totalQuantity}', 
-                                        modifiedIP = '$ipaddress', modifiedDate = '{$dateTime}' 
+                                        modifiedBy = '{$_SESSION['adminID']}', modifiedIP = '$ipaddress', modifiedDate = '{$dateTime}' 
                                         WHERE id = '{$row['orderID']}'");
                 if($sql4){
                     echo "success";

@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once "../includes/connection.php";
 
     if(isset($_POST['routes'])){
@@ -35,7 +36,7 @@
         $sql = mysqli_query($conn, "UPDATE routeMaster SET routeName = '{$routeName}', location = '{$location}', 
                                     subLocation = '{$subLocation}', frequency = '{$frequency}', weekDay = '{$weekDay}', 
                                     assignToEmployee = '{$assignToEmployee}', addtionalDetails = '{$addtionalDetails}', 
-                                    status = '{$routeStatus}', modifiedIP = '{$ipaddress}', modifiedDate = '{$dateTime}'
+                                    status = '{$routeStatus}', modifiedBy = '{$_SESSION['adminID']}', modifiedIP = '{$ipaddress}', modifiedDate = '{$dateTime}'
                                     WHERE id = '$routeID'");
         if($sql){
             $len = count($routes);
@@ -58,6 +59,7 @@
                             retailerID=VALUES(retailerID),
                             priority=VALUES(priority),
                             status=VALUES(status),
+                            modifiedBy = '.$_SESSION['adminID'].', 
                             modifiedIP="'.$ipaddress.'",
                             modifiedDate="'.$dateTime.'";';
             $dateTime = date('Y-m-d H:i:s');
