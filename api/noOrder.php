@@ -12,7 +12,14 @@
         foreach($decoded as $x => $val) {
             // var_dump($val);
             // echo "\n".$val["m"];
-            $sql = mysqli_query($conn, $val["m"]);
+            $filename = null;
+            if($val["i"] != null){
+                 //base64 to image
+                $datetime = time();
+                $filename = $datetime."-noOrder.png";
+                file_put_contents("../files/noOrder/".$filename,base64_decode($val['i']));
+            }
+            $sql = mysqli_query($conn, $val["m"].$filename.")");
             if(!$sql){
                 // echo "sql error".mysqli_error($conn);
                 $flag = false;
@@ -30,10 +37,12 @@
     /*
         [
             {
-                "m" : "INSERT INTO noOrder (routeID, retailerID, employeeID, orderDate, reason, geoLocation, status) VALUES ()"
+                "m" : "INSERT INTO noOrder (routeID, retailerID, employeeID, orderDate, reason, geoLocation, status, image) VALUES (",
+                "i" : "base64 string"
             },
             {
-                "m" : "INSERT INTO noOrder (routeID, retailerID, employeeID, orderDate, reason, geoLocation, status) VALUES ()"
+                "m" : "INSERT INTO noOrder (routeID, retailerID, employeeID, orderDate, reason, geoLocation, status, image) VALUES (",
+                "i" : "base64 string"
             }
         ]
     */

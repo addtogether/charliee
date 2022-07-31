@@ -1,0 +1,1 @@
+Anytime api is called an image file will be created in this folder with the current timestap as name
