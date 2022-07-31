@@ -157,7 +157,7 @@
                                                         }
                                                     }
                                                     else{
-                                                        echo '<td colspan="3">No Records</td>';
+                                                        echo '<td colspan="4">No Records</td>';
                                                     }
                                                 ?>
                                             </tbody>
