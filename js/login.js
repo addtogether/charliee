@@ -23,7 +23,7 @@ form.onsubmit = (e)=>{
                     }
                     else{
                         alert("Something Went Wrong!");
-                        console.log(data);
+                        // console.log(data);
                     }
                 }
             }
@@ -31,5 +31,6 @@ form.onsubmit = (e)=>{
         // Sending data from Ajax to php
         let formData = new FormData(form); //creating new formData
         xhr.send(formData); // sending form data to php
+        submitBtn.disabled = false;
     }
 }

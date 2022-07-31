@@ -38,14 +38,14 @@
                             <h3 class="mb-5 text-center">Sign in into Charliee</h3>
                             <div class="form-group mb-4">
                                 <label for="email">Email</label>
-                                <input type="email" id="email" class="form-control" placeholder="Email" required/>
+                                <input type="email" name="email" id="email" class="form-control" placeholder="Email" required/>
                                 <div class="invalid-feedback">
                                     Please enter a Valid Email.
                                 </div>
                             </div>
                             <div class="form-group mb-4">
                                 <label for="password">Password</label>
-                                <input type="password" id="password" class="form-control" placeholder="Password" required/>
+                                <input type="password" name="password" id="password" class="form-control" placeholder="Password" required/>
                                 <div class="invalid-feedback">
                                     Please enter a Valid Password.
                                 </div>
