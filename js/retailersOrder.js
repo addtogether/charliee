@@ -67,6 +67,7 @@ function toggleModalReturn(element) {
     const id = element.parentElement.parentElement.firstChild.nextElementSibling.nextElementSibling;
     const name = id.nextElementSibling;
     const status = id.nextElementSibling.nextElementSibling.firstElementChild;
+    const totalQuantity = id.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling;
     // console.log(id.innerHTML);
     // console.log(name);
     // console.log(status);
@@ -78,6 +79,7 @@ function toggleModalReturn(element) {
     document.getElementById('orderBoolean').value = false;
     document.getElementById('orderDetailID').value = id.innerHTML;
     document.getElementById('productName').value = name.innerHTML;
+    document.getElementById('totalQuantity').value = totalQuantity.innerHTML;
     document.getElementById('status').value = status.innerHTML;
     document.getElementById('submit').disabled = false;
 }
