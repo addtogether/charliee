@@ -66,7 +66,7 @@
             }
             $dateTime = date('Y-m-d H:i:s');
             $sql .= ',
-                    modifiedBy="'.$_SESSION['adminID'].'".
+                    modifiedBy="'.$_SESSION['adminID'].'",
                     modifiedIP="'.$ipaddress.'",
                     modifiedDate="'.$dateTime.'";';
             return $sql;

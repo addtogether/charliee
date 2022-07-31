@@ -77,7 +77,7 @@ function handleFile(e) {
                         else{
                             alert("Something went wrong!");
                         }
-                        console.log(data);
+                        // console.log(data);
                         // reportingManagerField.innerHTML = data;
                     }
                 }
