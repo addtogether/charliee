@@ -61,8 +61,6 @@
 
     <!-- General JS Scripts -->
     <script src="assets/js/app.min.js"></script>
-    <!-- Page Specific JS File -->
-    <script src="assets/js/page/create-post.js"></script>
     <!-- Template JS File -->
     <script src="assets/js/scripts.js"></script>
     <!-- Custom JS File -->
