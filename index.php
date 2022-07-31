@@ -31,11 +31,11 @@
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                 <div class="card shadow-2-strong" style="border-radius: 1rem;">
                     <form action="" class="needs-validation">
-                        <div class="card-body p-5 text-center">
-                            <div class="sidebar-brand">
+                        <div class="card-body p-5">
+                            <div class="sidebar-brand text-center">
                                 <img alt="image" src="assets/img/logo.png" class="header-logo" />
                             </div>
-                            <h3 class="mb-5">Sign in into Charliee</h3>
+                            <h3 class="mb-5 text-center">Sign in into Charliee</h3>
                             <div class="form-group mb-4">
                                 <label for="email">Email</label>
                                 <input type="email" id="email" class="form-control" placeholder="Email" required/>
