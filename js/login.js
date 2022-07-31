@@ -23,7 +23,7 @@ form.onsubmit = (e)=>{
                     }
                     else{
                         alert("Something Went Wrong!");
-                        // console.log(data)
+                        console.log(data);
                     }
                 }
             }
