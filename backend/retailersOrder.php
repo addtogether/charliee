@@ -107,15 +107,6 @@
                 echo "error";
                 // echo("Error description: " . mysqli_error($conn));
             }
-            
-            $sql1 = mysqli_query($conn, "UPDATE returnDetails SET status = '{$status}', modifiedIP = '$ipaddress', modifiedDate = '{$dateTime}' WHERE id = '{$orderDetailID}'");
-            if($sql1){
-                echo "success";
-            }    
-            else{
-                echo "error";
-                // echo("Error description: " . mysqli_error($conn));
-            }
         }
 
     }
