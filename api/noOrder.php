@@ -21,7 +21,7 @@
             }
             $sql = mysqli_query($conn, $val["m"].$filename.")");
             if(!$sql){
-                // echo "sql error".mysqli_error($conn);
+                echo "sql error".mysqli_error($conn);
                 $flag = false;
                 break;
             }
