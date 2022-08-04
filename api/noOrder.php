@@ -12,18 +12,18 @@
         foreach($decoded as $x => $val) {
             // var_dump($val);
             // echo "\n".$val["m"];
-            $filename = 0;
-            if($val["i"] != 0){
+            $filename = "0";
+            if($val["i"] != "0"){
                  //base64 to image
                 $datetime = time();
                 $filename = $datetime."-noOrder.png";
                 file_put_contents("../files/noOrder/".$filename,base64_decode($val['i']));
             }
             $sqlQuery = $val["m"].$filename.")";
-            echo $sqlQuery;
+            // echo $sqlQuery;
             $sql = mysqli_query($conn, $sqlQuery);
             if(!$sql){
-                echo "sql error".mysqli_error($conn);
+                // echo "sql error".mysqli_error($conn);
                 $flag = false;
                 break;
             }

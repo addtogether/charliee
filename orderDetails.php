@@ -152,7 +152,7 @@
                                                                     <td scope="row">'.$no++.'</td>
                                                                     <td>'.$row6['retailerName'].'</td>
                                                                     <td>'.$row5['reason'].'</td>';
-                                                            if($row5['image'] != null){
+                                                            if($row5['image'] != "0"){
                                                                 echo '<td><a href="./files/noOrder/'.$row5['image'].'" target="_blank">View Image</a></td>
                                                                     </tr>';
                                                             }
