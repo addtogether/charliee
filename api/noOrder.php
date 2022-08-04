@@ -20,10 +20,10 @@
                 file_put_contents("../files/noOrder/".$filename,base64_decode($val['i']));
             }
             $sqlQuery = $val["m"]."'$filename'".")";
-            echo $sqlQuery;
+            // echo $sqlQuery;
             $sql = mysqli_query($conn, $sqlQuery);
             if(!$sql){
-                echo "sql error".mysqli_error($conn);
+                // echo "sql error".mysqli_error($conn);
                 $flag = false;
                 break;
             }
