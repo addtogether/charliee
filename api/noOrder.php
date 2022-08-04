@@ -19,7 +19,9 @@
                 $filename = $datetime."-noOrder.png";
                 file_put_contents("../files/noOrder/".$filename,base64_decode($val['i']));
             }
-            $sql = mysqli_query($conn, $val["m"].$filename.")");
+            $sqlQuery = $val["m"].$filename.")";
+            echo $sqlQuery;
+            $sql = mysqli_query($conn, $sqlQuery);
             if(!$sql){
                 echo "sql error".mysqli_error($conn);
                 $flag = false;
