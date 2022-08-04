@@ -12,8 +12,8 @@
         foreach($decoded as $x => $val) {
             // var_dump($val);
             // echo "\n".$val["m"];
-            $filename = null;
-            if($val["i"] != null){
+            $filename = 0;
+            if($val["i"] != 0){
                  //base64 to image
                 $datetime = time();
                 $filename = $datetime."-noOrder.png";
